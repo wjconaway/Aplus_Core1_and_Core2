@@ -4,6 +4,7 @@ html
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="manifest.json">
     <title>A+ Exam Prep | Official Study Hub</title>
     <style>
         :root {
@@ -106,5 +107,12 @@ html
     <footer>
         &copy; 2025 A+ Prep Hub. This site is not affiliated with CompTIA.
     </footer>
+<script>
+    if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js')
+    .then(() => console.log('Service Worker Registered'))
+    .catch(err => console.log('Service Worker Failed', err));
+}
+</script>
 </body>
 </html>

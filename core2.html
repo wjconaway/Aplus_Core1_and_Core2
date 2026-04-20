@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="manifest" href="manifest.json">
     <title>A+ 1201 Core 2 Practice Exam</title>
 <style>
     /* 1. DEFINE THE COLOR THEMES */
@@ -532,6 +533,11 @@
 // Check for saved theme on load
 if (localStorage.getItem('theme') === 'dark') {
     document.body.classList.add('dark-mode');
+}
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js')
+    .then(() => console.log('Service Worker Registered'))
+    .catch(err => console.log('Service Worker Failed', err));
 }
 </script>
 </body>
