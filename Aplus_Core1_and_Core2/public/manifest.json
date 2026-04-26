@@ -1,0 +1,9 @@
+{
+  "name": "A+ Official Prep Hub",
+  "short_name": "A+ Hub",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#2563eb",
+  "icons": []
+}
