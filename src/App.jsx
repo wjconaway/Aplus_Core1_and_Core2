@@ -486,22 +486,35 @@ function CertificationPage({ certification, appState, startSession }) {
 }
 
 function LaserPrinterPbqPage() {
-  const [orderedStages, setOrderedStages] = useState(() => laserPrinterPbq.orderedStages.map((stage) => stage.id).sort(() => Math.random() - 0.5));
+  const [orderedStages, setOrderedStages] = useState(() => shuffle(laserPrinterPbq.orderedStages.map((stage) => stage.id)));
   const [diagnosisAnswers, setDiagnosisAnswers] = useState({});
   const [revealed, setRevealed] = useState(false);
+  const [draggedStageId, setDraggedStageId] = useState(null);
+  const [dragOverStageId, setDragOverStageId] = useState(null);
 
   const stageLookup = Object.fromEntries(laserPrinterPbq.orderedStages.map((stage) => [stage.id, stage]));
   const orderingCorrect = orderedStages.every((id, index) => id === laserPrinterPbq.orderedStages[index].id);
   const diagnosisCorrectCount = laserPrinterPbq.diagnosisItems.filter((item) => diagnosisAnswers[item.id] === item.answer).length;
 
-  function moveStage(index, direction) {
+  function moveStageToPosition(sourceId, targetId) {
+    if (!sourceId || !targetId || sourceId === targetId) return;
     setOrderedStages((current) => {
-      const target = index + direction;
-      if (target < 0 || target >= current.length) return current;
+      const sourceIndex = current.indexOf(sourceId);
+      const targetIndex = current.indexOf(targetId);
+      if (sourceIndex === -1 || targetIndex === -1) return current;
       const next = [...current];
-      [next[index], next[target]] = [next[target], next[index]];
+      const [moved] = next.splice(sourceIndex, 1);
+      next.splice(targetIndex, 0, moved);
       return next;
     });
+  }
+
+  function resetPbq() {
+    setOrderedStages(shuffle(laserPrinterPbq.orderedStages.map((stage) => stage.id)));
+    setDiagnosisAnswers({});
+    setRevealed(false);
+    setDraggedStageId(null);
+    setDragOverStageId(null);
   }
 
   return (
@@ -529,14 +542,41 @@ function LaserPrinterPbqPage() {
               {orderedStages.map((stageId, index) => {
                 const stage = stageLookup[stageId];
                 return (
-                  <div key={stage.id} className="pbq-stage-card">
+                  <div
+                    key={stage.id}
+                    className={`pbq-stage-card ${draggedStageId === stage.id ? 'dragging' : ''} ${dragOverStageId === stage.id ? 'drag-over' : ''}`}
+                    draggable
+                    onDragStart={(event) => {
+                      event.dataTransfer.effectAllowed = 'move';
+                      event.dataTransfer.setData('text/plain', stage.id);
+                      setDraggedStageId(stage.id);
+                    }}
+                    onDragOver={(event) => {
+                      event.preventDefault();
+                      if (draggedStageId !== stage.id) {
+                        setDragOverStageId(stage.id);
+                      }
+                    }}
+                    onDrop={(event) => {
+                      event.preventDefault();
+                      const sourceId = event.dataTransfer.getData('text/plain') || draggedStageId;
+                      moveStageToPosition(sourceId, stage.id);
+                      setDraggedStageId(null);
+                      setDragOverStageId(null);
+                    }}
+                    onDragEnd={() => {
+                      setDraggedStageId(null);
+                      setDragOverStageId(null);
+                    }}
+                  >
                     <div>
-                      <strong>{index + 1}. {stage.label}</strong>
-                      <p>{revealed ? stage.detail : 'Move stages up or down until the process is correct.'}</p>
+                      <span className="pbq-stage-index">Step {index + 1}</span>
+                      <strong>{stage.label}</strong>
+                      <p>{revealed ? stage.detail : 'Drag and drop the stages into the correct order.'}</p>
                     </div>
                     <div className="pbq-stage-actions">
-                      <button type="button" className="ghost-btn" onClick={() => moveStage(index, -1)}>↑</button>
-                      <button type="button" className="ghost-btn" onClick={() => moveStage(index, 1)}>↓</button>
+                      <span className="pbq-drag-handle" aria-hidden="true">⋮⋮</span>
+                      <span className="muted-copy">Drag</span>
                     </div>
                   </div>
                 );
@@ -579,11 +619,7 @@ function LaserPrinterPbqPage() {
 
         <div className="post-exam-actions">
           <button type="button" className="primary-btn" onClick={() => setRevealed(true)}>Check PBQ</button>
-          <button type="button" className="secondary-btn" onClick={() => {
-            setOrderedStages(laserPrinterPbq.orderedStages.map((stage) => stage.id).sort(() => Math.random() - 0.5));
-            setDiagnosisAnswers({});
-            setRevealed(false);
-          }}>Reset PBQ</button>
+          <button type="button" className="secondary-btn" onClick={resetPbq}>Reset PBQ</button>
         </div>
 
         {revealed ? (
