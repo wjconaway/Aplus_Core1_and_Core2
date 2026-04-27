@@ -1,7 +1,7 @@
 import { Link, Navigate, Route, Routes, useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useMemo, useState } from 'react';
 import { certificationCatalog, exams } from './data/catalog';
-import { laserPrinterPbq } from './data/pbqs';
+import { commonPortsPbq, laserPrinterPbq, troubleshootingPbq } from './data/pbqs';
 
 const THEME_KEY = 'aplus-theme';
 const APP_STATE_KEY = 'aplus-app-state-v1';
@@ -221,6 +221,8 @@ function App() {
           ) : <Navigate to="/" replace />}
         />
         <Route path="/pbq/laser-printer" element={<LaserPrinterPbqPage />} />
+        <Route path="/pbq/troubleshooting-methodology" element={<TroubleshootingPbqPage />} />
+        <Route path="/pbq/common-ports" element={<CommonPortsPbqPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>
@@ -470,8 +472,18 @@ function CertificationPage({ certification, appState, startSession }) {
                       Missed Review
                     </button>
                     {examMeta.id === 'core1' ? (
-                      <Link to="/pbq/laser-printer" className="secondary-btn button-link-secondary">
-                        Laser Printer PBQ
+                      <>
+                        <Link to="/pbq/laser-printer" className="secondary-btn button-link-secondary">
+                          Laser Printer PBQ
+                        </Link>
+                        <Link to="/pbq/common-ports" className="secondary-btn button-link-secondary">
+                          Common Ports PBQ
+                        </Link>
+                      </>
+                    ) : null}
+                    {examMeta.id === 'core2' ? (
+                      <Link to="/pbq/troubleshooting-methodology" className="secondary-btn button-link-secondary">
+                        Troubleshooting PBQ
                       </Link>
                     ) : null}
                   </div>
@@ -629,6 +641,296 @@ function LaserPrinterPbqPage() {
             <div className="info-pills">
               <span className="info-pill">Domain: {laserPrinterPbq.domain}</span>
               <span className="info-pill">Objective: {laserPrinterPbq.objective}</span>
+            </div>
+          </section>
+        ) : null}
+      </section>
+    </main>
+  );
+}
+
+function TroubleshootingPbqPage() {
+  const [orderedSteps, setOrderedSteps] = useState(() => shuffle(troubleshootingPbq.orderedSteps.map((step) => step.id)));
+  const [matchAnswers, setMatchAnswers] = useState({});
+  const [revealed, setRevealed] = useState(false);
+  const [draggedId, setDraggedId] = useState(null);
+  const [dragOverId, setDragOverId] = useState(null);
+
+  const stepLookup = Object.fromEntries(troubleshootingPbq.orderedSteps.map((step) => [step.id, step]));
+  const orderingCorrect = orderedSteps.every((id, index) => id === troubleshootingPbq.orderedSteps[index].id);
+  const matchCorrectCount = troubleshootingPbq.matchItems.filter((item) => matchAnswers[item.id] === item.answer).length;
+
+  function moveItem(sourceId, targetId) {
+    if (!sourceId || !targetId || sourceId === targetId) return;
+    setOrderedSteps((current) => {
+      const sourceIndex = current.indexOf(sourceId);
+      const targetIndex = current.indexOf(targetId);
+      if (sourceIndex === -1 || targetIndex === -1) return current;
+      const next = [...current];
+      const [moved] = next.splice(sourceIndex, 1);
+      next.splice(targetIndex, 0, moved);
+      return next;
+    });
+  }
+
+  function resetPbq() {
+    setOrderedSteps(shuffle(troubleshootingPbq.orderedSteps.map((step) => step.id)));
+    setMatchAnswers({});
+    setRevealed(false);
+    setDraggedId(null);
+    setDragOverId(null);
+  }
+
+  return (
+    <main className="page">
+      <Link to="/certification/aplus" className="back-link">← Back to A+ certification</Link>
+      <section className="panel panel-large">
+        <div className="section-head">
+          <div>
+            <span className="badge">PBQ • {troubleshootingPbq.exam}</span>
+            <h1>{troubleshootingPbq.title}</h1>
+          </div>
+          <p>{troubleshootingPbq.subtitle}</p>
+        </div>
+
+        <div className="pbq-grid">
+          <article className="question-card">
+            <div className="section-head compact-head">
+              <div>
+                <h2>Part 1 — Order the six troubleshooting steps</h2>
+                <p>Drag the methodology into the correct sequence.</p>
+              </div>
+              <span className={`badge ${revealed && orderingCorrect ? 'badge-success' : ''}`}>{orderingCorrect ? 'Ready' : 'Needs work'}</span>
+            </div>
+            <div className="pbq-stage-list">
+              {orderedSteps.map((stepId, index) => {
+                const step = stepLookup[stepId];
+                return (
+                  <div
+                    key={step.id}
+                    className={`pbq-stage-card ${draggedId === step.id ? 'dragging' : ''} ${dragOverId === step.id ? 'drag-over' : ''}`}
+                    draggable
+                    onDragStart={(event) => {
+                      event.dataTransfer.effectAllowed = 'move';
+                      event.dataTransfer.setData('text/plain', step.id);
+                      setDraggedId(step.id);
+                    }}
+                    onDragOver={(event) => {
+                      event.preventDefault();
+                      if (draggedId !== step.id) setDragOverId(step.id);
+                    }}
+                    onDrop={(event) => {
+                      event.preventDefault();
+                      moveItem(event.dataTransfer.getData('text/plain') || draggedId, step.id);
+                      setDraggedId(null);
+                      setDragOverId(null);
+                    }}
+                    onDragEnd={() => {
+                      setDraggedId(null);
+                      setDragOverId(null);
+                    }}
+                  >
+                    <div>
+                      <span className="pbq-stage-index">Step {index + 1}</span>
+                      <strong>{step.label}</strong>
+                      <p>{revealed ? step.detail : 'Drag and drop to build the correct CompTIA troubleshooting flow.'}</p>
+                    </div>
+                    <div className="pbq-stage-actions">
+                      <span className="pbq-drag-handle" aria-hidden="true">⋮⋮</span>
+                      <span className="muted-copy">Drag</span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </article>
+
+          <article className="question-card">
+            <div className="section-head compact-head">
+              <div>
+                <h2>Part 2 — Match actions to the correct step</h2>
+                <p>Choose which methodology phase each action belongs to.</p>
+              </div>
+              <span className={`badge ${revealed && matchCorrectCount === troubleshootingPbq.matchItems.length ? 'badge-success' : ''}`}>{matchCorrectCount}/{troubleshootingPbq.matchItems.length}</span>
+            </div>
+            <div className="pbq-diagnosis-list">
+              {troubleshootingPbq.matchItems.map((item) => (
+                <label key={item.id} className="pbq-diagnosis-card">
+                  <strong>{item.prompt}</strong>
+                  <select
+                    className="pbq-select"
+                    value={matchAnswers[item.id] || ''}
+                    onChange={(event) => setMatchAnswers((current) => ({ ...current, [item.id]: event.target.value }))}
+                  >
+                    <option value="">Choose the step</option>
+                    {troubleshootingPbq.orderedSteps.map((step) => (
+                      <option key={step.id} value={step.id}>{step.label}</option>
+                    ))}
+                  </select>
+                  {revealed ? <p className={matchAnswers[item.id] === item.answer ? 'pbq-correct' : 'pbq-incorrect'}>Correct: {stepLookup[item.answer].label}. {item.explanation}</p> : null}
+                </label>
+              ))}
+            </div>
+          </article>
+        </div>
+
+        <div className="post-exam-actions">
+          <button type="button" className="primary-btn" onClick={() => setRevealed(true)}>Check PBQ</button>
+          <button type="button" className="secondary-btn" onClick={resetPbq}>Reset PBQ</button>
+        </div>
+
+        {revealed ? (
+          <section className="explanation-card">
+            <p><strong>Ordering result:</strong> {orderingCorrect ? 'The methodology order is correct.' : 'The methodology order still needs work.'}</p>
+            <p><strong>Matching result:</strong> {matchCorrectCount} of {troubleshootingPbq.matchItems.length} matched correctly.</p>
+            <div className="info-pills">
+              <span className="info-pill">Domain: {troubleshootingPbq.domain}</span>
+              <span className="info-pill">Objective: {troubleshootingPbq.objective}</span>
+            </div>
+          </section>
+        ) : null}
+      </section>
+    </main>
+  );
+}
+
+function CommonPortsPbqPage() {
+  const [orderedPorts, setOrderedPorts] = useState(() => shuffle(commonPortsPbq.orderedPorts.map((item) => item.id)));
+  const [matchAnswers, setMatchAnswers] = useState({});
+  const [revealed, setRevealed] = useState(false);
+  const [draggedId, setDraggedId] = useState(null);
+  const [dragOverId, setDragOverId] = useState(null);
+
+  const portLookup = Object.fromEntries(commonPortsPbq.orderedPorts.map((item) => [item.id, item]));
+  const orderingCorrect = orderedPorts.every((id, index) => id === commonPortsPbq.orderedTarget[index]);
+  const matchCorrectCount = commonPortsPbq.matchItems.filter((item) => matchAnswers[item.id] === item.answer).length;
+
+  function moveItem(sourceId, targetId) {
+    if (!sourceId || !targetId || sourceId === targetId) return;
+    setOrderedPorts((current) => {
+      const sourceIndex = current.indexOf(sourceId);
+      const targetIndex = current.indexOf(targetId);
+      if (sourceIndex === -1 || targetIndex === -1) return current;
+      const next = [...current];
+      const [moved] = next.splice(sourceIndex, 1);
+      next.splice(targetIndex, 0, moved);
+      return next;
+    });
+  }
+
+  function resetPbq() {
+    setOrderedPorts(shuffle(commonPortsPbq.orderedPorts.map((item) => item.id)));
+    setMatchAnswers({});
+    setRevealed(false);
+    setDraggedId(null);
+    setDragOverId(null);
+  }
+
+  return (
+    <main className="page">
+      <Link to="/certification/aplus" className="back-link">← Back to A+ certification</Link>
+      <section className="panel panel-large">
+        <div className="section-head">
+          <div>
+            <span className="badge">PBQ • {commonPortsPbq.exam}</span>
+            <h1>{commonPortsPbq.title}</h1>
+          </div>
+          <p>{commonPortsPbq.subtitle}</p>
+        </div>
+
+        <div className="pbq-grid">
+          <article className="question-card">
+            <div className="section-head compact-head">
+              <div>
+                <h2>Part 1 — Order the secure/insecure pairs</h2>
+                <p>Drag them into the progression from insecure remote access to secure remote access, then insecure web to secure web.</p>
+              </div>
+              <span className={`badge ${revealed && orderingCorrect ? 'badge-success' : ''}`}>{orderingCorrect ? 'Ready' : 'Needs work'}</span>
+            </div>
+            <div className="pbq-stage-list">
+              {orderedPorts.map((portId, index) => {
+                const port = portLookup[portId];
+                return (
+                  <div
+                    key={port.id}
+                    className={`pbq-stage-card ${draggedId === port.id ? 'dragging' : ''} ${dragOverId === port.id ? 'drag-over' : ''}`}
+                    draggable
+                    onDragStart={(event) => {
+                      event.dataTransfer.effectAllowed = 'move';
+                      event.dataTransfer.setData('text/plain', port.id);
+                      setDraggedId(port.id);
+                    }}
+                    onDragOver={(event) => {
+                      event.preventDefault();
+                      if (draggedId !== port.id) setDragOverId(port.id);
+                    }}
+                    onDrop={(event) => {
+                      event.preventDefault();
+                      moveItem(event.dataTransfer.getData('text/plain') || draggedId, port.id);
+                      setDraggedId(null);
+                      setDragOverId(null);
+                    }}
+                    onDragEnd={() => {
+                      setDraggedId(null);
+                      setDragOverId(null);
+                    }}
+                  >
+                    <div>
+                      <span className="pbq-stage-index">Position {index + 1}</span>
+                      <strong>{port.label}</strong>
+                      <p>{revealed ? port.detail : 'Drag and drop the port/service cards into the correct order.'}</p>
+                    </div>
+                    <div className="pbq-stage-actions">
+                      <span className="pbq-drag-handle" aria-hidden="true">⋮⋮</span>
+                      <span className="muted-copy">Drag</span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </article>
+
+          <article className="question-card">
+            <div className="section-head compact-head">
+              <div>
+                <h2>Part 2 — Match services to default ports</h2>
+                <p>Choose the default port number for each common service.</p>
+              </div>
+              <span className={`badge ${revealed && matchCorrectCount === commonPortsPbq.matchItems.length ? 'badge-success' : ''}`}>{matchCorrectCount}/{commonPortsPbq.matchItems.length}</span>
+            </div>
+            <div className="pbq-diagnosis-list">
+              {commonPortsPbq.matchItems.map((item) => (
+                <label key={item.id} className="pbq-diagnosis-card">
+                  <strong>{item.prompt}</strong>
+                  <select
+                    className="pbq-select"
+                    value={matchAnswers[item.id] || ''}
+                    onChange={(event) => setMatchAnswers((current) => ({ ...current, [item.id]: event.target.value }))}
+                  >
+                    <option value="">Choose the port</option>
+                    {commonPortsPbq.portOptions.map((port) => (
+                      <option key={port} value={port}>{port}</option>
+                    ))}
+                  </select>
+                  {revealed ? <p className={matchAnswers[item.id] === item.answer ? 'pbq-correct' : 'pbq-incorrect'}>Correct: {item.answer}. {item.explanation}</p> : null}
+                </label>
+              ))}
+            </div>
+          </article>
+        </div>
+
+        <div className="post-exam-actions">
+          <button type="button" className="primary-btn" onClick={() => setRevealed(true)}>Check PBQ</button>
+          <button type="button" className="secondary-btn" onClick={resetPbq}>Reset PBQ</button>
+        </div>
+
+        {revealed ? (
+          <section className="explanation-card">
+            <p><strong>Ordering result:</strong> {orderingCorrect ? 'The port order is correct.' : 'The port order still needs work.'}</p>
+            <p><strong>Matching result:</strong> {matchCorrectCount} of {commonPortsPbq.matchItems.length} matched correctly.</p>
+            <div className="info-pills">
+              <span className="info-pill">Domain: {commonPortsPbq.domain}</span>
+              <span className="info-pill">Objective: {commonPortsPbq.objective}</span>
             </div>
           </section>
         ) : null}
