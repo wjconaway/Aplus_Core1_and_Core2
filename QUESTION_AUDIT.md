@@ -6,11 +6,18 @@ Quick pass on the imported legacy bank.
 
 - `98` — duplicate private IP question
 - `99` — duplicate shoulder surfing question
-- `102` — weak/non-standard USB-C to fiber question
-- `120` — vague cloud backup wording
-- `143` — conceptually wrong macOS/Windows virtualization question
-- `170` — VR port question is too hardware-specific and fuzzy
 - `289` — duplicate Telnet port question
+
+## Rewritten and restored to live pool
+
+### Core 1
+- `102` — rewritten as a media-converter scenario question
+- `120` — rewritten as an off-site backup/IaaS scenario question
+- `143` — rewritten as a centrally hosted Windows app / VDI scenario question
+- `170` — rewritten as a laser-printer fuser troubleshooting scenario question
+
+### Core 2
+- `189` — rewritten as a legacy Windows permissions scenario question
 
 ## Core 2 removed from live pool
 
@@ -29,7 +36,7 @@ Fixed malformed option prefixes like:
 
 ## Counts after cleanup
 
-- Core 1: 291 live questions
+- Core 1: 295 live questions
 - Core 2: 301 live questions
 
 Still decent coverage, just less sloppy.

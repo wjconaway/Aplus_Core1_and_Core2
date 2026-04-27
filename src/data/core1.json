@@ -1,15 +1,15 @@
 [
   {
     "id": 1,
-    "question": "Which wireless standard operates exclusively in the 6GHz band?",
+    "question": "A company is upgrading its wireless network and wants client devices to use the less congested 6 GHz spectrum instead of only 2.4 GHz or 5 GHz. Which wireless standard should the technician deploy?",
     "options": [
       "A. 802.11ac",
       "B. 802.11ax (Wi-Fi 6E)",
       "C. 802.11n",
-      "D. 802.11ax (Wi-Fi 6)"
+      "D. 802.11g"
     ],
     "answer": "B",
-    "explanation": "Wi-Fi 6E extends Wi-Fi 6 into the 6GHz band, which is less congested and offers higher speeds."
+    "explanation": "Wi-Fi 6E extends 802.11ax into the 6 GHz band. That gives compatible devices access to additional spectrum with less interference than the older 2.4 GHz and 5 GHz bands."
   },
   {
     "id": 2,
@@ -25,7 +25,7 @@
   },
   {
     "id": 3,
-    "question": "Which technology allows for remote policy enforcement and device wiping?",
+    "question": "A company-issued smartphone is reported lost. The security team wants to enforce passcode rules and remotely wipe the device if it is not recovered. Which technology should be used?",
     "options": [
       "A. VPN",
       "B. MDM",
@@ -33,11 +33,11 @@
       "D. IDS"
     ],
     "answer": "B",
-    "explanation": "Mobile Device Management (MDM) allows IT to manage security policies and remote wipe lost devices."
+    "explanation": "Mobile Device Management (MDM) lets administrators enforce security policies, track devices, and remotely wipe lost or stolen mobile endpoints."
   },
   {
     "id": 4,
-    "question": "Which port does SSH use for secure remote command-line access?",
+    "question": "A technician needs secure remote command-line access to a Linux server over the network. Which destination port should be allowed through the firewall?",
     "options": [
       "A. 21",
       "B. 22",
@@ -45,7 +45,7 @@
       "D. 80"
     ],
     "answer": "B",
-    "explanation": "Port 22 is reserved for Secure Shell (SSH), the secure alternative to Telnet (23)."
+    "explanation": "SSH uses TCP port 22 by default for encrypted remote terminal access. Telnet uses port 23, but it is insecure because it does not protect credentials and session data."
   },
   {
     "id": 5,
@@ -241,7 +241,7 @@
   },
   {
     "id": 21,
-    "question": "Which protocol synchronizes time across network devices?",
+    "question": "A network administrator notices authentication failures between systems because their clocks are several minutes apart. Which protocol should be configured to keep time synchronized across the network?",
     "options": [
       "A. DNS",
       "B. SNMP",
@@ -249,7 +249,7 @@
       "D. RDP"
     ],
     "answer": "C",
-    "explanation": "Network Time Protocol (NTP) on port 123 keeps all system clocks in sync."
+    "explanation": "NTP synchronizes system clocks across networked devices. Consistent time is important for logs, certificates, Kerberos, and troubleshooting."
   },
   {
     "id": 22,
@@ -409,15 +409,15 @@
   },
   {
     "id": 35,
-    "question": "Which SOHO setting should be disabled to stop 'push-button' joining?",
+    "question": "A technician is hardening a small office wireless router and wants to prevent attackers from joining the network with the push-button pairing feature. Which setting should be disabled?",
     "options": [
       "A. WPA3",
-      "B. SSID Broadcast",
+      "B. SSID broadcast",
       "C. WPS",
-      "D. MAC Filtering"
+      "D. MAC filtering"
     ],
     "answer": "C",
-    "explanation": "Wi-Fi Protected Setup (WPS) is a security risk and should be disabled to prevent easy unauthorized access."
+    "explanation": "WPS is the push-button or PIN-based wireless setup feature. It is convenient, but it weakens security compared with manually joining a WPA2 or WPA3 protected network."
   },
   {
     "id": 36,
@@ -757,7 +757,7 @@
   },
   {
     "id": 64,
-    "question": "Which printer part causes multiple sheets to be picked up?",
+    "question": "A laser printer in the office is feeding two or three sheets at a time from the main tray. Which component is the MOST likely cause?",
     "options": [
       "A. Transfer roller",
       "B. Fuser",
@@ -765,7 +765,7 @@
       "D. Duplexer"
     ],
     "answer": "C",
-    "explanation": "The separation pad provides the friction needed to ensure only one sheet enters the printer at a time."
+    "explanation": "The separation pad helps keep extra sheets from moving forward with the pickup roller. When it is worn, the printer is more likely to grab multiple pages at once."
   },
   {
     "id": 65,
@@ -913,7 +913,7 @@
   },
   {
     "id": 77,
-    "question": "What resolves domain names into IP addresses?",
+    "question": "A user says they can reach websites by IP address but not by hostname. Which service should the technician check FIRST?",
     "options": [
       "A. DHCP",
       "B. DNS",
@@ -921,7 +921,7 @@
       "D. SSH"
     ],
     "answer": "B",
-    "explanation": "Domain Name System (DNS) is the 'phonebook of the internet.'"
+    "explanation": "If IP-based connectivity works but name-based browsing fails, DNS is the most likely issue because DNS translates hostnames into IP addresses."
   },
   {
     "id": 78,
@@ -1009,7 +1009,7 @@
   },
   {
     "id": 85,
-    "question": "Secure web traffic port?",
+    "question": "A firewall administrator needs to allow encrypted web browsing to external websites. Which destination port should be opened for standard HTTPS traffic?",
     "options": [
       "A. 80",
       "B. 443",
@@ -1017,19 +1017,19 @@
       "D. 22"
     ],
     "answer": "B",
-    "explanation": "Port 443 is used for HTTPS, which is HTTP over SSL/TLS."
+    "explanation": "HTTPS uses TCP port 443 for encrypted web traffic. Port 80 is standard HTTP without TLS, while ports 21 and 22 are used for FTP and SSH."
   },
   {
     "id": 86,
-    "question": "IP 169.254.0.1 indicates:",
+    "question": "A Windows laptop shows an IP address of 169.254.0.1 and cannot reach network resources. What does this MOST likely indicate?",
     "options": [
-      "A. Hidden network",
-      "B. APIPA/DHCP failure",
-      "C. Static IP error",
-      "D. DNS blocking"
+      "A. Hidden network SSID",
+      "B. APIPA address after DHCP failure",
+      "C. Static IP conflict",
+      "D. DNS filtering issue"
     ],
     "answer": "B",
-    "explanation": "169.254.x.x is the APIPA range used when a device fails to get a DHCP address."
+    "explanation": "A 169.254.x.x address is an APIPA address. Windows assigns it automatically when the device cannot obtain a lease from a DHCP server."
   },
   {
     "id": 87,
@@ -1213,15 +1213,15 @@
   },
   {
     "id": 102,
-    "question": "Tool for USB-C to fiber connectivity?",
+    "question": "A technician needs to connect a copper Ethernet device to a fiber uplink on the network. Which device should they use to bridge the two media types?",
     "options": [
-      "A. SFP+ transceiver",
-      "B. USB-C to RJ-45",
-      "C. USB-C to Fiber adapter",
-      "D. Media converter"
+      "A. Punchdown tool",
+      "B. Media converter",
+      "C. Loopback plug",
+      "D. Crimper"
     ],
-    "answer": "C",
-    "explanation": "A specific USB-C to Fiber adapter is needed for direct optical connectivity."
+    "answer": "B",
+    "explanation": "A media converter is used to translate between copper Ethernet and fiber-optic cabling when the network uses different media types."
   },
   {
     "id": 103,
@@ -1417,27 +1417,27 @@
   },
   {
     "id": 119,
-    "question": "Device won't connect to Wi-Fi. Check first:",
+    "question": "A user says their laptop suddenly cannot see any Wi-Fi networks, but nearby devices are still connected normally. What should the technician check FIRST?",
     "options": [
-      "A. Firewall",
+      "A. Firewall settings",
       "B. Airplane Mode",
-      "C. Antennas",
-      "D. ISP status"
+      "C. External antennas",
+      "D. ISP outage status"
     ],
     "answer": "B",
-    "explanation": "Always check the simplest solution first: verify if the user accidentally enabled Airplane Mode."
+    "explanation": "When one laptop loses all wireless connectivity while other devices stay online, the fastest first check is whether Airplane Mode or the wireless radio was disabled locally."
   },
   {
     "id": 120,
-    "question": "Cloud for off-site backup?",
+    "question": "A small business wants off-site backups for virtual servers without buying and maintaining its own storage hardware in a second location. Which cloud model best fits this need?",
     "options": [
       "A. SaaS",
       "B. IaaS",
       "C. PaaS",
-      "D. LAN"
+      "D. PAN"
     ],
     "answer": "B",
-    "explanation": "IaaS provides the raw storage resources used for backup and disaster recovery solutions."
+    "explanation": "IaaS provides storage, compute, and other infrastructure resources that an organization can use for backup and disaster recovery without owning the underlying hardware."
   },
   {
     "id": 121,
@@ -1453,15 +1453,15 @@
   },
   {
     "id": 122,
-    "question": "Command to clear DNS cache?",
+    "question": "A Windows workstation keeps resolving an old IP address for an internal server even after DNS records were updated. Which command should the technician run to clear the local resolver cache?",
     "options": [
-      "A. /release",
-      "B. /flushdns",
-      "C. /clear",
-      "D. -a"
+      "A. ipconfig /release",
+      "B. ipconfig /flushdns",
+      "C. ipconfig /clear",
+      "D. ipconfig /all"
     ],
     "answer": "B",
-    "explanation": "Using 'ipconfig /flushdns' clears the local DNS cache to resolve naming issues."
+    "explanation": "ipconfig /flushdns clears cached DNS entries on the local machine so Windows will request fresh name-resolution data instead of reusing stale records."
   },
   {
     "id": 123,
@@ -1705,15 +1705,15 @@
   },
   {
     "id": 143,
-    "question": "Run Windows apps on macOS natively via virtualization?",
+    "question": "A Mac user needs to access a Windows-only accounting application, but the company wants the app hosted centrally instead of installed locally on the Mac. Which solution best fits?",
     "options": [
       "A. VDI",
-      "B. Application Virtualization",
-      "C. Bare Metal",
-      "D. Cloud"
+      "B. Bare-metal hypervisor on the Mac",
+      "C. Dual boot",
+      "D. Local file synchronization"
     ],
-    "answer": "B",
-    "explanation": "Application virtualization allows specific apps to run on different OSs as if they were native."
+    "answer": "A",
+    "explanation": "VDI lets the user connect to a centrally hosted virtual desktop or Windows environment, which is a cleaner fit when the business wants centralized management instead of local installation."
   },
   {
     "id": 144,
@@ -2029,15 +2029,15 @@
   },
   {
     "id": 170,
-    "question": "A user wants to connect a VR headset to their PC. Which port offers the highest data transfer rate and low latency required for VR?",
+    "question": "A technician is troubleshooting a laser printer that produces pages where the toner smears when touched immediately after printing. Which printer component is the MOST likely cause?",
     "options": [
-      "A. USB 2.0",
-      "B. USB 3.2 Gen 2",
-      "C. VGA",
-      "D. Serial"
+      "A. Pickup roller",
+      "B. Transfer roller",
+      "C. Fuser assembly",
+      "D. Separation pad"
     ],
-    "answer": "B",
-    "explanation": "USB 3.2 Gen 2 (10Gbps) or higher is required for the high-bandwidth needs of VR."
+    "answer": "C",
+    "explanation": "If toner rubs off the page, the fuser is the most likely fault because it uses heat and pressure to bond toner permanently to the paper."
   },
   {
     "id": 171,

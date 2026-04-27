@@ -25,15 +25,15 @@
   },
   {
     "id": 3,
-    "question": "Which type of social engineering attack involves an attacker following an authorized person into a secure building without scanning a badge?",
+    "question": "An attacker waits near a secure office entrance and walks in behind an employee who badged in properly. Which social engineering technique is this?",
     "options": [
       "A. Phishing",
       "B. Tailgating",
       "C. Vishing",
-      "D. Shoulder Surfing"
+      "D. Shoulder surfing"
     ],
     "answer": "B",
-    "explanation": "Tailgating (or piggybacking) is physically following someone through a secure entry point."
+    "explanation": "Tailgating is a physical security attack where an unauthorized person follows an authorized user through a controlled access point without authenticating."
   },
   {
     "id": 4,
@@ -85,15 +85,15 @@
   },
   {
     "id": 8,
-    "question": "A user wants to prevent unauthorized people from accessing their laptop if it is left unattended. Which of the following should be configured?",
+    "question": "A user often leaves a laptop unattended on a desk for short periods. Which setting best helps prevent someone nearby from accessing the session?",
     "options": [
-      "A. Screen saver with password",
+      "A. Screen lock or screen saver requiring a password on resume",
       "B. BIOS password",
       "C. Account lockout policy",
-      "D. VPN"
+      "D. VPN client"
     ],
     "answer": "A",
-    "explanation": "A screen timeout/screen saver that requires a password to resume is a standard security practice for unattended workstations."
+    "explanation": "A password-protected screen lock helps protect an already signed-in workstation when the user steps away. A BIOS password only applies at boot, and a VPN does nothing for local walk-up access."
   },
   {
     "id": 9,
@@ -145,7 +145,7 @@
   },
   {
     "id": 13,
-    "question": "An attacker calls a user pretending to be IT support to get their password. What is this called?",
+    "question": "A caller claims to be from the company help desk and says they need an employee's password immediately to fix a mailbox issue. Which social engineering attack is this?",
     "options": [
       "A. Phishing",
       "B. Vishing",
@@ -153,7 +153,7 @@
       "D. Tailgating"
     ],
     "answer": "B",
-    "explanation": "Vishing is 'Voice Phishing'—using a phone call for social engineering."
+    "explanation": "Vishing is voice-based phishing. The attacker uses a phone call and urgency to trick the victim into revealing credentials or other sensitive information."
   },
   {
     "id": 14,
@@ -205,7 +205,7 @@
   },
   {
     "id": 18,
-    "question": "A user's computer is infected with malware that has encrypted their files and is demanding payment. What is this?",
+    "question": "A user can no longer open documents because malware encrypted the files and is demanding payment for a decryption key. What type of malware is this?",
     "options": [
       "A. Spyware",
       "B. Rootkit",
@@ -213,7 +213,7 @@
       "D. Keylogger"
     ],
     "answer": "C",
-    "explanation": "Ransomware locks or encrypts data and demands a ransom for the decryption key."
+    "explanation": "Ransomware encrypts data or locks systems and demands payment to restore access. Spyware and keyloggers steal information, while a rootkit focuses on hiding privileged malicious access."
   },
   {
     "id": 19,
@@ -301,15 +301,15 @@
   },
   {
     "id": 26,
-    "question": "An employee finds a USB drive in the parking lot and plugs it into their workstation. This is a common tactic for which type of attack?",
+    "question": "An employee finds a USB flash drive in the parking lot labeled “Executive Salaries” and plugs it into a company computer out of curiosity. Which attack method does this best represent?",
     "options": [
       "A. Phishing",
-      "B. Social Engineering",
-      "C. Brute Force",
-      "D. Man-in-the-Middle"
+      "B. Social engineering through baiting",
+      "C. Brute-force attack",
+      "D. Man-in-the-middle attack"
     ],
     "answer": "B",
-    "explanation": "This is a form of 'baiting,' a social engineering attack."
+    "explanation": "This is baiting, a form of social engineering that tempts a victim with something interesting so they willingly connect a malicious device or visit a malicious resource."
   },
   {
     "id": 27,
@@ -337,7 +337,7 @@
   },
   {
     "id": 29,
-    "question": "A user receives an email that looks like it's from their bank, asking them to click a link to verify their account. What is this?",
+    "question": "A user receives an email that appears to come from their bank and warns that their account will be locked unless they click a link and sign in immediately. What type of attack is this?",
     "options": [
       "A. Spam",
       "B. Phishing",
@@ -345,11 +345,11 @@
       "D. Pharming"
     ],
     "answer": "B",
-    "explanation": "Phishing uses fake emails to steal credentials."
+    "explanation": "This is phishing because the attacker is using a fraudulent email to lure the user into clicking a link and submitting credentials. Pharming would redirect the user behind the scenes, even when typing the correct address."
   },
   {
     "id": 30,
-    "question": "Which protocol is used to securely connect to a remote network over the internet as if you were locally connected?",
+    "question": "A remote employee needs secure access to internal file shares and intranet resources over the internet as if the laptop were connected inside the office. Which technology should be used?",
     "options": [
       "A. VPN",
       "B. RDP",
@@ -357,7 +357,7 @@
       "D. FTP"
     ],
     "answer": "A",
-    "explanation": "A Virtual Private Network (VPN) creates an encrypted tunnel to a remote network."
+    "explanation": "A VPN creates an encrypted tunnel between the remote device and the corporate network, allowing secure access to internal resources across the internet."
   },
   {
     "id": 31,
@@ -517,15 +517,15 @@
   },
   {
     "id": 44,
-    "question": "A user's computer screen is locked with a message saying the FBI has found illegal material and they must pay a fine via Bitcoin. What is this?",
+    "question": "A user reports that their computer displays a full-screen warning claiming law enforcement found illegal material and demands payment in cryptocurrency to unlock the system. What is the MOST likely threat?",
     "options": [
       "A. Spyware",
       "B. Scareware / Ransomware",
       "C. Adware",
-      "D. Logic Bomb"
+      "D. Logic bomb"
     ],
     "answer": "B",
-    "explanation": "This is a classic 'scareware' tactic used by ransomware to extort money."
+    "explanation": "This is a classic ransomware-style scare tactic. The malware locks or appears to lock the system and pressures the victim to pay money to regain access."
   },
   {
     "id": 45,
@@ -793,15 +793,15 @@
   },
   {
     "id": 67,
-    "question": "Which type of data is protected by law and includes information such as health records and social security numbers?",
+    "question": "A help desk technician is told not to email spreadsheets containing patient records or Social Security numbers without approved protections. Which category of data is the company trying to protect?",
     "options": [
-      "A. Open Source",
+      "A. Open-source data",
       "B. PII/PHI",
-      "C. Public Domain",
-      "D. Creative Commons"
+      "C. Public-domain data",
+      "D. Creative Commons content"
     ],
     "answer": "B",
-    "explanation": "Personally Identifiable Information (PII) and Protected Health Information (PHI) carry legal requirements for privacy."
+    "explanation": "Personally Identifiable Information (PII) and Protected Health Information (PHI) are sensitive data types that often carry legal and regulatory privacy requirements."
   },
   {
     "id": 68,
@@ -829,15 +829,15 @@
   },
   {
     "id": 70,
-    "question": "Which type of social engineering involves an attacker looking over a user's shoulder to see their PIN?",
+    "question": "An attacker stands close to a user at an ATM and watches the keypad while the user enters a PIN. Which social engineering technique is being used?",
     "options": [
       "A. Phishing",
       "B. Tailgating",
-      "C. Shoulder Surfing",
+      "C. Shoulder surfing",
       "D. Vishing"
     ],
     "answer": "C",
-    "explanation": "Shoulder surfing is a physical observation technique to steal sensitive information."
+    "explanation": "Shoulder surfing is the act of observing a victim directly to capture sensitive information such as a PIN, password, or badge number."
   },
   {
     "id": 71,
@@ -1309,7 +1309,7 @@
   },
   {
     "id": 110,
-    "question": "A technician is setting up a new Wi-Fi network and wants to use the most secure encryption standard available. Which should they choose?",
+    "question": "A technician is deploying a new wireless network and wants to choose the strongest security standard supported by modern client devices. Which option should be selected?",
     "options": [
       "A. WEP",
       "B. WPA",
@@ -1317,11 +1317,11 @@
       "D. WPA3"
     ],
     "answer": "D",
-    "explanation": "WPA3 is the most modern and secure Wi-Fi encryption standard covered in the 1202 objectives."
+    "explanation": "WPA3 is the strongest modern Wi-Fi security option listed here. It improves protections over WPA2 and is the best choice when both the access point and client devices support it."
   },
   {
     "id": 111,
-    "question": "Which type of security threat involves an attacker redirecting a user's traffic to a fake website by poisoning a DNS server?",
+    "question": "Users type the correct URL for their bank, but a compromised DNS service redirects them to a fake login page. Which attack best matches this situation?",
     "options": [
       "A. Phishing",
       "B. Pharming",
@@ -1329,7 +1329,7 @@
       "D. Spoofing"
     ],
     "answer": "B",
-    "explanation": "Pharming redirects users to malicious sites even if they type the correct web address into their browser."
+    "explanation": "Pharming redirects victims to malicious sites by manipulating DNS or similar name-resolution mechanisms. Unlike standard phishing, the victim may type the correct address and still land on the fake site."
   },
   {
     "id": 112,
@@ -1393,7 +1393,7 @@
   },
   {
     "id": 117,
-    "question": "Which type of social engineering attack involves sending a fraudulent text message to a user?",
+    "question": "A user receives a text message claiming to be from the shipping company and is told to click a link to reschedule a package delivery. Which type of attack is this?",
     "options": [
       "A. Phishing",
       "B. Vishing",
@@ -1401,7 +1401,7 @@
       "D. Whaling"
     ],
     "answer": "C",
-    "explanation": "Smishing is 'SMS Phishing.'"
+    "explanation": "Smishing is phishing delivered by SMS or text message. The attacker uses a mobile message instead of email or a phone call to lure the victim."
   },
   {
     "id": 118,
@@ -1549,7 +1549,7 @@
   },
   {
     "id": 130,
-    "question": "Which security principle involves requiring more than one form of evidence to verify a user's identity?",
+    "question": "A company requires employees to sign in with a password and then approve a prompt on a mobile authenticator app. Which security principle is being enforced?",
     "options": [
       "A. MFA",
       "B. SSO",
@@ -1557,7 +1557,7 @@
       "D. ACL"
     ],
     "answer": "A",
-    "explanation": "Multi-Factor Authentication (MFA) usually involves something you know, something you have, or something you are."
+    "explanation": "MFA requires two or more authentication factors, such as something you know and something you have. That is stronger than relying on only a password."
   },
   {
     "id": 131,
@@ -2257,15 +2257,15 @@
   },
   {
     "id": 189,
-    "question": "What is the primary function of a 'Power User' in Windows?",
+    "question": "A Windows technician needs to run a legacy application that requires more permissions than a standard user should normally have, but they do not want to grant full administrator rights. Which built-in group is MOST associated with this older compatibility scenario?",
     "options": [
-      "A. It is the same as an Administrator",
-      "B. A legacy group with more rights than a Standard user but fewer than an Admin",
-      "C. A user who uses a lot of electricity",
-      "D. A user who codes"
+      "A. Backup Operators",
+      "B. Power Users",
+      "C. Remote Desktop Users",
+      "D. Guests"
     ],
     "answer": "B",
-    "explanation": "Power Users is a legacy group kept for backward compatibility with older applications."
+    "explanation": "Power Users is a legacy compatibility group that historically provided more rights than a standard user but less than a full administrator account."
   },
   {
     "id": 190,

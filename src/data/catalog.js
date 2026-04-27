@@ -5,10 +5,6 @@ const excluded = {
   core1: {
     98: 'Duplicate of another private IP question.',
     99: 'Duplicate of another shoulder-surfing question.',
-    102: 'Question is poorly written; adapter choice is not a standard CompTIA-style answer.',
-    120: 'Cloud backup wording is too vague and invites argument.',
-    143: 'Question is conceptually wrong about running Windows apps on macOS.',
-    170: 'VR port question is too hand-wavy and hardware-specific.',
     289: 'Duplicate Telnet port question.',
   },
   core2: {
