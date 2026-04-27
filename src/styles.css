@@ -421,6 +421,37 @@ button { font: inherit; }
   border: 1px solid var(--border);
 }
 
+.pbq-choice-list {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.pbq-choice-btn {
+  width: 100%;
+  text-align: left;
+  padding: 0.9rem 1rem;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface-alt) 88%, transparent);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.pbq-choice-btn.selected {
+  border-color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 12%, var(--surface) 88%);
+}
+
+.pbq-choice-btn.correct {
+  border-color: color-mix(in srgb, var(--success) 60%, white 10%);
+  background: color-mix(in srgb, var(--success) 18%, var(--surface) 82%);
+}
+
+.pbq-choice-btn.incorrect {
+  border-color: color-mix(in srgb, var(--danger) 60%, white 10%);
+  background: color-mix(in srgb, var(--danger) 15%, var(--surface) 85%);
+}
+
 .pbq-correct { color: var(--success); }
 .pbq-incorrect { color: var(--warning); }
 

@@ -74,7 +74,7 @@ export const laserPrinterPbq = {
 export const troubleshootingPbq = {
   id: 'troubleshooting-methodology',
   title: 'Troubleshooting Methodology PBQ',
-  subtitle: 'Put the CompTIA troubleshooting steps in the right order, then match actions to the correct phase.',
+  subtitle: 'Put the CompTIA troubleshooting steps in the right order, then work through what a technician should do next in real scenarios.',
   certification: 'A+',
   exam: 'Core 2 (220-1202)',
   domain: 'Operational Procedures',
@@ -111,36 +111,66 @@ export const troubleshootingPbq = {
       detail: 'Record what happened, what was done, and the final result.'
     }
   ],
-  matchItems: [
+  scenarioItems: [
     {
-      id: 'ask-user',
-      prompt: 'Ask the user what changed right before the issue started.',
-      answer: 'identify',
-      explanation: 'That belongs in step 1 because you are gathering facts and defining the problem.'
+      id: 'wifi-symptoms',
+      prompt: 'A user says the laptop stopped joining Wi-Fi this morning after working fine yesterday. What should the technician do first?',
+      options: [
+        'A. Reinstall the wireless driver immediately',
+        'B. Ask what changed and gather symptoms',
+        'C. Replace the access point',
+        'D. Close the ticket and monitor'
+      ],
+      answer: 'B',
+      explanation: 'The first step is to identify the problem by gathering information and asking what changed.'
     },
     {
-      id: 'replace-cable',
-      prompt: 'Swap in a known-good cable to confirm whether the original cable is bad.',
-      answer: 'test',
-      explanation: 'That is testing a theory by checking whether the suspected cause actually explains the failure.'
+      id: 'known-good-cable',
+      prompt: 'A technician suspects a bad Ethernet cable is causing a no-link issue. What should they do next?',
+      options: [
+        'A. Swap in a known-good cable to confirm the theory',
+        'B. Document the issue as resolved',
+        'C. Roll out a company-wide switch replacement',
+        'D. Ask for a budget approval before any testing'
+      ],
+      answer: 'A',
+      explanation: 'That is testing the theory to determine whether the suspected cable is actually the cause.'
     },
     {
-      id: 'write-ticket',
-      prompt: 'Update the ticket with root cause, actions taken, and final resolution.',
-      answer: 'document',
-      explanation: 'Documentation is the final step after the issue has been handled and verified.'
+      id: 'change-window',
+      prompt: 'The likely fix for a production printer outage requires taking the printer offline during business hours. What should the technician do before making the change?',
+      options: [
+        'A. Shut it down immediately without notice',
+        'B. Establish a plan of action and consider impact before implementing',
+        'C. Skip straight to final documentation',
+        'D. Assume the fix worked without testing'
+      ],
+      answer: 'B',
+      explanation: 'Once the cause is understood, the technician should plan the fix and consider business impact before implementing it.'
     },
     {
-      id: 'schedule-fix',
-      prompt: 'Choose the least disruptive repair path before making production changes.',
-      answer: 'plan',
-      explanation: 'That is part of building the action plan before implementing the solution.'
+      id: 'user-validation',
+      prompt: 'After applying a fix, the device appears normal again. What should happen next?',
+      options: [
+        'A. Verify full functionality and confirm with the user',
+        'B. Start over at theory of probable cause',
+        'C. Replace additional parts just in case',
+        'D. Ignore preventive measures'
+      ],
+      answer: 'A',
+      explanation: 'After implementation, the technician should verify the fix worked fully and confirm normal operation.'
     },
     {
-      id: 'confirm-user',
-      prompt: 'Have the user test the device again and confirm the issue is gone.',
-      answer: 'verify',
-      explanation: 'Verification confirms the fix worked and the system is fully functional again.'
+      id: 'ticket-closeout',
+      prompt: 'The issue is resolved and the user has confirmed everything works. What should the technician do last?',
+      options: [
+        'A. Recreate the problem from scratch',
+        'B. Document findings, actions, and outcomes',
+        'C. Form a new theory of probable cause',
+        'D. Undo the fix'
+      ],
+      answer: 'B',
+      explanation: 'Documentation is the final step so the fix, root cause, and outcome are recorded for future reference.'
     }
   ]
 };
@@ -148,34 +178,11 @@ export const troubleshootingPbq = {
 export const commonPortsPbq = {
   id: 'common-ports-matching',
   title: 'Common Ports PBQ',
-  subtitle: 'Match common services to their default ports and sort the most common secure vs insecure remote-access/web ports.',
+  subtitle: 'Match common services to their default ports without the answer list quietly marching upward in numeric order.',
   certification: 'A+',
   exam: 'Core 1 (220-1201)',
   domain: 'Networking',
   objective: 'Given a scenario, configure basic network settings and use common ports and protocols',
-  orderedPorts: [
-    {
-      id: '23',
-      label: '23 — Telnet',
-      detail: 'Unencrypted remote terminal access. Old and insecure.'
-    },
-    {
-      id: '22',
-      label: '22 — SSH',
-      detail: 'Encrypted remote terminal access.'
-    },
-    {
-      id: '80',
-      label: '80 — HTTP',
-      detail: 'Unencrypted web traffic.'
-    },
-    {
-      id: '443',
-      label: '443 — HTTPS',
-      detail: 'Encrypted web traffic over TLS.'
-    }
-  ],
-  orderedTarget: ['23', '22', '80', '443'],
   matchItems: [
     {
       id: 'ftp',
