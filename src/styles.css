@@ -227,6 +227,12 @@ button { font: inherit; }
   color: white;
 }
 
+.button-link-secondary {
+  background: color-mix(in srgb, var(--surface-alt) 88%, transparent);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
 .secondary-btn,
 .preset-chip,
 .ghost-btn {
@@ -342,6 +348,53 @@ button { font: inherit; }
 .cert-card p { margin-bottom: 0; }
 .info-pill.warn { color: var(--warning); }
 .empty-card { color: var(--muted); }
+.badge-success { color: var(--success); border-color: color-mix(in srgb, var(--success) 45%, var(--border)); }
+
+.pbq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.compact-head h2 { font-size: 1.15rem; }
+.pbq-stage-list,
+.pbq-diagnosis-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.pbq-stage-card,
+.pbq-diagnosis-card {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface-strong) 90%, transparent);
+}
+
+.pbq-stage-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.pbq-select {
+  width: 100%;
+  border-radius: 14px;
+  padding: 0.85rem 0.9rem;
+  background: var(--surface-alt);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.pbq-correct { color: var(--success); }
+.pbq-incorrect { color: var(--warning); }
+
+@media (max-width: 960px) {
+  .pbq-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
 @media (max-width: 960px) {
   .dashboard-hero,

@@ -1,6 +1,7 @@
 import { Link, Navigate, Route, Routes, useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useMemo, useState } from 'react';
 import { certificationCatalog, exams } from './data/catalog';
+import { laserPrinterPbq } from './data/pbqs';
 
 const THEME_KEY = 'aplus-theme';
 const APP_STATE_KEY = 'aplus-app-state-v1';
@@ -159,15 +160,14 @@ function App() {
       const session = current.activeSession;
       if (!session) return current;
       const elapsedMs = getElapsedMs(session);
-     const finished = {
-  ...session,
-  currentIndex: session.questionIds.length,
-  elapsedMs,
-  timerRunning: false,
-  timerLastStartedAt: null,
-  completedAt: Date.now(),
-};
-
+      const finished = {
+        ...session,
+        currentIndex: session.questionIds.length,
+        elapsedMs,
+        timerRunning: false,
+        timerLastStartedAt: null,
+        completedAt: Date.now(),
+      };
       const metrics = calculateSessionMetrics(finished);
       const summary = {
         sessionId: finished.id,
@@ -220,6 +220,7 @@ function App() {
             />
           ) : <Navigate to="/" replace />}
         />
+        <Route path="/pbq/laser-printer" element={<LaserPrinterPbqPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>
@@ -468,12 +469,133 @@ function CertificationPage({ certification, appState, startSession }) {
                     >
                       Missed Review
                     </button>
+                    {examMeta.id === 'core1' ? (
+                      <Link to="/pbq/laser-printer" className="secondary-btn button-link-secondary">
+                        Laser Printer PBQ
+                      </Link>
+                    ) : null}
                   </div>
                 </div>
               </article>
             );
           })}
         </div>
+      </section>
+    </main>
+  );
+}
+
+function LaserPrinterPbqPage() {
+  const [orderedStages, setOrderedStages] = useState(() => laserPrinterPbq.orderedStages.map((stage) => stage.id).sort(() => Math.random() - 0.5));
+  const [diagnosisAnswers, setDiagnosisAnswers] = useState({});
+  const [revealed, setRevealed] = useState(false);
+
+  const stageLookup = Object.fromEntries(laserPrinterPbq.orderedStages.map((stage) => [stage.id, stage]));
+  const orderingCorrect = orderedStages.every((id, index) => id === laserPrinterPbq.orderedStages[index].id);
+  const diagnosisCorrectCount = laserPrinterPbq.diagnosisItems.filter((item) => diagnosisAnswers[item.id] === item.answer).length;
+
+  function moveStage(index, direction) {
+    setOrderedStages((current) => {
+      const target = index + direction;
+      if (target < 0 || target >= current.length) return current;
+      const next = [...current];
+      [next[index], next[target]] = [next[target], next[index]];
+      return next;
+    });
+  }
+
+  return (
+    <main className="page">
+      <Link to="/certification/aplus" className="back-link">← Back to A+ certification</Link>
+      <section className="panel panel-large">
+        <div className="section-head">
+          <div>
+            <span className="badge">PBQ • {laserPrinterPbq.exam}</span>
+            <h1>{laserPrinterPbq.title}</h1>
+          </div>
+          <p>{laserPrinterPbq.subtitle}</p>
+        </div>
+
+        <div className="pbq-grid">
+          <article className="question-card">
+            <div className="section-head compact-head">
+              <div>
+                <h2>Part 1 — Order the seven-step process</h2>
+                <p>Put the stages in the correct sequence.</p>
+              </div>
+              <span className={`badge ${revealed && orderingCorrect ? 'badge-success' : ''}`}>{orderingCorrect ? 'Ready' : 'Needs work'}</span>
+            </div>
+            <div className="pbq-stage-list">
+              {orderedStages.map((stageId, index) => {
+                const stage = stageLookup[stageId];
+                return (
+                  <div key={stage.id} className="pbq-stage-card">
+                    <div>
+                      <strong>{index + 1}. {stage.label}</strong>
+                      <p>{revealed ? stage.detail : 'Move stages up or down until the process is correct.'}</p>
+                    </div>
+                    <div className="pbq-stage-actions">
+                      <button type="button" className="ghost-btn" onClick={() => moveStage(index, -1)}>↑</button>
+                      <button type="button" className="ghost-btn" onClick={() => moveStage(index, 1)}>↓</button>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </article>
+
+          <article className="question-card">
+            <div className="section-head compact-head">
+              <div>
+                <h2>Part 2 — Diagnose the failed stage</h2>
+                <p>Match each symptom to the most likely laser-printer stage.</p>
+              </div>
+              <span className={`badge ${revealed && diagnosisCorrectCount === laserPrinterPbq.diagnosisItems.length ? 'badge-success' : ''}`}>{diagnosisCorrectCount}/{laserPrinterPbq.diagnosisItems.length}</span>
+            </div>
+            <div className="pbq-diagnosis-list">
+              {laserPrinterPbq.diagnosisItems.map((item) => (
+                <label key={item.id} className="pbq-diagnosis-card">
+                  <strong>{item.symptom}</strong>
+                  <select
+                    className="pbq-select"
+                    value={diagnosisAnswers[item.id] || ''}
+                    onChange={(event) => setDiagnosisAnswers((current) => ({ ...current, [item.id]: event.target.value }))}
+                  >
+                    <option value="">Choose the failed stage</option>
+                    {laserPrinterPbq.orderedStages.map((stage) => (
+                      <option key={stage.id} value={stage.id}>{stage.label}</option>
+                    ))}
+                  </select>
+                  {revealed ? (
+                    <p className={diagnosisAnswers[item.id] === item.answer ? 'pbq-correct' : 'pbq-incorrect'}>
+                      Correct: {stageLookup[item.answer].label}. {item.explanation}
+                    </p>
+                  ) : null}
+                </label>
+              ))}
+            </div>
+          </article>
+        </div>
+
+        <div className="post-exam-actions">
+          <button type="button" className="primary-btn" onClick={() => setRevealed(true)}>Check PBQ</button>
+          <button type="button" className="secondary-btn" onClick={() => {
+            setOrderedStages(laserPrinterPbq.orderedStages.map((stage) => stage.id).sort(() => Math.random() - 0.5));
+            setDiagnosisAnswers({});
+            setRevealed(false);
+          }}>Reset PBQ</button>
+        </div>
+
+        {revealed ? (
+          <section className="explanation-card">
+            <p><strong>Process result:</strong> {orderingCorrect ? 'The 7-step sequence is correct.' : 'The sequence still needs work.'}</p>
+            <p><strong>Diagnosis result:</strong> {diagnosisCorrectCount} of {laserPrinterPbq.diagnosisItems.length} matched correctly.</p>
+            <div className="info-pills">
+              <span className="info-pill">Domain: {laserPrinterPbq.domain}</span>
+              <span className="info-pill">Objective: {laserPrinterPbq.objective}</span>
+            </div>
+          </section>
+        ) : null}
       </section>
     </main>
   );
