@@ -159,13 +159,15 @@ function App() {
       const session = current.activeSession;
       if (!session) return current;
       const elapsedMs = getElapsedMs(session);
-      const finished = {
-        ...session,
-        elapsedMs,
-        timerRunning: false,
-        timerLastStartedAt: null,
-        completedAt: Date.now(),
-      };
+     const finished = {
+  ...session,
+  currentIndex: session.questionIds.length,
+  elapsedMs,
+  timerRunning: false,
+  timerLastStartedAt: null,
+  completedAt: Date.now(),
+};
+
       const metrics = calculateSessionMetrics(finished);
       const summary = {
         sessionId: finished.id,
@@ -487,7 +489,7 @@ function SessionPage({ appState, updateSession, finishSession, clearSession, tog
   const isReviewMode = session.mode === 'review';
   const isExamMode = session.mode === 'exam';
   const isStudyMode = session.mode === 'study';
-  const isComplete = session.currentIndex >= questions.length || !current;
+  const isComplete = !!session.completedAt || session.currentIndex >= questions.length || !current;
   const progress = questions.length ? (session.currentIndex / questions.length) * 100 : 0;
   const selectedLetter = current ? session.answers[current.id]?.selectedLetter : null;
   const revealed = current ? (isStudyMode ? !!session.answers[current.id] : !!session.revealedCurrent) : false;
