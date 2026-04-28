@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="manifest.json">
+    <title>A+ 1201 Core 2 Practice Exam</title>
+<style>
+    /* 1. DEFINE THE COLOR THEMES */
+    :root {
+        --bg: #f8fafc;
+        --card: #ffffff;
+        --text: #0f172a;
+        --secondary-text: #64748b;
+        --border: #e2e8f0;
+        --primary: #2563eb;
+    }
+
+    body.dark-mode {
+        --bg: #0f172a;
+        --card: #1e293b;
+        --text: #f8fafc;
+        --secondary-text: #94a3b8;
+        --border: #334155;
+        --primary: #3b82f6;
+    }
+
+    /* 2. CORE LAYOUT */
+    body { 
+        font-family: 'Inter', -apple-system, sans-serif; 
+        background: var(--bg); 
+        color: var(--text); 
+        display: flex; 
+        flex-direction: column;
+        align-items: center; 
+        padding: 40px 20px;
+        transition: background 0.3s, color 0.3s;
+        margin: 0;
+    }
+
+    /* 3. THE EXAM CARD */
+    #quiz-container { 
+        background: var(--card); 
+        padding: 30px; 
+        border-radius: 16px; 
+        border: 1px solid var(--border);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.05); 
+        max-width: 650px; 
+        width: 100%; 
+    }
+
+    /* 4. PROGRESS BAR */
+    .progress-container {
+        width: 100%;
+        background: var(--border);
+        height: 8px;
+        border-radius: 10px;
+        margin-bottom: 25px;
+        overflow: hidden;
+    }
+    #progress-bar {
+        width: 0%;
+        height: 100%;
+        background: var(--primary);
+        transition: width 0.3s ease;
+    }
+
+    /* 5. TEXT ELEMENTS */
+    #progress { color: var(--secondary-text); font-size: 0.9rem; margin-bottom: 10px; }
+    #question-text { font-size: 1.2rem; font-weight: 600; line-height: 1.5; margin-bottom: 20px; }
+
+    /* 6. BUTTONS */
+    .option-btn { 
+        display: block; 
+        width: 100%; 
+        padding: 15px; 
+        margin: 10px 0; 
+        border: 1px solid var(--border); 
+        border-radius: 10px; 
+        background: var(--card); 
+        color: var(--text);
+        cursor: pointer; 
+        text-align: left;
+        font-size: 1rem;
+        transition: all 0.2s;
+    }
+    .option-btn:hover:not(:disabled) { 
+        background: var(--bg); 
+        border-color: var(--primary); 
+    }
+    .option-btn:disabled { cursor: default; }
+
+    /* 7. NAVIGATION & TOGGLES */
+    .back-home { align-self: flex-start; margin-bottom: 20px; color: var(--primary); text-decoration: none; font-weight: 500; }
+    
+    .theme-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 10px 15px;
+        border-radius: 30px;
+        border: 1px solid var(--border);
+        background: var(--card);
+        color: var(--text);
+        cursor: pointer;
+        font-weight: 600;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    /* 8. FEEDBACK AREA */
+    #explanation { 
+        margin-top: 20px; 
+        padding: 20px; 
+        border-radius: 10px; 
+        background: var(--bg); 
+        border-left: 5px solid var(--primary); 
+        display: none; 
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    #next-btn { 
+        width: 100%;
+        margin-top: 20px; 
+        padding: 16px; 
+        background: var(--primary); 
+        color: white; 
+        border: none; 
+        border-radius: 10px; 
+        font-weight: bold;
+        font-size: 1rem;
+        cursor: pointer; 
+        display: none; 
+    }
+    /* Mobile Portrait Adjustments */
+@media screen and (max-width: 600px) {
+    body {
+        padding: 10px; /* Reduce outer padding to give the card more room */
+    }
+    
+    #quiz-container {
+        padding: 20px 15px; /* Narrower padding inside the card */
+        width: 100%; /* Ensure it takes full width */
+        border-radius: 0; /* Optional: removing rounded corners looks better on tiny screens */
+        box-shadow: none; /* Simplifies the look for mobile */
+    }
+
+    #question-text {
+        font-size: 1.1rem; /* Slightly smaller text for long questions */
+    }
+
+    .option-btn {
+        padding: 12px; /* Thinner buttons to save vertical space */
+        font-size: 0.95rem;
+    }
+
+    .theme-toggle {
+        top: 10px;
+        right: 10px;
+        padding: 6px 10px;
+        font-size: 0.7rem;
+    }
+}
+</style>
+</head>
+<body>
+<button class="theme-toggle" onclick="toggleTheme()">🌓 Toggle Mode</button>
+<div class="progress-container"><div id="progress-bar"></div></div>
+<div id="quiz-container">
+    <a href="index.html" class="back-home">← Back to Home</a>
+    <div class="progress-container"><div id="progress-bar"></div></div>
+    <h2 id="progress">Question 1 of 75</h2>
+    <p id="question-text" style="font-weight: bold; font-size: 1.1em;"></p>
+    <div id="options-container"></div>
+    <div id="explanation"></div>
+    <button id="next-btn" onclick="nextQuestion()">Next Question</button>
+    <div id="final-score" style="display:none; text-align:center;">
+        <h2>Exam Complete!</h2>
+        <p id="score-display" style="font-size: 1.5em;"></p>
+        <button onclick="location.reload()">Restart Exam</button>
+    </div>
+</div>
+
+
+<script>
+    // PASTE YOUR FULL DATABASE HERE (Exactly as it was in Python, just change 'database =' to 'const questions =')
+    const questions = [
+        {"q": "Which command-line tool in Windows is used to check and repair errors on a hard drive?", "o": ["A. SFC", "B. CHKDSK", "C. DISM", "D. BOOTREC"], "a": "B", "e": "CHKDSK (Check Disk) scans the file system for logical and physical errors."},
+        {"q": "A user reports that their Windows 11 PC is running slowly. The technician wants to see which application is using the most CPU in real-time. Which tool should they use?", "o": ["A. Performance Monitor", ", B. Task Manager", "C. Resource Monitor", "D. System Information"], "a": "B", "e": "Task Manager provides the quickest view of active processes and their resource consumption."},
+        {"q": "Which type of social engineering attack involves an attacker following an authorized person into a secure building without scanning a badge?", "o": ["A. Phishing", "B. Tailgating", "C. Vishing", "D. Shoulder Surfing"], "a": "B", "e": "Tailgating (or piggybacking) is physically following someone through a secure entry point."},
+        {"q": "A technician needs to change the permissions of a file in Linux so that the owner has full access, but everyone else has no access. Which command is used?", "o": ["A. chmod 700", "B. chown 777", "C. chmod 777", "D. ls -l"], "a": "A", "e": "In Linux, 700 gives Read/Write/Execute (7) to the owner and nothing (0) to others."},
+        {"q": "Which Windows feature allows a user to go back to a previous state of the system files after a bad driver installation?", "o": ["A. File History", "B. System Restore", "C. Backup and Restore", "D. Safe Mode"], "a": "B", "e": "System Restore uses 'restore points' to roll back system files and registry settings."},
+        {"q": "A technician needs to find which Windows service is failing to start during boot. Which tool should they use to view the system logs?", "o": ["A. Task Manager", "B. Event Viewer", "C. Resource Monitor", "D. Device Manager"], "a": "B", "e": "Event Viewer is the centralized log for Windows; the System log will show errors related to service failures."},
+        {"q": "Which Linux command is used to display the current working directory?", "o": ["A. ls", "B. cd", "C. pwd", "D. grep"], "a": "C", "e": "pwd stands for 'print working directory.'"},
+        {"q": "A user wants to prevent unauthorized people from accessing their laptop if it is left unattended. Which of the following should be configured?", "o": ["A. Screen saver with password", "B. BIOS password", "C. Account lockout policy", "D. VPN"], "a": "A", "e": "A screen timeout/screen saver that requires a password to resume is a standard security practice for unattended workstations."},
+        {"q": "Which Windows installation type allows a technician to install the OS over a network without physical media?", "o": ["A. Clean install", "B. Upgrade", "C. PXE boot", "D. Repair install"], "a": "C", "e": "Preboot eXecution Environment (PXE) allows a system to boot from the network and pull an OS image."},
+        {"q": "A technician is using the 'chmod' command in Linux. What does 'chmod 777' do to a file?", "o": ["A. Makes it read-only", "B. Gives everyone full permissions", "C. Deletes the file", "D. Hidden the file"], "a": "B", "e": "In Linux permissions, 7 is the sum of Read (4), Write (2), and Execute (1). 777 gives these rights to the owner, group, and others."},
+        {"q": "Which type of malware disguises itself as legitimate software but contains a malicious payload?", "o": ["A. Virus", "B. Worm", "C. Trojan", "D. Ransomware"], "a": "C", "e": "Trojans rely on social engineering to trick users into running them, unlike worms which spread automatically."},
+        {"q": "Which Windows tool is used to manage hard drive partitions, shrinking, and formatting?", "o": ["A. Disk Management", "B. Device Manager", "C. File Explorer", "D. System Configuration"], "a": "A", "e": "Disk Management (diskmgmt.msc) is the primary tool for storage volume manipulation."},
+        {"q": "An attacker calls a user pretending to be IT support to get their password. What is this called?", "o": ["A. Phishing", "B. Vishing", "C. Smishing", "D. Tailgating"], "a": "B", "e": "Vishing is 'Voice Phishing'—using a phone call for social engineering."},
+        {"q": "Which macOS feature is used to search for files, folders, and apps across the entire system?", "o": ["A. Finder", "B. Spotlight", "C. Mission Control", "D. iCloud"], "a": "B", "e": "Spotlight (Cmd + Space) is the built-in search tool for macOS."},
+        {"q": "A technician wants to ensure that a specific user cannot try more than 5 passwords before being locked out. Where is this configured?", "o": ["A. Local Users and Groups", "B. Account Lockout Policy", "C. Password Policy", "D. Windows Firewall"], "a": "B", "e": "Account Lockout Policy (within Local Security Policy) manages the threshold for failed login attempts."},
+        {"q": "Which command-line tool in Windows is used to check the integrity of system files and replace corrupted ones?", "o": ["A. CHKDSK", "B. SFC", "C. DISM", "D. TASKLIST"], "a": "B", "e": "SFC (System File Checker) scans and repairs core Windows system files."},
+        {"q": "Which Linux command is used to change the owner of a file?", "o": ["A. chmod", "B. chown", "C. sudo", "D. mv"], "a": "B", "e": "chown stands for 'change owner.'"},
+        {"q": "A user's computer is infected with malware that has encrypted their files and is demanding payment. What is this?", "o": ["A. Spyware", "B. Rootkit", "C. Ransomware", "D. Keylogger"], "a": "C", "e": "Ransomware locks or encrypts data and demands a ransom for the decryption key."},
+        {"q": "Which Windows 10/11 version is designed for use in large organizations and includes features like AppLocker and DirectAccess?", "o": ["A. Home", "B. Pro", "C. Enterprise", "D. SE"], "a": "C", "e": "Enterprise includes the most advanced security and management features for large-scale deployment."},
+        {"q": "Which tool in macOS allows you to view system resource usage, similar to Windows Task Manager?", "o": ["A. Force Quit", "B. Activity Monitor", "C. Disk Utility", "D. Terminal"], "a": "B", "e": "Activity Monitor shows CPU, Memory, Disk, and Network usage for macOS."},
+        {"q": "A technician is writing a script. Which file extension is used for a Windows Batch file?", "o": ["A. .ps1", "B. .vbs", "C. .bat", "D. .sh"], "a": "C", "e": ".bat is the extension for legacy Windows command-line batch scripts."},
+        {"q": "What is the primary purpose of a 'Degausser'?", "o": ["A. To clean a printer", "B. To demagnetize a hard drive to destroy data", "C. To test a power supply", "D. To boost Wi-Fi signals"], "a": "B", "e": "Degaussing uses high-powered magnets to render magnetic media (like HDDs) completely unreadable."},
+        {"q": "Which type of backup only copies files that have changed since the last Full backup and does NOT clear the archive bit?", "o": ["A. Incremental", "B. Differential", "C. Synthetic", "D. Snapshot"], "a": "B", "e": "Differential backups grow in size until the next Full backup because they don't clear the archive bit."},
+        {"q": "A technician is troubleshooting a PC that won't boot into Windows. Which tool can repair the Master Boot Record (MBR)?", "o": ["A. SFC /scannow", "B. BOOTREC", "C. CHKDSK /f", "D. DISM"], "a": "B", "e": "The bootrec command (bootrec /fixmbr) is used in the Recovery Environment to fix boot-related issues."},
+        {"q": "Which mobile OS is 'Open Source'?", "o": ["A. iOS", "B. Android", "C. Windows Mobile", "D. Blackberry OS"], "a": "B", "e": "Android is based on the Linux kernel and is open source, unlike the closed-source iOS."},
+        {"q": "An employee finds a USB drive in the parking lot and plugs it into their workstation. This is a common tactic for which type of attack?", "o": ["A. Phishing", "B. Social Engineering", "C. Brute Force", "D. Man-in-the-Middle"], "a": "B", "e": "This is a form of 'baiting,' a social engineering attack."},
+        {"q": "Which Windows power mode saves the most energy by writing the current session to the hard drive and powering off completely?", "o": ["A. Sleep", "B. Hibernate", "C. Standby", "D. Fast Startup"], "a": "B", "e": "Hibernate saves the state to the disk (hiberfil.sys), allowing for zero power consumption."},
+        {"q": "Which Linux command allows a user to run a command with administrative privileges?", "o": ["A. su", "B. sudo", "C. root", "D. admin"], "a": "B", "e": "sudo (superuser do) allows users to execute commands as the root user."},
+        {"q": "A user receives an email that looks like it's from their bank, asking them to click a link to verify their account. What is this?", "o": ["A. Spam", "B. Phishing", "C. Spoofing", "D. Pharming"], "a": "B", "e": "Phishing uses fake emails to steal credentials."},
+        {"q": "Which protocol is used to securely connect to a remote network over the internet as if you were locally connected?", "o": ["A. VPN", "B. RDP", "C. SSH", "D. FTP"], "a": "A", "e": "A Virtual Private Network (VPN) creates an encrypted tunnel to a remote network."},
+        {"q": "Which Windows tool allows a technician to see a historical graph of a computer's stability and errors over time?", "o": ["A. Reliability Monitor", "B. Performance Monitor", "C. Event Viewer", "D. Task Manager"], "a": "A", "e": "Reliability Monitor provides a 1-10 stability index based on crashes and updates."},
+        {"q": "A technician needs to kill a non-responsive process in Linux using its Process ID (PID). Which command is used?", "o": ["A. stop", "B. exit", "C. kill", "D. taskkill"], "a": "C", "e": "The 'kill' command followed by the PID stops the process in Linux."},
+        {"q": "What is the minimum number of characters for a 'strong' password according to standard best practices?", "o": ["A. 4", "B. 6", "C. 8", "D. 12"], "a": "C", "e": "Most security standards, including CompTIA, recommend at least 8 characters for a baseline strong password."},
+        {"q": "Which Windows utility is used to edit the registry?", "o": ["A. regedit", "B. msconfig", "C. services.msc", "D. dxdiag"], "a": "A", "e": "regedit.exe is the Registry Editor."},
+        {"q": "A technician is disposing of several old hard drives containing sensitive data. Which method is most secure?", "o": ["A. Formatting", "B. Overwriting (Wiping)", "C. Physical Destruction (Shredding)", "D. Deleting partitions"], "a": "C", "e": "Physical destruction is the only way to guarantee 100% data recovery prevention."},
+        {"q": "Which macOS feature allows you to see all open windows at once to switch between them?", "o": ["A. Finder", "B. Time Machine", "C. Mission Control", "D. AirDrop"], "a": "C", "e": "Mission Control (F3) provides a bird's-eye view of all open apps and windows."},
+        {"q": "Which type of script uses the extension '.ps1'?", "o": ["A. Python", "B. JavaScript", "C. PowerShell", "D. Shell script"], "a": "C", "e": "PowerShell scripts use the .ps1 extension."},
+        {"q": "An attacker creates a fake Wi-Fi access point with the same name as a legitimate one. What is this called?", "o": ["A. Evil Twin", "B. War Driving", "C. Bluejacking", "D. Spoofing"], "a": "A", "e": "An Evil Twin is a rogue AP designed to look like a trusted network to intercept data."},
+        {"q": "Which Windows command displays the IP address, subnet mask, and default gateway?", "o": ["A. ping", "B. ipconfig", "C. tracert", "D. nslookup"], "a": "B", "e": "ipconfig is the standard command for viewing network configuration in Windows."},
+        {"q": "In the 'shared responsibility' model of cloud security, who is responsible for securing the data stored in the cloud?", "o": ["A. The cloud provider", "B. The customer", "C. The ISP", "D. The software vendor"], "a": "B", "e": "The cloud provider secures the infrastructure; the customer is responsible for securing their own data and access."},
+        {"q": "Which Linux command is used to search for a specific string of text within a file?", "o": ["A. find", "B. locate", "C. grep", "D. cat"], "a": "C", "e": "grep (Global Regular Expression Print) searches for patterns in files."},
+        {"q": "Which type of physical security device uses body parts like fingerprints or retinas for authentication?", "o": ["A. Smart card", "B. Biometrics", "C. Token", "D. Key fob"], "a": "B", "e": "Biometrics use unique physical characteristics for identity verification."},
+        {"q": "Which Windows tool is used to manage services, startup apps, and boot options?", "o": ["A. msconfig", "B. regedit", "C. taskmgr", "D. perfmon"], "a": "A", "e": "System Configuration (msconfig) is used for managing the boot environment and startup troubleshooting."},
+        {"q": "A user's computer screen is locked with a message saying the FBI has found illegal material and they must pay a fine via Bitcoin. What is this?", "o": ["A. Spyware", "B. Scareware / Ransomware", "C. Adware", "D. Logic Bomb"], "a": "B", "e": "This is a classic 'scareware' tactic used by ransomware to extort money."},
+        {"q": "Which macOS tool is used for full system backups and restores?", "o": ["A. Disk Utility", "B. Time Machine", "@ C. Keychain Access", "D. Boot Camp"], "a": "B", "e": "Time Machine is the automated backup software built into macOS."},
+        {"q": "Which file system is the default for modern Windows installations?", "o": ["A. FAT32", "B. exFAT", "C. NTFS", "D. ext4"], "a": "C", "e": "NTFS (New Technology File System) supports larger volumes and security permissions."},
+        {"q": "What is the primary function of a Firewall?", "o": ["A. To detect viruses", "B. To monitor CPU usage", "C. To block or allow traffic based on security rules", "D. To encrypt hard drives"], "a": "C", "e": "Firewalls filter network traffic based on an Access Control List (ACL)."},
+        {"q": "A technician is using the 'ls -l' command in Linux. What does the '-l' flag do?", "o": ["A. Lists only directories", "B. Lists files in a 'long' format with permissions", "C. Deletes the files", "D. Lists hidden files"], "a": "B", "e": "The -l flag provides a detailed list, including permissions, owner, and size."},
+        {"q": "Which Windows feature allows a user to run an older application by simulating a previous version of Windows?", "o": ["A. Safe Mode", "B. Compatibility Mode", "C. Virtual PC", "D. System Restore"], "a": "B", "e": "Compatibility Mode adjusts Windows settings to match an older OS version for a specific app."},
+        {"q": "What type of attack involves an attacker capturing a password hash and then sending it to a server to gain access without knowing the actual password?", "o": ["A. Brute Force", "B. Dictionary Attack", "C. Pass-the-hash", "D. Rainbow Table"], "a": "C", "e": "Pass-the-hash allows an attacker to bypass knowing the plain-text password by using the stored hash."},
+        {"q": "Which Linux command is used to delete a file?", "o": ["A. del", "B. erase", "C. rm", "D. move"], "a": "C", "e": "rm stands for 'remove.'"},
+        {"q": "A technician needs to find the serial number of a Windows computer via the command line. Which command should they use?", "o": ["A. wmic bios get serialnumber", "B. ipconfig /all", "C. systeminfo", "D. dxdiag"], "a": "A", "e": "WMIC (Windows Management Instrumentation Command-line) can pull detailed hardware info like serial numbers."},
+        {"q": "What is the term for a piece of code that sits dormant until a specific date or event occurs?", "o": ["A. Worm", "B. Logic Bomb", "C. Trojan", "D. Rootkit"], "a": "B", "e": "Logic bombs are triggered by specific conditions (like a date or a user being deleted)."},
+        {"q": "Which type of social engineering attack focuses on high-level executives?", "o": ["A. Whaling", "B. Phishing", "C. Vishing", "D. Spear Phishing"], "a": "A", "e": "Whaling is a targeted phishing attack aimed at 'big fish' like CEOs."},
+        {"q": "Which Windows tool provides a centralized location for configuring security and maintenance settings?", "o": ["A. Security and Maintenance (Action Center)", "B. Control Panel", "C. Settings app", "D. Computer Management"], "a": "A", "e": "The Security and Maintenance center (formerly Action Center) alerts users to firewall, antivirus, and update issues."},
+        {"q": "A technician is about to perform a potentially destructive change to a server. What is the first thing they should do according to best practices?", "o": ["A. Inform the manager", "B. Perform a full backup", "C. Document the plan", "D. Change the admin password"], "a": "B", "e": "Before any major change, always verify that a working backup exists to ensure you can roll back if something fails."},
+        {"q": "Which of the following environmental variables is most dangerous to internal computer components when it is too low?", "o": ["A. Humidity", "B. Temperature", "C. Air pressure", "D. Light level"], "a": "A", "e": "Low humidity increases the risk of Electrostatic Discharge (ESD). High humidity causes condensation/corrosion."},
+        {"q": "A technician is disposing of several monitors that contain lead and mercury. Which document should they consult to ensure proper disposal?", "o": ["A. EULA", "B. MSDS/SDS", "C. SLA", "D. MOU"], "a": "B", "e": "Safety Data Sheets (SDS), formerly MSDS, provide instructions for the safe handling and disposal of hazardous materials."},
+        {"q": "In a professional environment, a user is explaining a problem but is clearly frustrated and rambling. What should the technician do?", "o": ["A. Interrupt to get to the point", "B. Walk away and come back later", "C. Listen actively and do not interrupt", "D. Multi-task by checking emails while they talk"], "a": "C", "e": "Professionalism requires active listening. Let the user finish, then ask clarifying questions."},
+        {"q": "Which Linux command is used to move or rename a file?", "o": ["A. ren", "B. move", "C. mv", "D. cp"], "a": "C", "e": "In Linux, 'mv' serves both as a move command and a rename command."},
+        {"q": "A technician needs to connect to a Linux server remotely via an encrypted terminal session. Which tool should they use?", "o": ["A. Telnet", "B. RDP", "C. SSH", "D. VNC"], "a": "C", "e": "Secure Shell (SSH) is the industry standard for secure remote command-line access."},
+        {"q": "Which type of script is used to automate tasks in the macOS terminal?", "o": ["A. PowerShell", "B. Batch", "C. Shell Script (.sh)", "D. VBScript"], "a": "C", "e": "macOS is Unix-based and uses shell scripts (usually Bash or Zsh) for automation."},
+        {"q": "What is the primary purpose of an Incident Response plan?", "o": ["A. To prevent all security breaches", "B. To provide a step-by-step guide on how to react to a security event", "C. To replace the firewall", "D. To train users in coding"], "a": "B", "e": "Incident response ensures that when a breach happens, the organization reacts consistently and effectively."},
+        {"q": "A technician is using the 'vi' editor in Linux. How do they save and exit the file?", "o": ["A. :q!", "B. :wq", "C. Ctrl+S", "D. Exit"], "a": "B", "e": "In the vi editor, ':w' stands for write (save) and ':q' stands for quit."},
+        {"q": "Which Windows tool allows you to schedule a script to run every Sunday at 2:00 AM?", "o": ["A. Task Manager", "B. Task Scheduler", "C. Performance Monitor", "D. System Configuration"], "a": "B", "e": "Task Scheduler is designed for automated, time-based, or event-based triggers."},
+        {"q": "A technician is dealing with a toxic coworker who is violating the company's code of conduct. What should the technician's next step be?", "o": ["A. Argue with them", "B. Ignore it entirely", "C. Document the behavior and report it to a supervisor", "D. Post about it on social media"], "a": "C", "e": "Workplace issues should be documented objectively and handled through the proper chain of command."},
+        {"q": "Which type of data is protected by law and includes information such as health records and social security numbers?", "o": ["A. Open Source", "B. PII/PHI", "C. Public Domain", "D. Creative Commons"], "a": "B", "e": "Personally Identifiable Information (PII) and Protected Health Information (PHI) carry legal requirements for privacy."},
+        {"q": "Which Linux command is used to display the contents of a text file on the screen?", "o": ["A. ls", "B. cat", "C. grep", "D. cd"], "a": "B", "e": "The 'cat' (concatenate) command is used to display file contents to the terminal."},
+        {"q": "A technician needs to join a Windows Pro laptop to a corporate network to access shared resources and centralized management. What is this called?", "o": ["A. Workgroup", "B. Homegroup", "C. Domain", "D. LAN"], "a": "C", "e": "Domains provide centralized authentication and management via Active Directory."},
+        {"q": "Which type of social engineering involves an attacker looking over a user's shoulder to see their PIN?", "o": ["A. Phishing", "B. Tailgating", "C. Shoulder Surfing", "D. Vishing"], "a": "C", "e": "Shoulder surfing is a physical observation technique to steal sensitive information."},
+        {"q": "Which Windows tool is used to remotely view and control a user's desktop to provide technical support with their permission?", "o": ["A. Remote Desktop", "B. Remote Assistance", "C. SSH", "D. Telnet"], "a": "B", "e": "Remote Assistance allows a technician to 'invite' themselves to see the user's screen while the user is still logged in."},
+        {"q": "What is the result of using the 'rm -rf /' command in Linux as a root user?", "o": ["A. It restarts the computer", "B. It deletes all files on the entire system", "C. It repairs the file system", "D. It lists all files"], "a": "B", "e": "This is a dangerous command: -r (recursive) and -f (force) applied to the root (/) deletes everything."},
+        {"q": "Which Windows tool provides a command-line interface that is more powerful than CMD and uses 'cmdlets'?", "o": ["A. PowerShell", "B. Terminal", "C. Bash", "D. Python"], "a": "A", "e": "PowerShell is a task automation and configuration management framework from Microsoft."},
+        {"q": "What is the purpose of an 'AUP' (Acceptable Use Policy)?", "o": ["A. To define the hardware specs for employees", "B. To set rules for how company technology can be used", "C. To define salary ranges", "D. To provide technical support numbers"], "a": "B", "e": "An AUP defines what users can and cannot do (e.g., no social media, no illegal downloads) on company time/devices."},
+        {"q": "Which type of malware installs itself in the boot sector of a hard drive to hide from the operating system?", "o": ["A. Worm", "B. Rootkit", "C. Spyware", "D. Adware"], "a": "B", "e": "Rootkits are designed to gain administrative control and hide deep within the OS or boot process."},
+        {"q": "A technician needs to copy a large directory in Linux. Which command should they use?", "o": ["A. cp", "B. cp -r", "C. mv", "D. rm"], "a": "B", "e": "The '-r' (recursive) flag is required to copy a directory and all of its sub-contents."},
+        {"q": "Which Windows tool is used to troubleshoot slow boot times by disabling startup applications?", "o": ["A. Disk Management", "B. Task Manager (Startup tab)", "C. Device Manager", "D. Event Viewer"], "a": "B", "e": "In modern Windows versions, startup apps are managed directly through Task Manager."},
+        {"q": "An attacker uses a program to try every possible combination of characters to crack a password. What is this called?", "o": ["A. Dictionary attack", "B. Brute force attack", "C. Phishing", "D. Man-in-the-middle"], "a": "B", "e": "Brute force attempts every possible key; dictionary attacks only try common words."},
+        {"q": "What is the benefit of using 'Least Privilege' in an organization?", "o": ["A. It makes everyone an administrator", "B. It limits damage by giving users only the access they need to do their jobs", "C. It increases network speed", "D. It reduces hardware costs"], "a": "B", "e": "Least Privilege minimizes security risks by restricting user permissions to the bare minimum."},
+        {"q": "Which macOS tool is used to manage and save passwords, certificates, and secure notes?", "o": ["A. Spotlight", "B. Keychain Access", "C. Time Machine", "D. Mission Control"], "a": "B", "e": "Keychain is the password management system for macOS and iOS."},
+        {"q": "A technician is working on a PC and a customer asks to see their personal files. What should the technician do?", "o": ["A. Show them the files", "B. Politely decline to protect privacy", "C. Charge them an extra fee", "D. Give them the hard drive"], "a": "B", "e": "Confidentiality and privacy are key professional traits. Never disclose or look at data unless required for the repair."},
+        {"q": "Which file system is often used for USB flash drives to provide compatibility between Windows and macOS?", "o": ["A. NTFS", "B. ext4", "C. exFAT", "D. HFS+"], "a": "C", "e": "exFAT (Extended File Allocation Table) is compatible with both systems and handles large files better than FAT32."},
+        {"q": "Which command-line tool in Windows can fix a 'Bootmgr is missing' error?", "o": ["A. SFC /scannow", "B. CHKDSK /r", "C. BOOTREC /rebuildbcd", "D. IPCONFIG /flushdns"], "a": "C", "e": "The Boot Configuration Data (BCD) stores the boot information; rebuilding it can fix missing boot manager errors."},
+        {"q": "What is a 'Zero-Day' vulnerability?", "o": ["A. A bug that has existed for zero days", "B. A vulnerability that is known but has no patch available yet", "C. A virus that deletes everything on day zero", "D. A vulnerability that only affects old software"], "a": "B", "e": "Zero-day means the developers have had 'zero days' to fix the problem since it was discovered/exploited."},
+        {"q": "Which Linux command is used to shut down or reboot the system?", "o": ["A. exit", "B. shutdown", "C. stop", "D. kill"], "a": "B", "e": "The 'shutdown' command (e.g., shutdown -r now) is used to power off or restart Linux."},
+        {"q": "What is the primary function of a Change Advisory Board (CAB)?", "o": ["A. To write code", "B. To fix printers", "C. To review and approve major IT changes to minimize risk", "D. To interview new employees"], "a": "C", "e": "The CAB evaluates the impact of requested changes to prevent system-wide outages."},
+        {"q": "A technician is scripting a repetitive task. Which character is typically used to indicate a comment in a Bash script?", "o": ["A. //", "B. #", "C. /*", "D. --"], "a": "B", "e": "The 'hash' or 'pound' sign (#) indicates a comment in shell and Python scripts."},
+        {"q": "Which type of physical lock uses a circular key and is often found on server racks?", "o": ["A. Padlock", "B. Deadbolt", "C. Tubular lock", "D. Biometric lock"], "a": "C", "e": "Tubular (or Ace) locks are harder to pick and are common in IT equipment security."},
+        {"q": "A user reports that their Windows taskbar has disappeared. Which process should the technician restart in Task Manager?", "o": ["A. system.exe", "B. explorer.exe", "C. svchost.exe", "D. winlogon.exe"], "a": "B", "e": "Windows Explorer (explorer.exe) manages the desktop, taskbar, and file navigation."},
+        {"q": "Which Linux command is used to edit text files directly in the terminal?", "o": ["A. ls", "B. cat", "C. vi", "D. grep"], "a": "C", "e": "vi (or vim) is the classic, standard terminal-based text editor for Linux."},
+        {"q": "What is 'Tailgating' in the context of physical security?", "o": ["A. Driving too close to another car", "B. Following an authorized person through a door without badge-in", "C. Looking at someone's password", "D. Stealing a laptop from a car"], "a": "B", "e": "Tailgating relies on social courtesy (someone holding the door) to bypass physical access controls."},
+        {"q": "Which Windows tool is used to view detailed hardware information including the BIOS version and installed RAM?", "o": ["A. Device Manager", "B. msinfo32", "C. Task Manager", "D. Control Panel"], "a": "B", "e": "System Information (msinfo32) provides a comprehensive summary of the system hardware and software."},
+        {"q": "Which type of script is used to add interactivity to web pages?", "o": ["A. PowerShell", "B. Batch", "C. JavaScript", "D. Python"], "a": "C", "e": "JavaScript is the primary scripting language for web browsers."},
+        {"q": "What is the first thing a technician should do when encountering a computer that has been clearly used for illegal activity?", "o": ["A. Delete the files", "B. Notify their supervisor or the authorities immediately", "C. Confront the user", "D. Finish the repair first"], "a": "B", "e": "In cases of illegal activity, stop what you are doing and follow the organization's policy for reporting and chain of custody."},
+        {"q": "Which Linux command is used to display the IP address of the network interfaces?", "o": ["A. ipconfig", "B. ifconfig / ip addr", "C. netstat", "D. ping"], "a": "B", "e": "Older Linux used 'ifconfig'; modern versions use 'ip addr'."},
+        {"q": "What is the purpose of 'Group Policy' in a Windows Domain?", "o": ["A. To send emails to groups", "B. To provide centralized management and configuration of OS settings and users", "C. To increase the number of users in a group", "D. To backup group data"], "a": "B", "e": "Group Policy Objects (GPOs) allow admins to push settings like wallpaper or security rules to all computers at once."},
+        {"q": "Which type of malware specifically targets the software of a device to gain persistent, hidden administrative access?", "o": ["A. Virus", "B. Worm", "C. Rootkit", "D. Adware"], "a": "C", "e": "Rootkits are designed to replace OS files to hide their presence and maintain root-level access."},
+        {"q": "A technician is troubleshooting a PC that keeps rebooting. They want to prevent it from automatically restarting after a BSOD so they can see the error code. Where is this changed?", "o": ["A. BIOS", "B. System Properties > Advanced > Startup and Recovery", "C. Task Manager", "D. Device Manager"], "a": "B", "e": "Unchecking 'Automatically restart' in Startup and Recovery keeps the Blue Screen visible."},
+        {"q": "Which Linux command is used to update the list of available software packages?", "o": ["A. sudo apt-get update", "B. sudo install", "C. yum install", "D. rpm -i"], "a": "A", "e": "In Debian/Ubuntu-based systems, 'apt-get update' refreshes the local package index."},
+        {"q": "An attacker spoofs a legitimate website to trick users into entering their credentials. What is this called?", "o": ["A. Phishing", "B. Pharming", "C. Spoofing", "D. Vishing"], "a": "B", "e": "Pharming redirects users to a malicious website, often through DNS poisoning, even if they type the correct URL."},
+        {"q": "Which Windows tool is used to migrate user files and settings from an old computer to a new one?", "o": ["A. Disk Management", "B. USMT", "C. SFC", "D. CHKDSK"], "a": "B", "e": "The User State Migration Tool (USMT) is a command-line utility for large-scale user migrations."},
+        {"q": "Which type of data backup takes the least amount of time to perform but the most amount of time to restore?", "o": ["A. Full", "B. Differential", "C. Incremental", "D. Snapshot"], "a": "C", "e": "Incremental backups only copy data changed since the last incremental; to restore, you need the last Full and EVERY Incremental since then."},
+        {"q": "What is 'DDoS'?", "o": ["A. A single computer attacking a server", "B. Multiple computers (a botnet) attacking a single target to overwhelm it", "C. A virus that deletes the hard drive", "D. A way to speed up the internet"], "a": "B", "e": "Distributed Denial of Service (DDoS) uses many sources to crash a service."},
+        {"q": "Which macOS tool is used to configure a Mac to dual-boot with Windows?", "o": ["A. Time Machine", "B. Disk Utility", "C. Boot Camp Assistant", "D. Terminal"], "a": "C", "e": "Boot Camp is the native utility for installing Windows on Intel-based Macs."},
+        {"q": "A technician is using the 'grep' command. What is the result of 'grep error log.txt'?", "o": ["A. It deletes the log file", "B. It displays every line in 'log.txt' that contains the word 'error'", "C. It creates a new file called 'error'", "D. It renames the file"], "a": "B", "e": "grep is a search tool that filters text based on the string provided."},
+        {"q": "A technician is following the best practices for malware removal. What is the very first step they should take?", "o": ["A. Quarantine the infected system", "B. Identify and verify virus symptoms", "C. Update the anti-malware software", "D. Disable System Restore"], "a": "B", "e": "The CompTIA 7-step malware removal process begins with 'Identify and verify virus symptoms.'"},
+        {"q": "After identifying a malware infection, what is the next step a technician should take to prevent it from spreading over the network?", "o": ["A. Scan the system", "B. Quarantine the infected system", "C. Educate the end user", "D. Schedule scans"], "a": "B", "e": "Step 2 of the malware removal process is to isolate (quarantine) the system by disconnecting it from the network."},
+        {"q": "Which Windows tool allows a technician to configure a computer to boot into 'Safe Mode' during the next restart?", "o": ["A. msconfig", "B. regedit", "C. taskmgr", "D. perfmon"], "a": "A", "e": "Under the 'Boot' tab in System Configuration (msconfig), you can check 'Safe boot' to force the next restart into Safe Mode."},
+        {"q": "What is the primary difference between a Virus and a Worm?", "o": ["A. A virus is more dangerous", "B. A worm can replicate itself across a network without human interaction", "C. A virus only affects files", "D. A worm requires an email to spread"], "a": "B", "e": "Worms are self-replicating and spread through network vulnerabilities, whereas viruses usually require a user to run an infected program."},
+        {"q": "A technician is setting up a new Wi-Fi network and wants to use the most secure encryption standard available. Which should they choose?", "o": ["A. WEP", "B. WPA", "C. WPA2", "D. WPA3"], "a": "D", "e": "WPA3 is the most modern and secure Wi-Fi encryption standard covered in the 1202 objectives."},
+        {"q": "Which type of security threat involves an attacker redirecting a user's traffic to a fake website by poisoning a DNS server?", "o": ["A. Phishing", "B. Pharming", "C. Smishing", "D. Spoofing"], "a": "B", "e": "Pharming redirects users to malicious sites even if they type the correct web address into their browser."},
+        {"q": "In the context of software licensing, what does 'EULA' stand for?", "o": ["A. End User License Agreement", "B. Entry User Level Access", "C. Electronic User Log App", "D. External Universal License Authority"], "a": "A", "e": "The EULA is the legal contract between the software developer and the user regarding usage rights."},
+        {"q": "Which Windows Recovery Environment command is used to scan all disks for Windows installations and add them to the boot configuration data?", "o": ["A. bootrec /fixmbr", "B. bootrec /rebuildbcd", "C. bootrec /fixboot", "D. sfc /scannow"], "a": "B", "e": "rebuildbcd is used when the OS is not found or the boot configuration is missing entries."},
+        {"q": "A user's computer is displaying a high volume of pop-up ads even when the browser is closed. What type of malware is most likely present?", "o": ["A. Ransomware", "B. Rootkit", "C. Adware", "D. Spyware"], "a": "C", "e": "Adware is designed to generate revenue for its author by displaying unwanted advertisements."},
+        {"q": "Which Linux command is used to display the manual or help page for another command?", "o": ["A. help", "B. man", "C. info", "D. cat"], "a": "B", "e": "The 'man' command (short for manual) provides detailed documentation for CLI tools."},
+        {"q": "What is the purpose of 'Windows Sandbox'?", "o": ["A. To play games", "B. To run applications in an isolated, temporary environment for testing", "C. To backup system files", "D. To increase internet speed"], "a": "B", "e": "Sandbox provides a clean, disposable environment to test untrusted software without affecting the host OS."},
+        {"q": "Which type of social engineering attack involves sending a fraudulent text message to a user?", "o": ["A. Phishing", "B. Vishing", "C. Smishing", "D. Whaling"], "a": "C", "e": "Smishing is 'SMS Phishing.'"},
+        {"q": "A technician needs to find a user's SID (Security Identifier) in Windows. Which command-line tool can be used?", "o": ["A. ipconfig", "B. wmic useraccount get name,sid", "C. netstat", "D. tasklist"], "a": "B", "e": "WMIC provides a deep interface for querying system and account information."},
+        {"q": "Which physical security control involves two doors where the first must close before the second can open?", "o": ["A. Mantrap", "B. Turnstile", "C. Bollard", "D. Keypad"], "a": "A", "e": "Mantraps prevent tailgating by trapping a person between two controlled doors."},
+        {"q": "What is the result of the 'df -h' command in Linux?", "o": ["A. It deletes the hard drive", "B. It displays disk space usage in human-readable format", "C. It lists all active users", "& D. It repairs the file system"], "a": "B", "e": "df (disk free) with the -h (human-readable) flag shows storage usage in GB/MB instead of bytes."},
+        {"q": "A technician wants to ensure that corporate data on a lost mobile device cannot be accessed. Which MDM feature should be used?", "o": ["A. Remote Wipe", "B. Geofencing", "C. App Whitelisting", "D. VPN Tunneling"], "a": "A", "e": "Remote Wipe deletes all user data and resets the device to factory defaults remotely."},
+        {"q": "Which Windows tool is used to check for memory (RAM) errors during the boot process?", "o": ["A. Performance Monitor", "B. Windows Memory Diagnostic", "C. Resource Monitor", "D. Device Manager"], "a": "B", "e": "Windows Memory Diagnostic (mdsched.exe) restarts the PC to perform a low-level RAM stress test."},
+        {"q": "What is 'Spear Phishing'?", "o": ["A. Phishing that uses a phone call", "B. A phishing attack targeted at a specific person or organization", "C. A broad attack sent to millions", "D. An attack on a CEO"], "a": "B", "e": "Spear phishing is personalized to increase the chances of the target falling for the scam."},
+        {"q": "Which Linux command allows you to change your own password?", "o": ["A. chown", "B. chmod", "C. passwd", "D. ps"], "a": "C", "e": "The 'passwd' command is used to update a user's authentication tokens."},
+        {"q": "A user reports they cannot log in to Windows. The technician notices the 'Num Lock' light is off on a keyboard with no separate arrow keys. What is the most likely cause?", "o": ["A. Wrong username", "B. Expired password", "C. The user is typing numbers but the keyboard is sending directional commands", "D. The NIC is disabled"], "a": "C", "e": "If Num Lock is off, the 10-key pad acts as navigation keys (arrows, home, end) instead of numbers."},
+        {"q": "Which type of backup requires the most time to restore but the least amount of storage space?", "o": ["A. Full", "B. Differential", "C. Incremental", "D. Mirror"], "a": "C", "e": "Incremental backups require the last full backup and every subsequent incremental backup to be restored in sequence."},
+        {"q": "What is 'DLP'?", "o": ["A. Digital Light Processing", "B. Data Loss Prevention", "C. Data Loop Protocol", "D. Digital Licensing Program"], "a": "B", "e": "DLP systems monitor and block sensitive data from leaving the corporate network (e.g., emailing credit card numbers)."},
+        {"q": "Which Windows command is used to terminate a task using its Process ID (PID)?", "o": ["A. TASKLIST", "B. TASKKILL /PID", "C. STOP-PROCESS", "D. END-TASK"], "a": "B", "e": "taskkill /pid [number] is the command-line equivalent of 'End Task' in Task Manager."},
+        {"q": "A technician needs to find the version of macOS installed on a computer. Where is this found?", "o": ["A. Apple Menu > About This Mac", "B. System Settings > Privacy", "C. Terminal > version", "D. Finder > Help"], "a": "A", "e": "The 'About This Mac' dialog provides the version name (e.g., Sonoma) and build number."},
+        {"q": "Which security principle involves requiring more than one form of evidence to verify a user's identity?", "o": ["A. MFA", "B. SSO", "C. RBAC", "D. ACL"], "a": "A", "e": "Multi-Factor Authentication (MFA) usually involves something you know, something you have, or something you are."},
+        {"q": "A user's browser is redirected to a search engine they didn't choose. What is this a symptom of?", "o": ["A. Browser Hijacking", "B. Ransomware", "C. Rootkit", "D. DoS attack"], "a": "A", "e": "Browser hijackers change homepages and search settings to generate revenue or steal data."},
+        {"q": "Which Linux command is used to list all currently running processes?", "o": ["A. ls", "B. ps", "C. grep", "D. cat"], "a": "B", "e": "The 'ps' command (process status) displays active processes in the current shell."},
+        {"q": "What is the default file system for a macOS Time Machine backup drive?", "o": ["A. NTFS", "B. FAT32", "C. APFS", "D. ext4"], "a": "C", "e": "Apple File System (APFS) is the modern standard for macOS storage and backups."},
+        {"q": "Which Windows Power setting allows the CPU to run at its highest speed regardless of power consumption?", "o": ["A. Balanced", "B. Power Saver", "C. High Performance", "D. Eco Mode"], "a": "C", "e": "High Performance prioritizes speed over battery life or electricity savings."},
+        {"q": "An attacker places a small hardware device between a keyboard and a computer to record every stroke. What is this?", "o": ["A. Keylogger", "B. Rootkit", "C. Trojan", "D. Worm"], "a": "A", "e": "Keyloggers can be software-based or physical hardware dongles used to steal passwords."},
+        {"q": "What is 'BitLocker To Go'?", "o": ["A. BitLocker for smartphones", "B. BitLocker encryption for removable drives like USB sticks", "C. A portable version of Windows", "D. Cloud-based encryption"], "a": "B", "e": "BitLocker To Go extends full-disk encryption to external USB flash drives and hard drives."},
+        {"q": "Which Linux command is used to display the last few lines of a log file?", "o": ["A. head", "B. tail", "C. cat", "D. nano"], "a": "B", "e": "The 'tail' command shows the end of a file; 'head' shows the beginning."},
+        {"q": "A technician is disposing of a CRT monitor. Why can they NOT throw it in the regular trash?", "o": ["A. It's too heavy", "B. It contains hazardous lead and phosphorus", "C. It can be reused", "D. It contains a lithium battery"], "a": "B", "e": "CRT monitors are considered e-waste due to high levels of lead in the glass."},
+        {"q": "Which Windows 10/11 feature creates a virtual environment to run suspicious websites in isolation?", "o": ["A. Windows Firewall", "B. Microsoft Defender Application Guard", "C. Windows Defender", "D. BitLocker"], "a": "B", "e": "Application Guard uses Hyper-V to isolate the Edge browser from the rest of the OS."},
+        {"q": "Which type of script is most likely to use the '.vbs' extension?", "o": ["A. JavaScript", "B. Visual Basic Script", "C. Shell Script", "D. Python"], "a": "B", "e": "VBScript is a legacy Windows-specific scripting language."},
+        {"q": "What does 'SLA' stand for in a professional IT context?", "o": ["A. System Level Access", "B. Service Level Agreement", "C. Software License Authority", "D. Security Level Audit"], "a": "B", "e": "An SLA defines the expected level of service (e.g., 99.9% uptime) between a provider and a customer."},
+        {"q": "A user is unable to install a specific application on Windows. The error says 'Administrator permission required.' The user is a standard user. What should the technician do?", "o": ["A. Give the user admin rights", "B. Right-click the installer and 'Run as administrator' and enter technician credentials", "C. Disable UAC", "D. Reinstall Windows"], "a": "B", "e": "Running as administrator allows a one-time elevated permission without permanently changing the user's rights."},
+        {"q": "Which Linux command is used to create a new directory?", "o": ["A. mkdir", "B. newdir", "C. cd", "D. touch"], "a": "A", "e": "mkdir stands for 'make directory.'"},
+        {"q": "What is 'Active Directory' (AD)?", "o": ["A. A list of active employees", "B. A Microsoft service used for centralized network management and authentication", "C. An antivirus program", "D. A database of web addresses"], "a": "B", "e": "AD is the backbone of Windows network domains, managing users, groups, and computers."},
+        {"q": "Which type of malware targets the 'firmware' level of a system, making it nearly impossible to detect by the OS?", "o": ["A. Virus", "B. Rootkit", "C. Spyware", "D. Worm"], "a": "B", "e": "Rootkits often subvert the boot process or firmware to hide from antivirus software."},
+        {"q": "Which Windows command-line tool provides a list of all active network connections and the ports they are using?", "o": ["A. ipconfig", "B. ping", "C. netstat", "D. nbtstat"], "a": "C", "e": "netstat (network statistics) is vital for identifying unauthorized outbound connections."},
+        {"q": "What is the purpose of 'Windows Update' in terms of security?", "o": ["A. To add new emojis", "B. To patch software vulnerabilities that attackers could exploit", "C. To make the computer faster", "D. To backup data"], "a": "B", "e": "Security patches are the primary defense against known exploits and 'zero-day' attacks."},
+        {"q": "Which macOS tool is used to securely wipe a hard drive and create new partitions?", "o": ["A. Time Machine", "B. Disk Utility", "C. Keychain Access", "D. Spotlight"], "a": "B", "e": "Disk Utility is the macOS equivalent of Windows Disk Management."},
+        {"q": "An attacker uses a list of common words and known passwords to try and log in to an account. What is this?", "o": ["A. Brute Force", "B. Dictionary Attack", "C. Rainbow Table", "D. Phishing"], "a": "B", "e": "Dictionary attacks are faster than brute force because they only try likely combinations."},
+        {"q": "Which Linux command is used to display the amount of free and used memory in the system?", "o": ["A. top", "B. free", "C. mem", "D. ls"], "a": "B", "e": "The 'free' command provides a quick summary of RAM and swap usage."},
+        {"q": "What is 'Change Management'?", "o": ["A. Switching to a different computer", "B. A structured process to ensure IT changes are made without causing downtime", "C. Replacing old employees", "D. Updating passwords"], "a": "B", "e": "Change management includes requesting, approving, testing, and documenting all IT changes."},
+        {"q": "A technician is helping a user who is being hostile and rude. What is the best professional response?", "o": ["A. Be rude back", "B. Walk away without saying anything", "C. Maintain a calm, professional tone and focus on the technical issue", "D. Argue with them"], "a": "C", "e": "Customer service requires de-escalation and maintaining professionalism regardless of the user's behavior."},
+        {"q": "Which Windows tool is used to manage and configure local user accounts on a computer that is NOT in a domain?", "o": ["A. Active Directory", "B. Local Users and Groups (lusrmgr.msc)", "C. Group Policy", "D. Registry Editor"], "a": "B", "e": "lusrmgr.msc is the console for managing users on a standalone workstation."},
+        {"q": "Which Linux command is used to view the last 10 lines of a text file?", "o": ["A. head", "B. end", "C. tail", "D. cat"], "a": "C", "e": "The 'tail' command is used to see the end of a file (defaulting to 10 lines)."},
+        {"q": "What is 'Wiping' a hard drive?", "o": ["A. Cleaning the physical drive with a cloth", "B. Using software to overwrite every bit of data on the drive to make it unrecoverable", "C. Deleting the folders", "D. Formatting the drive"], "a": "B", "e": "Wiping (or sanitizing) ensures that data cannot be recovered using forensic tools."},
+        {"q": "A technician is documenting a resolved issue in a ticketing system. Why is this considered a 'best practice'?", "o": ["A. To track employee hours only", "B. To create a searchable knowledge base for future issues", "C. To bill the customer more accurately", "D. To increase the size of the database"], "a": "B", "e": "Documenting findings and solutions builds a knowledge base that helps other technicians solve similar problems faster."},
+        {"q": "Which of the following is a primary safety concern when opening a CRT monitor?", "o": ["A. Sharp glass edges", "B. High voltage stored in capacitors", "C. Toxic ink spills", "D. Laser light exposure"], "a": "B", "e": "CRT monitors contain large capacitors that can hold a lethal electrical charge even after being unplugged for days."},
+        {"q": "A user reports that their Windows laptop takes 10 minutes to reach the login screen. Which tool should the technician check first to identify high-impact startup apps?", "o": ["A. Event Viewer", "B. Task Manager", "C. msinfo32", "D. Disk Management"], "a": "B", "e": "The 'Startup' tab in Task Manager shows the impact (Low, Medium, High) of apps that launch during boot."},
+        {"q": "Which Linux command is used to display the current user you are logged in as?", "o": ["A. whoami", "B. id", "C. users", "D. lsuser"], "a": "A", "e": "The 'whoami' command prints the effective username of the current user."},
+        {"q": "What is the purpose of an 'MOU' (Memorandum of Understanding)?", "o": ["A. To license software", "B. To define an agreement between two or more parties that is not a formal contract", "C. To track employee discipline", "D. To provide technical specs for a PC"], "a": "B", "e": "An MOU is a formal document describing a bilateral or multilateral agreement between parties."},
+        {"q": "Which Windows tool is used to force-stop an application that is not responding?", "o": ["A. File Explorer", "B. Task Manager", "C. System Configuration", "D. Device Manager"], "a": "B", "e": "Task Manager's 'End Task' button is the standard way to terminate hung applications."},
+        {"q": "A technician is writing a script to automate a task on a Linux server. Which character should be at the start of the first line (the shebang)?", "o": ["A. //", "B. #!", "C. --", "D. %%"], "a": "B", "e": "The shebang (#!) tells the system which interpreter (like /bin/bash) to use for the script."},
+        {"q": "Which type of disaster recovery site is fully equipped with hardware and up-to-date data, ready for immediate use?", "o": ["A. Cold site", "B. Warm site", "C. Hot site", "D. Cloud site"], "a": "C", "e": "Hot sites are mirrored versions of the production site and can be online in minutes or hours."},
+        {"q": "A user’s computer has been seized by law enforcement. Which document ensures the evidence was handled properly from the scene to the courtroom?", "o": ["A. AUP", "B. Chain of Custody", "C. MSDS", "D. SLA"], "a": "B", "e": "The Chain of Custody documents who touched the evidence and when to ensure it hasn't been tampered with."},
+        {"q": "Which Windows tool is used to manage and configure 'Shared Folders' and 'Local Users' in a single window?", "o": ["A. Computer Management", "B. File Explorer", "C. Task Manager", "D. Control Panel"], "a": "A", "e": "Computer Management (compmgmt.msc) combines several tools, including Shared Folders and Local Users and Groups."},
+        {"q": "What is the first thing a technician should do when they accidentally spill water on a running laptop?", "o": ["A. Turn it upside down", "B. Power it off and remove the battery immediately", "C. Dry it with a hair dryer", "D. Call for help"], "a": "B", "e": "Removing the power source is critical to prevent electrical shorts from permanently damaging the components."},
+        {"q": "In a professional setting, what should a technician do if a repair is going to take longer than initially estimated?", "o": ["A. Say nothing and keep working", "B. Update the user as soon as possible with a new timeframe", "C. Cancel the repair", "D. Work faster even if it leads to mistakes"], "a": "B", "e": "Proactive communication and expectation management are key parts of IT professionalism."},
+        {"q": "Which command-line tool is used to test connectivity between a source and a destination in Linux?", "o": ["A. ifconfig", "B. ping", "C. ls", "D. rm"], "a": "B", "e": "Just like in Windows, 'ping' uses ICMP to check if a remote host is reachable."},
+        {"q": "Which type of social engineering involves an attacker creating a sense of urgency to trick a user into bypassing security?", "o": ["A. Familiarity", "B. Scarcity / Urgency", "C. Consensus", "D. Shoulder Surfing"], "a": "B", "e": "Attackers often use urgency ('Your account will be deleted in 1 hour!') to prevent the user from thinking critically."},
+        {"q": "What is the purpose of 'Inventory Management' in IT?", "o": ["A. To keep track of all hardware and software assets", "B. To buy more computers", "C. To sell old equipment", "D. To monitor user internet history"], "a": "A", "e": "Inventory management ensures the organization knows what it owns, its age, and its location for replacement and security."},
+        {"q": "A technician needs to find the process ID (PID) of a running program in Windows. Which tool should they use?", "o": ["A. Device Manager", "B. Task Manager (Details tab)", "C. Disk Management", "D. Registry Editor"], "a": "B", "e": "The 'Details' tab in Task Manager displays the PID for every active process."},
+        {"q": "Which type of fire extinguisher is safest for use on electrical equipment fires?", "o": ["A. Class A (Water)", "B. Class B (Foam)", "C. Class C (CO2 / Dry Chemical)", "D. Class D (Metal)"], "a": "C", "e": "Class C extinguishers are non-conductive and designed specifically for electrical fires."},
+        {"q": "A user is complaining about a technician's performance to another technician. What should the second technician do?", "o": ["A. Agree with the user", "B. Defend their coworker aggressively", "C. Listen and follow the chain of command to report the concern", "D. Ignore the user"], "a": "C", "e": "Avoid office gossip or taking sides; handle complaints through professional, objective reporting channels."},
+        {"q": "Which Windows tool allows you to see the exact time and reason for a system crash or unexpected shutdown?", "o": ["A. Reliability Monitor", "B. Event Viewer", "C. Performance Monitor", "D. System Information"], "a": "B", "e": "Event Viewer's System log will record 'Critical' events like Kernel-Power errors for crashes."},
+        {"q": "Which type of script uses the extension '.sh'?", "o": ["A. Python", "B. Windows Batch", "C. Shell Script", "D. VBScript"], "a": "C", "e": ".sh is the standard extension for Unix/Linux shell scripts."},
+        {"q": "What is the purpose of an 'SOW' (Statement of Work)?", "o": ["A. To define the salary of a technician", "B. To outline the specific tasks, deliverables, and timeline for a project", "C. To list the hardware for a PC", "D. To provide a user manual"], "a": "B", "e": "An SOW is a detailed document used in project management and contracting to define expectations."},
+        {"q": "A technician is using a vacuum to clean dust out of a server. Which type of vacuum must they use?", "o": ["A. A regular household vacuum", "B. An ESD-safe vacuum", "C. A shop vac", "D. A leaf blower"], "a": "B", "e": "Standard vacuums create static electricity as dust moves through the plastic hose; ESD-safe vacuums are grounded."},
+        {"q": "Which macOS tool allows you to change system settings like wallpaper, user accounts, and notifications?", "o": ["A. Finder", "B. System Settings (formerly System Preferences)", "C. Spotlight", "D. Mission Control"], "a": "B", "e": "System Settings is the macOS equivalent of the Windows Settings app or Control Panel."},
+        {"q": "A user asks a technician to bypass a security policy just this once because they are in a hurry. What should the technician do?", "o": ["A. Bypass it to be helpful", "B. Firmly but politely decline and follow company policy", "C. Charge them for the 'service'", "D. Report the user for firing"], "a": "B", "e": "Security policies are in place for a reason; bypassing them for 'convenience' creates a vulnerability."},
+        {"q": "Which Windows tool is used to manage local printers and print queues?", "o": ["A. Device Manager", "B. Print Management", "C. Disk Management", "D. Task Manager"], "a": "B", "e": "Print Management provides a centralized console to manage all printers and drivers on a system."},
+        {"q": "What is 'Regedit' used for?", "o": ["A. To edit the Windows Registry database", "B. To register new software", "C. To edit text files", "D. To manage users"], "a": "A", "e": "Regedit is the Registry Editor, used to change low-level OS and application settings."},
+        {"q": "A technician is entering a secure server room. Which of the following is an example of 'Multi-Factor Authentication'?", "o": ["A. A password and a username", "B. A PIN and a fingerprint scan", "C. A badge and a key", "D. A retinal scan and a voice scan"], "a": "B", "e": "MFA requires different categories of factors (Something you know: PIN + Something you are: Fingerprint)."},
+        {"q": "Which Linux command is used to display the amount of space used by a specific directory?", "o": ["A. df", "B. du", "C. ls", "D. ps"], "a": "B", "e": "du (disk usage) shows the space taken by files and directories."},
+        {"q": "What is 'Software Tokenization' in MFA?", "o": ["A. Paying for software with coins", "B. Using an app (like Google Authenticator) to generate a one-time code", "C. Encrypting the software", "D. Installing software from a USB"], "a": "B", "e": "Software tokens generate Time-based One-Time Passwords (TOTP) for secure login."},
+        {"q": "Which type of license is free to use and modify, and the source code is available to the public?", "o": ["A. Proprietary", "B. Commercial", "C. Open Source", "D. Enterprise"], "a": "C", "e": "Open-source software (like Linux) allows anyone to view, change, and distribute the code."},
+        {"q": "A technician is helping a user who doesn't speak the same primary language. What should the technician do?", "o": ["A. Use a translation app or find a translator", "B. Shout to be understood", "C. Ignore the user", "D. Tell the user to learn the language"], "a": "A", "e": "Professionalism includes overcoming communication barriers respectfully."},
+        {"q": "Which Windows tool is used to view information about a computer's DirectX installation and display drivers?", "o": ["A. msinfo32", "B. dxdiag", "C. devmgmt.msc", "D. perfmon"], "a": "B", "e": "dxdiag (DirectX Diagnostic Tool) is used for troubleshooting video and sound issues."},
+        {"q": "Which Linux command is used to terminate all processes with a specific name?", "o": ["A. kill", "B. killall", "C. stop", "D. rm"], "a": "B", "e": "While 'kill' uses a PID, 'killall' uses the name of the process (e.g., 'killall firefox')."},
+        {"q": "What is the primary function of a 'Power User' in Windows?", "o": ["A. It is the same as an Administrator", "B. A legacy group with more rights than a Standard user but fewer than an Admin", "C. A user who uses a lot of electricity", "D. A user who codes"], "a": "B", "e": "Power Users is a legacy group kept for backward compatibility with older applications."},
+        {"q": "A technician is disposing of a dead smartphone. Which part must be removed and disposed of separately in an e-waste bin?", "o": ["A. The screen", "B. The motherboard", "C. The Lithium-ion battery", "D. The case"], "a": "C", "e": "Lithium-ion batteries are hazardous and can cause fires in standard trash trucks if crushed."},
+        {"q": "Which type of backup copies all files that have changed since the last full or incremental backup and clears the archive bit?", "o": ["A. Full", "B. Differential", "C. Incremental", "D. Synthetic"], "a": "C", "e": "Incremental backups reset the archive bit, meaning they only copy data changed since the VERY last backup of any kind."},
+        {"q": "An attacker sends a phishing email to a high-ranking executive (CEO). What is this specific attack called?", "o": ["A. Phishing", "B. Whaling", "C. Vishing", "D. Tailgating"], "a": "B", "e": "Whaling is a targeted phishing attack on a high-value 'big fish' target."},
+        {"q": "Which Windows tool is used to verify that a computer has a valid digital signature for its drivers?", "o": ["A. sigverif", "B. sfc", "C. chkdsk", "D. dxdiag"], "a": "A", "e": "The File Signature Verification tool (sigverif) checks for unsigned drivers which might be unstable or malicious."},
+        {"q": "What is 'Remote Desktop' (RDP) primarily used for?", "o": ["A. Watching movies remotely", "B. Allowing a user to log in and control a computer over the network as if they were sitting there", "C. Increasing internet speed", "D. Backing up files to the cloud"], "a": "B", "e": "RDP (Port 3389) allows for full remote GUI access to a machine."},
+        {"q": "Which Linux command is used to compare two files and show the differences?", "o": ["A. ls", "B. diff", "C. grep", "D. cat"], "a": "B", "e": "The 'diff' command highlights the differences between two text files."},
+        {"q": "What is the purpose of 'Physical Destruction' for a hard drive?", "o": ["A. To repair it", "B. To ensure data is 100% unrecoverable by shredding or drilling the platters", "C. To make it smaller", "D. To clean it"], "a": "B", "e": "Shredding is the most secure way to dispose of sensitive data."},
+        {"q": "Which type of script is used specifically to automate tasks in the Windows command line using old DOS-style commands?", "o": ["A. .ps1", "B. .bat", "C. .py", "D. .js"], "a": "B", "e": "Batch files (.bat) use the legacy Windows/DOS command set."},
+        {"q": "In an office, a technician sees a user's password written on a sticky note under the keyboard. What should they do?", "o": ["A. Use the password to check the user's files", "B. Ignore it", "C. Inform the user of the security risk and recommend they use a password manager", "D. Take the note and throw it away"], "a": "C", "e": "Part of being a technician is educating users on security best practices."},
+        {"q": "Which Linux command is used to install software packages in Red Hat/Fedora systems?", "o": ["A. apt-get", "B. yum / dnf", "C. install", "D. get"], "a": "B", "e": "Yum and its successor DNF are the package managers for RPM-based Linux distributions."},
+        {"q": "What is the purpose of 'UAC' (User Account Control) in Windows?", "o": ["A. To manage passwords", "B. To prevent unauthorized changes to the operating system by asking for permission", "C. To delete old accounts", "D. To monitor internet usage"], "a": "B", "e": "UAC is the prompt that pops up when a program tries to perform an action that requires administrative rights."},
+        {"q": "Which type of malware replicates itself over a network by exploiting vulnerabilities, without needing a user to run a file?", "o": ["A. Virus", "B. Worm", "C. Trojan", "D. Spyware"], "a": "B", "e": "Worms are unique because they are self-propagating and don't require human action to spread."},
+        {"q": "Which Windows tool is used to monitor the performance of the CPU, Memory, Disk, and Network in real-time with graphs?", "o": ["A. Task Manager (Performance tab)", "B. Device Manager", "C. Disk Management", "D. Event Viewer"], "a": "A", "e": "Task Manager's Performance tab provides the quickest high-level look at resource usage."},
+        {"q": "What is 'Social Engineering'?", "o": ["A. Building a better social media app", "B. Manipulating people into giving up confidential information", "C. Repairing a network", "D. Coding in a team"], "a": "B", "e": "Social engineering targets the 'human element' of security rather than technical vulnerabilities."},
+        {"q": "Which Linux command is used to edit a text file in a simple, user-friendly terminal editor?", "o": ["A. vi", "B. nano", "C. cat", "D. ls"], "a": "B", "e": "While 'vi' is powerful, 'nano' is known for being easier for beginners to use in the terminal."},
+        {"q": "What is the first thing you should do if you suspect a user's account has been compromised?", "o": ["A. Delete the account", "B. Reset the password immediately", "C. Call the police", "D. Format the hard drive"], "a": "B", "e": "Changing the password is the fastest way to lock out the attacker and regain control of the account."},
+        {"q": "A user reports that their smartphone screen is so dim they can barely see it, despite being in a dark room. Which feature is likely causing this?", "o": ["A. Auto-brightness/Adaptive brightness", "B. Airplane Mode", "C. Blue light filter", "D. High contrast mode"], "a": "A", "e": "Adaptive brightness uses the ambient light sensor. If the sensor is dirty or malfunctioning, it may dim the screen too much."},
+        {"q": "Which Windows tool should a technician use to see if a specific application is causing a 'memory leak'?", "o": ["A. Device Manager", "B. Resource Monitor", "C. Disk Management", "D. System Information"], "a": "B", "e": "Resource Monitor provides a detailed breakdown of 'Commit' and 'Working Set' memory for individual processes."},
+        {"q": "A technician is troubleshooting a 'Limited Connectivity' message on a tablet. Which of the following is the most likely cause?", "o": ["A. Bluetooth is off", "B. DHCP server is unreachable", "C. The battery is low", "D. The digitizer is failed"], "a": "B", "e": "Limited connectivity usually means the device has a local connection but no internet, often due to an APIPA address or DHCP failure."},
+        {"q": "In macOS, which tool is used to manage and repair disk permissions and partition drives?", "o": ["A. Time Machine", "B. Disk Utility", "C. Keychain Access", "D. Activity Monitor"], "a": "B", "e": "Disk Utility is the go-to tool for managing volumes, formatting, and running 'First Aid' on drives."},
+        {"q": "Which Linux command is used to display the first 10 lines of a file?", "o": ["A. tail", "B. head", "C. cat", "D. more"], "a": "B", "e": "The 'head' command displays the beginning of a file."},
+        {"q": "A user gets a certificate error when visiting a legitimate bank website. What should the technician check first?", "o": ["A. The router", "B. The system date and time", "C. The RAM", "D. The power supply"], "a": "B", "e": "Security certificates are time-sensitive. If the computer's clock is wrong, the certificate will appear invalid."},
+        {"q": "Which type of script uses the extension '.py'?", "o": ["A. PowerShell", "B. JavaScript", "C. Python", "D. VBScript"], "a": "C", "e": ".py is the standard extension for Python scripts."},
+        {"q": "What is the purpose of a 'Rootkit'?", "o": ["A. To show ads", "B. To gain and maintain hidden, administrative-level access to a system", "C. To encrypt files for ransom", "D. To track keystrokes"], "a": "B", "e": "Rootkits subvert the OS to hide their presence, often modifying core system files."},
+        {"q": "A technician wants to see all hidden files in a Linux directory. Which command should they use?", "o": ["A. ls", "B. ls -a", "C. ls -h", "D. ls -l"], "a": "B", "e": "The '-a' (all) flag in Linux shows hidden files, which start with a dot (.)."},
+        {"q": "Which Windows 11 feature allows you to organize open windows into specific pre-defined layouts on the screen?", "o": ["A. Snap Layouts", "B. Task View", "C. Virtual Desktops", "D. Focus Assist"], "a": "A", "e": "Snap Layouts (hovering over the maximize button) is a productivity feature in Windows 11."},
+        {"q": "An employee's mobile device is stolen. Which MDM feature allows the company to delete ONLY corporate data while leaving personal photos intact?", "o": ["A. Full Wipe", "B. Selective Wipe / Partial Wipe", "C. Geofencing", "D. Device Lock"], "a": "B", "e": "Selective wipe is used in BYOD (Bring Your Own Device) environments to protect corporate data without deleting personal info."},
+        {"q": "Which command-line tool in Windows is used to manage and troubleshoot DNS records?", "o": ["A. ipconfig", "B. ping", "C. nslookup", "D. netstat"], "a": "C", "e": "nslookup queries DNS servers directly to verify name resolution."},
+        {"q": "A technician is following the 7-step malware removal process. Which step involves turning off System Restore?", "o": ["A. Step 1: Identify", "B. Step 3: Disable System Restore", "C. Step 5: Schedule scans", "D. Step 7: Educate user"], "a": "B", "e": "Disabling System Restore prevents the virus from 'hiding' in a backup point and reappearing after a clean."},
+        {"q": "Which type of social engineering involves an attacker pretending to be someone of authority to gain information?", "o": ["A. Tailgating", "B. Impersonation", "C. Shoulder Surfing", "D. Dumpster Diving"], "a": "B", "e": "Impersonation relies on the victim's willingness to help or fear of an authority figure."},
+        {"q": "What is the result of the 'mv file1.txt file2.txt' command in Linux?", "o": ["A. It copies the file", "B. It renames file1.txt to file2.txt", "C. It deletes file1.txt", "D. It moves the file to a different drive"], "a": "B", "e": "In Linux, 'mv' is used for both moving and renaming files."},
+        {"q": "Which Windows tool provides a centralized view of the computer's performance, including CPU, RAM, and Disk throughput graphs?", "o": ["A. Performance Monitor", "B. System Configuration", "C. Device Manager", "D. Computer Management"], "a": "A", "e": "Performance Monitor (perfmon.msc) allows for detailed, long-term tracking of system resources."},
+        {"q": "A technician is helping a user set up a 'Passkey'. What is a passkey primarily designed to replace?", "o": ["A. The VPN", "B. Traditional Passwords", "C. Antivirus", "D. The Firewall"], "a": "B", "e": "Passkeys use biometrics or device PINs to provide a more secure, password-less login experience."},
+        {"q": "Which Linux command is used to display the last few entries of the system log?", "o": ["A. head", "B. cat", "C. tail /var/log/syslog", "D. ls"], "a": "C", "e": "The 'tail' command is perfect for viewing the most recent events in a log file."},
+        {"q": "A user's Windows PC keeps booting into a 'Temporary Profile'. What is the most likely cause?", "o": ["A. The hard drive is full", "B. The user's local profile folder is corrupted", "C. The monitor is failing", "D. The RAM is bad"], "a": "B", "e": "Corrupt registry entries or profile folders force Windows to create a temporary, non-saving profile."},
+        {"q": "Which type of malware spreads by itself through network connections without requiring a host file?", "o": ["A. Virus", "B. Worm", "C. Trojan", "D. Spyware"], "a": "B", "e": "Worms are unique because they are self-replicating and network-aware."},
+        {"q": "A technician is writing a script and needs to use a loop. Which type of script is most likely being used if it starts with '$' for variables?", "o": ["A. Batch", "B. PowerShell", "C. VBScript", "D. HTML"], "a": "B", "e": "PowerShell uses the dollar sign ($) to denote variables."},
+        {"q": "What is the purpose of 'Sandboxing' in security?", "o": ["A. To speed up the OS", "B. To run a program in an isolated environment to prevent it from affecting the rest of the system", "C. To clean the hard drive", "D. To backup data"], "a": "B", "e": "Sandboxing limits the 'blast radius' of potentially malicious code."},
+        {"q": "Which Windows utility is used to unregister and register DLL (Dynamic Link Library) files?", "o": ["A. regedit", "B. regsvr32", "C. sfc", "D. msconfig"], "a": "B", "e": "regsvr32 is used to register/unregister DLLs and ActiveX controls."},
+        {"q": "An attacker uses a wireless sniffer to capture unencrypted data packets. What type of attack is this?", "o": ["A. DoS", "B. Eavesdropping / Sniffing", "C. Brute Force", "D. Ransomware"], "a": "B", "e": "Sniffing captures data 'in flight'—this is why encryption (VPN/HTTPS) is critical."},
+        {"q": "In a Linux terminal, which command allows you to change your current directory?", "o": ["A. ls", "B. mv", "C. cd", "D. pwd"], "a": "C", "e": "cd stands for 'change directory.'"},
+        {"q": "Which Windows 10/11 tool is used to manage 'Storage Spaces' (software RAID)?", "o": ["A. Disk Management", "B. Control Panel > Storage Spaces", "C. Device Manager", "D. msconfig"], "a": "B", "e": "Storage Spaces is a separate utility for creating redundant pools of drives."},
+        {"q": "What is 'Degaussing'?", "o": ["A. Cleaning a mouse", "B. Using a powerful magnet to destroy data on a magnetic hard drive", "C. Updating a driver", "D. Testing a Wi-Fi signal"], "a": "B", "e": "Degaussing is a secure disposal method for magnetic media like HDDs and tapes."},
+        {"q": "Which macOS feature allows you to use your iPad as a second monitor for your Mac?", "o": ["A. AirDrop", "B. Sidecar", "C. Handoff", "D. Continuity"], "a": "B", "e": "Sidecar is the specific feature for using an iPad as an extended display."},
+        {"q": "A technician is troubleshooting a 'Black Screen' on boot. They can hear the Windows startup sound. What should they do?", "o": ["A. Reinstall Windows", "B. Check the monitor cables or press Win+Ctrl+Shift+B to reset the graphics driver", "C. Replace the PSU", "D. Clear the CMOS"], "a": "B", "e": "If you hear the sound, the OS has loaded; the issue is purely visual/display-related."},
+        {"q": "What is the primary function of a Proxy Server?", "o": ["A. To speed up the CPU", "B. To act as an intermediary for requests from clients seeking resources from other servers", "C. To encrypt the hard drive", "D. To act as a DHCP server"], "a": "B", "e": "Proxies can be used for anonymity, security filtering, or caching content."},
+        {"q": "Which Windows command is used to list all the files and subdirectories in the current directory?", "o": ["A. ls", "B. dir", "C. list", "D. cat"], "a": "B", "e": "'dir' is the Windows equivalent of the Linux 'ls' command."},
+        {"q": "A user's laptop was stolen. The technician wants to ensure that even if the thief removes the hard drive, the data is unreadable. What should have been enabled?", "o": ["A. BIOS Password", "B. BitLocker (Full Disk Encryption)", "C. Windows Firewall", "D. Strong User Password"], "a": "B", "e": "Full disk encryption protects the data even if the physical drive is moved to another computer."},
+        {"q": "Which Linux command is used to display the computer's name?", "o": ["A. whoami", "B. hostname", "C. name", "& D. ip addr"], "a": "B", "e": "'hostname' tells you the network name of the machine."},
+        {"q": "Which type of social engineering involves an attacker leaving a malware-infected USB drive in a public place?", "o": ["A. Phishing", "B. Baiting", "C. Vishing", "D. Tailgating"], "a": "B", "e": "Baiting uses the victim's curiosity against them."},
+        {"q": "What is 'Safe Mode with Networking'?", "o": ["A. A mode for gaming", "B. A diagnostic mode that loads only essential drivers plus network drivers", "C. A mode that makes the internet faster", "D. A mode for downloading viruses"], "a": "B", "e": "Safe Mode with Networking is used when you need to download a repair tool or update drivers in a minimal environment."},
+        {"q": "Which macOS tool stores website passwords and WiFi keys?", "o": ["A. Keychain Access", "B. iCloud Drive", "C. Spotlight", "D. Finder"], "a": "A", "e": "Keychain is the centralized encrypted database for all macOS credentials."},
+        {"q": "A technician is dealing with a 'Kernel Panic' on a Linux system. This is equivalent to what on Windows?", "o": ["A. Task Manager closing", "B. Blue Screen of Death (BSOD)", "C. A slow internet connection", "D. Low disk space warning"], "a": "B", "e": "A Kernel Panic is a critical system error from which the OS cannot recover."},
+        {"q": "Which Windows tool is used to configure 'Offline Files'?", "o": ["A. Sync Center", "B. Device Manager", "C. Disk Management", "D. Task Manager"], "a": "A", "e": "Sync Center allows users to keep copies of network files on their local machine for use when disconnected."},
+        {"q": "What is the purpose of 'Two-Factor Authentication' (2FA)?", "o": ["A. To make it harder to remember passwords", "B. To require a second form of identity (like a code) in addition to a password", "C. To use two different computers", "D. To use two different Wi-Fi networks"], "a": "B", "e": "2FA significantly reduces the risk of account takeover from stolen passwords."},
+        {"q": "Which Linux command is used to count the number of lines, words, and characters in a file?", "o": ["A. count", "B. wc", "C. grep", "D. ls"], "a": "B", "e": "wc stands for 'word count.'"},
+        {"q": "What is 'Remote Assistance' in Windows?", "o": ["A. A way to call IT", "B. A tool that allows a technician to view/control a user's screen while they are logged in", "C. A cloud backup service", "D. An automated help menu"], "a": "B", "e": "Unlike RDP (which kicks the user off), Remote Assistance is a collaborative support tool."},
+        {"q": "Which type of malware records every key you press on your keyboard?", "o": ["A. Ransomware", "B. Keylogger", "C. Trojan", "D. Rootkit"], "a": "B", "e": "Keyloggers are used to steal sensitive data like passwords and credit card numbers."},
+        {"q": "Which Windows tool allows a technician to see a list of all currently running services and their status?", "o": ["A. services.msc", "B. regedit", "C. msconfig", "D. dxdiag"], "a": "A", "e": "The Services console (services.msc) is the main management point for background processes."},
+        {"q": "What is 'Social Engineering' primarily based on?", "o": ["A. Computer vulnerabilities", "B. Human psychology and manipulation", "C. Network speed", "D. Hardware failure"], "a": "B", "e": "Social engineering targets people, not technology."},
+        {"q": "Which Linux command allows a user to assume the identity of another user, usually the root user?", "o": ["A. sudo", "B. su", "C. admin", "D. login"], "a": "B", "e": "su (substitute user) switches the user account in the current shell."},
+        {"q": "What is the purpose of 'Windows Defender'?", "o": ["A. To defend against fire", "B. To provide real-time protection against viruses and malware", "C. To backup the system", "D. To clean the registry"], "a": "B", "e": "Windows Defender (Microsoft Defender) is the built-in antivirus/anti-malware suite."},
+        {"q": "Which macOS feature allows for the easy transfer of files between Apple devices using Wi-Fi and Bluetooth?", "o": ["A. iCloud", "B. AirDrop", "C. Sidecar", "D. Handoff"], "a": "B", "e": "AirDrop is a peer-to-peer file-sharing service."},
+        {"q": "A technician wants to see which user is logged in to a remote Windows machine. Which command-line tool should they use?", "o": ["A. ipconfig", "B. qwinsta / query session", "C. ping", "D. nslookup"], "a": "B", "e": "The query session (qwinsta) command shows who is currently logged into a Windows system."},
+        {"q": "What is a 'Botnet'?", "o": ["A. A group of robots", "B. A network of infected 'zombie' computers controlled by a single attacker", "C. A faster type of internet", "D. A type of firewall"], "a": "B", "e": "Botnets are often used to launch massive DDoS attacks."},
+        {"q": "Which Linux command is used to show how long the system has been running?", "o": ["A. time", "B. uptime", "C. date", "D. top"], "a": "B", "e": "The 'uptime' command shows the current time, how long the system has been running, and the load average."},
+        {"q": "Which type of script is commonly used in Windows to perform advanced administrative tasks and uses the '.ps1' extension?", "o": ["A. Bash", "B. VBScript", "C. PowerShell", "D. JavaScript"], "a": "C", "e": "PowerShell is the modern administrative scripting language for Windows."},
+        {"q": "A technician is following 'Chain of Custody' procedures. What is the primary goal?", "o": ["A. To repair the computer", "B. To track evidence to ensure it remains untampered with", "C. To save electricity", "D. To install a new OS"], "a": "B", "e": "Chain of Custody is a chronological record of who handled physical or digital evidence."},
+        {"q": "Which document describes the safe handling and disposal of hazardous materials like lead-acid batteries?", "o": ["A. EULA", "B. SOW", "C. SDS (Safety Data Sheet)", "D. MOU"], "a": "C", "e": "The SDS (formerly MSDS) provides safety and disposal instructions for hazardous substances."},
+        {"q": "Which Linux command is used to display the first 10 lines of a text file?", "o": ["A. tail", "B. head", "C. cat", "D. ls"], "a": "B", "e": "The 'head' command prints the beginning of a file, while 'tail' prints the end."},
+        {"q": "A user's computer is displaying pop-ups that claim the system is infected and demand payment to fix it. This is a form of:", "o": ["A. Spyware", "B. Scareware", "C. Worm", "D. Rootkit"], "a": "B", "e": "Scareware uses fear (fake warnings) to trick users into paying for useless or harmful software."},
+        {"q": "Which Windows tool allows a technician to manage local user accounts and groups on a non-domain machine?", "o": ["A. Active Directory", "B. lusrmgr.msc", "C. gpedit.msc", "D. msconfig"], "a": "B", "e": "Local Users and Groups (lusrmgr.msc) is the standard tool for local account management."},
+        {"q": "Which of the following is a primary characteristic of the 'Grandfather-Father-Son' backup rotation?", "o": ["A. It only uses cloud storage", "B. It uses a tiered schedule of daily, weekly, and monthly backups", "C. It deletes data immediately", "D. It is only for Linux"], "a": "B", "e": "This is a common rotation scheme for balancing long-term retention with daily recovery."},
+        {"q": "In a professional setting, what is the best way to handle a user who is complaining about a previous technician?", "o": ["A. Agree with the user", "B. Defend the technician aggressively", "C. Listen and focus on solving the current problem professionally", "D. Walk away"], "a": "C", "e": "Avoid office politics and gossip; maintain focus on the technical task and professional demeanor."},
+        {"q": "Which macOS tool allows you to search for files, applications, and system settings simultaneously?", "o": ["A. Finder", "B. Spotlight", "C. Time Machine", "D. Safari"], "a": "B", "e": "Spotlight (Cmd + Space) is the universal search engine for macOS."},
+        {"q": "Which Linux command is used to search for specific text patterns inside a file?", "o": ["A. find", "B. locate", "C. grep", "D. ls"], "a": "C", "e": "grep (Global Regular Expression Print) is the standard text-searching utility in Linux."},
+        {"q": "What is the purpose of 'Network Access Control' (NAC)?", "o": ["A. To speed up the internet", "B. To verify a device's health and identity before allowing it on the network", "C. To delete files", "D. To act as a DHCP server"], "a": "B", "e": "NAC ensures that only authorized and compliant devices (e.g., has antivirus) can connect."},
+        {"q": "Which type of license allows a user to install software on an unlimited number of computers within one building?", "o": ["A. Personal", "B. Site License", "C. OEM", "D. Subscription"], "a": "B", "e": "A site license covers an entire location or organization regardless of the number of users."},
+        {"q": "Which Windows command displays the computer's 'Physical Address' (MAC address)?", "o": ["A. ipconfig", "B. ipconfig /all", "C. netstat", "D. ping"], "a": "B", "e": "The '/all' switch provides detailed adapter info including the hardware (MAC) address."},
+        {"q": "What is 'Spear Phishing'?", "o": ["A. A broad attack on everyone", "B. A phishing attack targeted at a specific individual or department", "C. A phone-based attack", "D. A physical security breach"], "a": "B", "e": "Spear phishing is personalized to make the scam more believable to a specific target."},
+        {"q": "Which Linux command is used to change your current working directory?", "o": ["A. pwd", "B. ls", "C. cd", "D. mv"], "a": "C", "e": "cd (change directory) is used to navigate the file system."},
+        {"q": "A technician is writing a script. Which extension is used for a Python script?", "o": ["A. .ps1", "B. .sh", "C. .py", "D. .vbs"], "a": "C", "e": ".py is the standard extension for Python code."},
+        {"q": "Which type of malware installs itself 'between' the hardware and the OS to remain hidden?", "o": ["A. Trojan", "B. Worm", "C. Rootkit", "D. Adware"], "a": "C", "e": "Rootkits target the boot process or firmware to avoid detection by standard antivirus."},
+        {"q": "What is the primary function of a 'Power User' in Windows?", "o": ["A. Administrative control", "B. Legacy account with more rights than Standard but fewer than Admin", "C. High electricity usage", "D. Gaming"], "a": "B", "e": "The Power Users group is largely a legacy feature for backward compatibility."},
+        {"q": "Which command-line tool in Windows is used to view all active processes and their PIDs?", "o": ["A. tasklist", "B. taskmgr", "C. netstat", "D. dir"], "a": "A", "e": "tasklist displays a list of currently running processes in the command prompt."},
+        {"q": "What is 'Social Engineering'?", "o": ["A. Building a network", "B. Manipulating people into revealing confidential information", "C. Coding an app", "D. Fixing hardware"], "a": "B", "e": "Social engineering targets the human element rather than technical software bugs."},
+        {"q": "Which macOS tool allows for full system backups and 'point-in-time' file recovery?", "o": ["A. Disk Utility", "B. Time Machine", "C. Keychain", "D. Spotlight"], "a": "B", "e": "Time Machine is the automated backup solution for macOS."},
+        {"q": "What is the result of 'chmod 700' on a file in Linux?", "o": ["A. Everyone can read it", "B. Only the owner has full permissions; others have none", "C. The file is deleted", "D. The file is hidden"], "a": "B", "e": "7 (Read/Write/Execute) for the owner, 0 for Group, and 0 for Others."},
+        {"q": "Which Windows power mode saves the current session to the hard drive and uses NO power?", "o": ["A. Sleep", "B. Standby", "C. Hibernate", "D. Balanced"], "a": "C", "e": "Hibernate writes the RAM to disk (hiberfil.sys) and powers off the machine."},
+        {"q": "Which type of threat involves an attacker following an authorized user into a building without a badge?", "o": ["A. Phishing", "B. Tailgating", "C. Vishing", "D. Spoofing"], "a": "B", "e": "Tailgating (piggybacking) is a physical security breach relying on social courtesy."},
+        {"q": "Which Windows tool is used to edit the Registry?", "o": ["A. msconfig", "B. regedit", "C. services.msc", "D. tasklist"], "a": "B", "e": "Registry Editor (regedit) is used to modify the OS configuration database."},
+        {"q": "A technician needs to kill a process in Linux using its name. Which command should they use?", "o": ["A. kill", "B. killall", "C. end", "D. taskkill"], "a": "B", "e": "killall uses the process name (e.g., firefox), while kill requires a PID."},
+        {"q": "Which security principle ensures that users have only the permissions required to do their job?", "o": ["A. MFA", "B. Least Privilege", "C. SSO", "D. ACL"], "a": "B", "e": "Least Privilege minimizes potential damage from compromised accounts."},
+        {"q": "Which Windows 11 feature allows a user to create multiple separate 'virtual' desktops?", "o": ["A. Snap Layouts", "B. Task View / Virtual Desktops", "C. Focus Assist", "D. Widgets"], "a": "B", "e": "Virtual Desktops allow users to organize different sets of apps on separate screens."},
+        {"q": "What is 'WPA3'?", "o": ["A. A printer model", "B. The most modern Wi-Fi encryption standard", "C. A file system", "D. A type of RAM"], "a": "B", "e": "WPA3 is the current and most secure wireless encryption standard for Wi-Fi."},
+        {"q": "Which Linux command displays the amount of free and used disk space?", "o": ["A. free", "B. df", "C. du", "D. ls"], "a": "B", "e": "df (disk free) shows the usage of the entire file system."},
+        {"q": "A user's browser is constantly redirected to a different search engine. This is a symptom of:", "o": ["A. Ransomware", "B. Browser Hijacking", "C. Rootkit", "D. Hardware failure"], "a": "B", "e": "Browser hijackers change user settings to drive traffic to specific sites."},
+        {"q": "What is the purpose of 'AUP'?", "o": ["A. To backup files", "B. To define acceptable ways company technology can be used", "C. To license software", "D. To install updates"], "a": "B", "e": "The Acceptable Use Policy outlines what employees can and cannot do on work devices."},
+        {"q": "Which Windows command-line utility provides information about the path a packet takes to a destination?", "o": ["A. ping", "B. tracert", "C. ipconfig", "D. netstat"], "a": "B", "e": "tracert (traceroute) identifies every router (hop) between you and the destination."},
+        {"q": "Which Linux command allows a user to run a single command with root privileges?", "o": ["A. su", "B. sudo", "C. root", "D. admin"], "a": "B", "e": "sudo (superuser do) executes a command with elevated rights."},
+        {"q": "What is 'DLP' (Data Loss Prevention)?", "o": ["A. A backup tool", "B. Software used to prevent sensitive data from leaving the network", "C. A way to delete data", "D. A screen tech"], "a": "B", "e": "DLP monitors data 'in motion' to prevent leaks of PII or corporate secrets."},
+        {"q": "Which macOS tool is used for basic disk repairs and formatting?", "o": ["A. Time Machine", "B. Disk Utility", "C. Terminal", "D. Finder"], "a": "B", "e": "Disk Utility handles disk maintenance and partitioning for Mac users."},
+        {"q": "A user receives a text message asking for their credit card info. This is:", "o": ["A. Phishing", "B. Vishing", "C. Smishing", "D. Whaling"], "a": "C", "e": "Smishing is Phishing via SMS (text message)."},
+        {"q": "Which Windows tool allows you to schedule scripts to run at specific times?", "o": ["A. Task Manager", "B. Task Scheduler", "C. msconfig", "D. Computer Management"], "a": "B", "e": "Task Scheduler manages automated, event-based, and time-based triggers."},
+        {"q": "Which type of malware records every keystroke made by the user?", "o": ["A. Trojan", "B. Keylogger", "C. Worm", "D. Virus"], "a": "B", "e": "Keyloggers are used to capture passwords and sensitive personal information."},
+        {"q": "What is the primary benefit of 'SSO' (Single Sign-On)?", "o": ["A. It makes passwords longer", "B. It allows a user to log in once to access multiple applications", "C. It speeds up the CPU", "D. It replaces MFA"], "a": "B", "e": "SSO improves user experience and security by reducing the number of passwords to manage."},
+        {"q": "Which Linux command displays the current user's identity?", "o": ["A. pwd", "B. whoami", "C. id", "D. ls"], "a": "B", "e": "whoami prints the username of the current session."},
+        {"q": "What is 'BitLocker'?", "o": ["A. A screen lock", "B. Full-disk encryption for Windows", "C. A file compression tool", "& D. An antivirus"], "a": "B", "e": "BitLocker encrypts the entire drive to protect data if the device is lost or stolen."},
+        {"q": "Which Windows tool is used to repair corrupted system files?", "o": ["A. chkdsk", "B. sfc /scannow", "C. bootrec", "D. ipconfig"], "a": "B", "e": "SFC (System File Checker) scans and repairs integrity issues in protected system files."},
+        {"q": "Which type of attack uses a precomputed table of hashes to crack passwords?", "o": ["A. Brute Force", "B. Dictionary", "C. Rainbow Table", "D. Man-in-the-Middle"], "a": "C", "e": "Rainbow tables allow attackers to quickly look up passwords based on their hash values."},
+        {"q": "Which Linux command is used to delete a file?", "o": ["A. del", "B. rm", "C. erase", "D. mv"], "a": "B", "e": "rm (remove) is the standard command for deleting files and directories."},
+        {"q": "What is 'Pharming'?", "o": ["A. Stealing farm data", "B. Redirecting users to a fake website by poisoning DNS", "C. Sending fake emails", "D. Using a phone to scam"], "a": "B", "e": "Pharming redirects traffic to malicious sites even if the correct URL is typed."},
+        {"q": "Which tool would you use to change the boot order in Windows?", "o": ["A. Task Manager", "B. System Configuration (msconfig)", "C. Disk Management", "D. Device Manager"], "a": "B", "e": "msconfig allows you to manage boot settings and startup services."},
+        {"q": "Which type of script uses the '.sh' extension?", "o": ["A. Python", "B. JavaScript", "C. Shell Script", "D. Batch File"], "a": "C", "e": ".sh is the standard extension for Unix/Linux shell scripts."},
+        {"q": "What is the primary function of a 'Firewall'?", "o": ["A. To speed up the PC", "B. To filter incoming and outgoing network traffic", "C. To backup data", "D. To act as a web browser"], "a": "B", "e": "Firewalls block or allow traffic based on a set of security rules."},
+        {"q": "Final step of the CompTIA Troubleshooting Theory?", "o": ["A. Identify the problem", "B. Document findings, actions, and outcomes", "C. Verify system functionality", "D. Establish a theory"], "a": "B", "e": "Documentation is the final, critical step to ensure future issues can be solved faster."}
+];
+
+    let currentExam = [];
+    let currentIndex = 0;
+    let score = 0;
+
+    function startExam() {
+        // Randomly shuffle and pick 75
+        currentExam = questions.sort(() => 0.5 - Math.random()).slice(0, 75);
+        showQuestion();
+    }
+
+    function showQuestion() {
+        const q = currentExam[currentIndex];
+        const percent = ((currentIndex) / currentExam.length) * 100;
+        document.getElementById('progress').innerText = `Question ${currentIndex + 1} of 75`;
+        document.getElementById('question-text').innerText = q.q;
+        document.getElementById('explanation').style.display = 'none';
+        document.getElementById('next-btn').style.display = 'none';
+        
+        const container = document.getElementById('options-container');
+        container.innerHTML = '';
+        
+        q.o.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'option-btn';
+            btn.innerText = opt;
+            btn.onclick = () => checkAnswer(opt[0], q.a, q.e);
+            container.appendChild(btn);
+        });
+    }
+
+    function checkAnswer(selected, correct, exp) {
+        const buttons = document.querySelectorAll('.option-btn');
+        buttons.forEach(b => b.disabled = true);
+        
+        const explanationDiv = document.getElementById('explanation');
+        explanationDiv.style.display = 'block';
+        
+        if (selected === correct) {
+            explanationDiv.innerHTML = `<span style="color:green; font-weight:bold;">Correct!</span>`;
+            score++;
+        } else {
+            explanationDiv.innerHTML = `<span style="color:red; font-weight:bold;">Incorrect.</span> Correct answer was ${correct}.<br><br><strong>Note:</strong> ${exp}`;
+        }
+        document.getElementById('next-btn').style.display = 'block';
+    }
+
+    function nextQuestion() {
+        currentIndex++;
+        if (currentIndex < currentExam.length) {
+            showQuestion();
+        } else {
+            document.getElementById('question-text').style.display = 'none';
+            document.getElementById('options-container').style.display = 'none';
+            document.getElementById('explanation').style.display = 'none';
+            document.getElementById('next-btn').style.display = 'none';
+            document.getElementById('final-score').style.display = 'block';
+            document.getElementById('score-display').innerText = `${score} / 75 (${((score/75)*100).toFixed(1)}%)`;
+        }
+    }
+
+    startExam();
+        function toggleTheme() {
+         document.body.classList.toggle('dark-mode');
+    // Save preference to the browser
+    const isDark = document.body.classList.contains('dark-mode');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+}
+
+// Check for saved theme on load
+if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark-mode');
+}
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js')
+    .then(() => console.log('Service Worker Registered'))
+    .catch(err => console.log('Service Worker Failed', err));
+}
+</script>
+</body>
+</html>

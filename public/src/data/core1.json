@@ -1,0 +1,3578 @@
+[
+  {
+    "id": 1,
+    "question": "A company is upgrading its wireless network and wants client devices to use the less congested 6 GHz spectrum instead of only 2.4 GHz or 5 GHz. Which wireless standard should the technician deploy?",
+    "options": [
+      "A. 802.11ac",
+      "B. 802.11ax (Wi-Fi 6E)",
+      "C. 802.11n",
+      "D. 802.11g"
+    ],
+    "answer": "B",
+    "explanation": "Wi-Fi 6E extends 802.11ax into the 6 GHz band. That gives compatible devices access to additional spectrum with less interference than the older 2.4 GHz and 5 GHz bands."
+  },
+  {
+    "id": 2,
+    "question": "Which connector is the universal standard for power/data in modern laptops?",
+    "options": [
+      "A. USB Type-A",
+      "B. Lightning",
+      "C. USB-C",
+      "D. DB-9"
+    ],
+    "answer": "C",
+    "explanation": "USB-C is the 1201 standard for modern connectivity, supporting Power Delivery and Alt Mode for video."
+  },
+  {
+    "id": 3,
+    "question": "A company-issued smartphone is reported lost. The security team wants to enforce passcode rules and remotely wipe the device if it is not recovered. Which technology should be used?",
+    "options": [
+      "A. VPN",
+      "B. MDM",
+      "C. MAM",
+      "D. IDS"
+    ],
+    "answer": "B",
+    "explanation": "Mobile Device Management (MDM) lets administrators enforce security policies, track devices, and remotely wipe lost or stolen mobile endpoints."
+  },
+  {
+    "id": 4,
+    "question": "A technician needs secure remote command-line access to a Linux server over the network. Which destination port should be allowed through the firewall?",
+    "options": [
+      "A. 21",
+      "B. 22",
+      "C. 23",
+      "D. 80"
+    ],
+    "answer": "B",
+    "explanation": "SSH uses TCP port 22 by default for encrypted remote terminal access. Telnet uses port 23, but it is insecure because it does not protect credentials and session data."
+  },
+  {
+    "id": 5,
+    "question": "A technician is upgrading a modern desktop motherboard that supports the newest mainstream system memory standard. Which RAM type should be installed?",
+    "options": [
+      "A. DDR3",
+      "B. DDR4",
+      "C. DDR5",
+      "D. GDDR6"
+    ],
+    "answer": "C",
+    "explanation": "DDR5 is the newest mainstream system RAM generation covered on the exam. GDDR6 is graphics memory, while DDR3 and DDR4 are older desktop memory standards."
+  },
+  {
+    "id": 6,
+    "question": "What type of SIM is built into the device and doesn't use a card?",
+    "options": [
+      "A. Smart Card",
+      "B. eSIM",
+      "C. SD Card",
+      "D. NFC"
+    ],
+    "answer": "B",
+    "explanation": "eSIM is an embedded digital SIM that allows cellular activation without a physical card."
+  },
+  {
+    "id": 7,
+    "question": "A company wants to rent cloud infrastructure but still manage its own operating systems, virtual machines, and installed software. Which cloud model best fits that requirement?",
+    "options": [
+      "A. SaaS",
+      "B. PaaS",
+      "C. IaaS",
+      "D. DaaS"
+    ],
+    "answer": "C",
+    "explanation": "Infrastructure as a Service provides the customer with virtualized compute, storage, and networking while still leaving the customer in control of the OS and software stack."
+  },
+  {
+    "id": 8,
+    "question": "What DHCP feature prevents the server from assigning a specific range?",
+    "options": [
+      "A. Scope",
+      "B. Lease",
+      "C. Exclusion",
+      "D. Reservation"
+    ],
+    "answer": "C",
+    "explanation": "Exclusions ensure the DHCP server doesn't hand out IPs reserved for static devices like printers."
+  },
+  {
+    "id": 9,
+    "question": "Which motherboard expansion slot is used for high-speed NVMe SSDs?",
+    "options": [
+      "A. PCIe x1",
+      "B. M.2",
+      "C. SATA 3",
+      "D. AGP"
+    ],
+    "answer": "B",
+    "explanation": "The M.2 slot is the standard physical interface for modern NVMe solid-state drives."
+  },
+  {
+    "id": 10,
+    "question": "A user says their laptop suddenly cannot reach the network, and the technician has not investigated yet. According to the CompTIA troubleshooting methodology, what should the technician do first?",
+    "options": [
+      "A. Establish a theory of probable cause",
+      "B. Identify the problem",
+      "C. Test the theory to determine cause",
+      "D. Verify full system functionality"
+    ],
+    "answer": "B",
+    "explanation": "The first troubleshooting step is to identify the problem by gathering information, questioning the user, and observing symptoms before jumping to theories or fixes."
+  },
+  {
+    "id": 11,
+    "question": "A company upgrades to Wi-Fi 6E so compatible devices can use newer spectrum with less interference than the traditional bands. Which frequency band was added for Wi-Fi 6E?",
+    "options": [
+      "A. 2.4 GHz",
+      "B. 5.0 GHz",
+      "C. 6.0 GHz",
+      "D. 60 GHz"
+    ],
+    "answer": "C",
+    "explanation": "Wi-Fi 6E extends 802.11ax into the 6 GHz band. That additional spectrum helps reduce congestion compared with relying only on 2.4 GHz and 5 GHz."
+  },
+  {
+    "id": 12,
+    "question": "A data center server is dedicated to virtualization and runs the hypervisor directly on the hardware instead of inside a host operating system. What type of hypervisor is this?",
+    "options": [
+      "A. Type 2",
+      "B. Type 1",
+      "C. VirtualBox",
+      "D. Client-side"
+    ],
+    "answer": "B",
+    "explanation": "A Type 1 hypervisor runs directly on bare-metal hardware, which is why it is commonly used in enterprise virtualization platforms such as Hyper-V Server and ESXi."
+  },
+  {
+    "id": 13,
+    "question": "Which DHCP feature maps a specific MAC address to a specific IP?",
+    "options": [
+      "A. Scope",
+      "B. Lease",
+      "C. Reservation",
+      "D. Exclusion"
+    ],
+    "answer": "C",
+    "explanation": "A DHCP Reservation ensures a specific device always gets the same IP address based on its MAC."
+  },
+  {
+    "id": 14,
+    "question": "Which cloud model is best for developers to build apps without managing servers?",
+    "options": [
+      "A. IaaS",
+      "B. SaaS",
+      "C. DaaS",
+      "D. PaaS"
+    ],
+    "answer": "D",
+    "explanation": "Platform as a Service (PaaS) provides the tools and environment for development without server management."
+  },
+  {
+    "id": 15,
+    "question": "A technician is installing memory into a desktop motherboard that supports DDR5. Which module type is the correct match for that system?",
+    "options": [
+      "A. DDR4 DIMM",
+      "B. DDR5 SODIMM",
+      "C. DDR5 DIMM",
+      "D. DDR3 DIMM"
+    ],
+    "answer": "C",
+    "explanation": "A desktop DDR5 motherboard uses DDR5 DIMMs. SODIMMs are typically used in laptops, and older DDR3 or DDR4 modules are not compatible with DDR5 slots."
+  },
+  {
+    "id": 16,
+    "question": "Which RAM form factor is used in modern ultra-thin laptops?",
+    "options": [
+      "A. DIMM",
+      "B. SODIMM",
+      "C. ECC",
+      "D. Buffered"
+    ],
+    "answer": "B",
+    "explanation": "SODIMMs are the standard smaller RAM modules designed for laptops and SFF PCs."
+  },
+  {
+    "id": 17,
+    "question": "What describes measuring data transferred out of the cloud for billing?",
+    "options": [
+      "A. Ingress",
+      "B. Egress metering",
+      "C. Rapid elasticity",
+      "D. Pooling"
+    ],
+    "answer": "B",
+    "explanation": "Egress metering is the tracking of data leaving the cloud, often a primary cost in cloud billing."
+  },
+  {
+    "id": 18,
+    "question": "A user connects a USB-C laptop to an external monitor with a USB-C video adapter. Which USB-C capability allows that port to carry native video output?",
+    "options": [
+      "A. Power Delivery",
+      "B. DisplayPort Alt Mode",
+      "C. Thunderbolt 2",
+      "D. VGA Mode"
+    ],
+    "answer": "B",
+    "explanation": "DisplayPort Alt Mode allows a USB-C port to transmit video over the connector. Power Delivery handles charging, and VGA Mode is not a real USB-C standard feature."
+  },
+  {
+    "id": 19,
+    "question": "A technician wants a network device that learns MAC addresses and forwards frames only out the correct port instead of repeating traffic everywhere. Which device should be used?",
+    "options": [
+      "A. Hub",
+      "B. Bridge",
+      "C. Switch",
+      "D. Router"
+    ],
+    "answer": "C",
+    "explanation": "A switch maintains a MAC address table and forwards Layer 2 traffic only where it needs to go. A hub just repeats traffic, and a router makes Layer 3 forwarding decisions based on IP addresses."
+  },
+  {
+    "id": 20,
+    "question": "A laptop screen appears black, but when a technician shines a flashlight at the display they can barely see the desktop image. Which component has most likely failed?",
+    "options": [
+      "A. Inverter",
+      "B. Video card",
+      "C. LCD panel",
+      "D. Backlight"
+    ],
+    "answer": "D",
+    "explanation": "If the image is still present but no longer illuminated, the backlight is the most likely failure. A completely failed video card or LCD panel would usually prevent any usable image from appearing at all."
+  },
+  {
+    "id": 21,
+    "question": "A network administrator notices authentication failures between systems because their clocks are several minutes apart. Which protocol should be configured to keep time synchronized across the network?",
+    "options": [
+      "A. DNS",
+      "B. SNMP",
+      "C. NTP",
+      "D. RDP"
+    ],
+    "answer": "C",
+    "explanation": "NTP synchronizes system clocks across networked devices. Consistent time is important for logs, certificates, Kerberos, and troubleshooting."
+  },
+  {
+    "id": 22,
+    "question": "A laptop powering off when hot likely has:",
+    "options": [
+      "A. Failing battery",
+      "B. Blocked air vents",
+      "C. Bad digitizer",
+      "D. OS error"
+    ],
+    "answer": "B",
+    "explanation": "Overheating is a common cause of spontaneous shutdowns; check for dust or fan failure."
+  },
+  {
+    "id": 23,
+    "question": "A desktop starts making a repeated clicking noise and then struggles to open files stored on its internal drive. Which component is most likely failing?",
+    "options": [
+      "A. SSD",
+      "B. NVMe module",
+      "C. HDD",
+      "D. RAM"
+    ],
+    "answer": "C",
+    "explanation": "Traditional hard disk drives have moving mechanical parts, so repeated clicking is a classic sign of HDD failure. SSD and NVMe storage have no moving heads, so they do not produce that kind of mechanical click."
+  },
+  {
+    "id": 24,
+    "question": "A vertical white line on a laser printout indicates a problem with:",
+    "options": [
+      "A. Fuser",
+      "B. Imaging drum",
+      "C. Transfer corona wire",
+      "D. Low toner"
+    ],
+    "answer": "C",
+    "explanation": "A dirty or blocked transfer corona wire prevents toner from reaching that strip of the paper."
+  },
+  {
+    "id": 25,
+    "question": "A Windows laptop cannot reach network resources and shows the IP address 169.254.12.45 after startup. What is the most likely cause?",
+    "options": [
+      "A. DNS is unavailable",
+      "B. The device could not contact a DHCP server",
+      "C. The NIC has completely failed",
+      "D. The default gateway address is incorrect"
+    ],
+    "answer": "B",
+    "explanation": "An address in the 169.254.x.x range is an APIPA address. Windows assigns it when the client cannot obtain a lease from DHCP."
+  },
+  {
+    "id": 26,
+    "question": "What should a technician document immediately after a BSOD?",
+    "options": [
+      "A. OS version",
+      "B. Error code",
+      "C. RAM size",
+      "D. BIOS date"
+    ],
+    "answer": "B",
+    "explanation": "The stop code/error code is the key to identifying the specific hardware or driver that caused the BSOD."
+  },
+  {
+    "id": 27,
+    "question": "Which component allows a smartphone screen to detect touch?",
+    "options": [
+      "A. LCD",
+      "B. Inverter",
+      "C. Digitizer",
+      "D. GPU"
+    ],
+    "answer": "C",
+    "explanation": "The digitizer is the clear layer over the screen that converts physical touch to digital input."
+  },
+  {
+    "id": 28,
+    "question": "A cable with wires 1/2 swapped with 3/6 is a:",
+    "options": [
+      "A. Straight-through",
+      "B. Crossover",
+      "C. Rollover",
+      "D. Plenum"
+    ],
+    "answer": "B",
+    "explanation": "Crossover cables connect like-devices by swapping the transmit and receive pins."
+  },
+  {
+    "id": 29,
+    "question": "Where can a technician find the meaning of motherboard beep codes?",
+    "options": [
+      "A. Event Viewer",
+      "B. Manufacturer website",
+      "C. Device Manager",
+      "D. PSU sticker"
+    ],
+    "answer": "B",
+    "explanation": "Beep codes are proprietary; you must check the motherboard manual or the vendor's site."
+  },
+  {
+    "id": 30,
+    "question": "Which tool 'sniffs' for a signal emitted on a network cable?",
+    "options": [
+      "A. Multimeter",
+      "B. Loopback plug",
+      "C. Toner probe",
+      "D. Crimper"
+    ],
+    "answer": "C",
+    "explanation": "A tone generator sends the signal, and the probe 'sniffs' for the audible tone to find the cable."
+  },
+  {
+    "id": 31,
+    "question": "What is the safest action for a swollen laptop battery?",
+    "options": [
+      "A. Tape it down",
+      "B. Vent it",
+      "C. Hazardous waste disposal",
+      "D. Full charge"
+    ],
+    "answer": "C",
+    "explanation": "Swollen batteries are a fire hazard and must be removed and disposed of safely immediately."
+  },
+  {
+    "id": 32,
+    "question": "Which command shows each 'hop' to a destination server?",
+    "options": [
+      "A. ping",
+      "B. nslookup",
+      "C. tracert",
+      "D. netstat"
+    ],
+    "answer": "C",
+    "explanation": "Traceroute (tracert) maps the path a packet takes, showing every router (hop) along the way."
+  },
+  {
+    "id": 33,
+    "question": "How many drives can fail in RAID 0 before data is lost?",
+    "options": [
+      "A. 0",
+      "B. 1",
+      "C. 2",
+      "D. Half"
+    ],
+    "answer": "A",
+    "explanation": "RAID 0 (Striping) offers zero redundancy; if one drive fails, the entire array is lost."
+  },
+  {
+    "id": 34,
+    "question": "What is the main power connector for a modern ATX motherboard?",
+    "options": [
+      "A. 4-pin Molex",
+      "B. 6-pin PCIe",
+      "C. 15-pin SATA",
+      "D. 24-pin"
+    ],
+    "answer": "D",
+    "explanation": "The 24-pin ATX power connector provides the main power to the motherboard and its components."
+  },
+  {
+    "id": 35,
+    "question": "A technician is hardening a small office wireless router and wants to prevent attackers from joining the network with the push-button pairing feature. Which setting should be disabled?",
+    "options": [
+      "A. WPA3",
+      "B. SSID broadcast",
+      "C. WPS",
+      "D. MAC filtering"
+    ],
+    "answer": "C",
+    "explanation": "WPS is the push-button or PIN-based wireless setup feature. It is convenient, but it weakens security compared with manually joining a WPA2 or WPA3 protected network."
+  },
+  {
+    "id": 36,
+    "question": "A desktop repeatedly loses its date and time whenever it is unplugged overnight, even though Windows is otherwise working normally. Which component should the technician replace first?",
+    "options": [
+      "A. CMOS battery",
+      "B. Power supply",
+      "C. CPU fan",
+      "D. Storage drive"
+    ],
+    "answer": "A",
+    "explanation": "The CMOS battery helps preserve BIOS/UEFI settings and the real-time clock when the system is powered off. If the clock resets after the machine is unplugged, the battery is the most likely culprit."
+  },
+  {
+    "id": 37,
+    "question": "Which cloud feature allocates resources to multiple customers dynamically?",
+    "options": [
+      "A. On-demand",
+      "B. Resource pooling",
+      "C. Elasticity",
+      "D. Measured"
+    ],
+    "answer": "B",
+    "explanation": "Resource pooling allows the provider to serve many customers using the same physical hardware."
+  },
+  {
+    "id": 38,
+    "question": "A flickering screen that stops when the lid is moved suggests a bad:",
+    "options": [
+      "A. GPU",
+      "B. Video ribbon cable",
+      "C. Inverter",
+      "D. Refresh rate"
+    ],
+    "answer": "B",
+    "explanation": "Moving the hinge affects the ribbon cable; if the image changes, the cable is likely frayed or loose."
+  },
+  {
+    "id": 39,
+    "question": "Spontaneous reboots and burning smells suggest a failing:",
+    "options": [
+      "A. Internet speed",
+      "B. HDD",
+      "C. PSU",
+      "D. Mouse"
+    ],
+    "answer": "C",
+    "explanation": "The Power Supply Unit (PSU) handles high voltage; reboots and smells are signs of electrical failure."
+  },
+  {
+    "id": 40,
+    "question": "What is the max distance for 10GBASE-T (Cat 6a)?",
+    "options": [
+      "A. 30m",
+      "B. 55m",
+      "C. 100m",
+      "D. 150m"
+    ],
+    "answer": "C",
+    "explanation": "Cat 6a is required to reach the full 100-meter standard distance for 10Gbps speeds over copper."
+  },
+  {
+    "id": 41,
+    "question": "What is the purpose of a loopback plug?",
+    "options": [
+      "A. Test a physical port",
+      "B. Connect switches",
+      "C. Wi-Fi range",
+      "D. Bypass BIOS"
+    ],
+    "answer": "A",
+    "explanation": "A loopback plug redirects a signal back into the port to verify that the NIC is transmitting and receiving."
+  },
+  {
+    "id": 42,
+    "question": "A company moves a workload to the cloud and is billed based on the exact amount of storage and compute consumed each month. Which cloud characteristic does this describe?",
+    "options": [
+      "A. Rapid elasticity",
+      "B. Resource pooling",
+      "C. Measured service",
+      "D. On-demand self-service"
+    ],
+    "answer": "C",
+    "explanation": "Measured service means cloud usage is metered so customers are billed according to the resources they actually consume, such as storage, bandwidth, or compute time."
+  },
+  {
+    "id": 43,
+    "question": "A phone can be activated on a cellular network without inserting a removable SIM card because the subscriber identity is built into the device. Which technology makes this possible?",
+    "options": [
+      "A. NFC",
+      "B. eSIM",
+      "C. Bluetooth",
+      "D. VPN"
+    ],
+    "answer": "B",
+    "explanation": "An eSIM is an embedded digital SIM that can be provisioned by a carrier without a physical card swap. NFC and Bluetooth are short-range wireless technologies, and a VPN has nothing to do with cellular activation."
+  },
+  {
+    "id": 44,
+    "question": "Storing sensitive data in-house while using public cloud for apps is:",
+    "options": [
+      "A. Private",
+      "B. Public",
+      "C. Hybrid",
+      "D. Community"
+    ],
+    "answer": "C",
+    "explanation": "Hybrid cloud combines private and public models to balance security and cost."
+  },
+  {
+    "id": 45,
+    "question": "A warm phone with high battery drain should first be checked for:",
+    "options": [
+      "A. Brightness",
+      "B. Background apps",
+      "C. Airplane mode",
+      "D. SIM age"
+    ],
+    "answer": "B",
+    "explanation": "Background apps (especially GPS or social media) are the most common cause of high CPU/battery drain."
+  },
+  {
+    "id": 46,
+    "question": "What allows one CPU to appear as two logical processors?",
+    "options": [
+      "A. Overclocking",
+      "B. Virtualization",
+      "C. Hyper-threading",
+      "D. Dual-channel"
+    ],
+    "answer": "C",
+    "explanation": "Hyper-threading (Intel) allows one physical core to execute two threads simultaneously."
+  },
+  {
+    "id": 47,
+    "question": "Which VM network mode gives the VM its own IP on the physical network?",
+    "options": [
+      "A. NAT",
+      "B. Bridged",
+      "C. Host-only",
+      "D. Internal"
+    ],
+    "answer": "B",
+    "explanation": "Bridged mode makes the VM appear as a separate physical device on the same local network as the host."
+  },
+  {
+    "id": 48,
+    "question": "What is a security benefit of VDI?",
+    "options": [
+      "A. User software",
+      "B. Centralized storage",
+      "C. No firewall",
+      "D. Fast local CPU"
+    ],
+    "answer": "B",
+    "explanation": "Virtual Desktop Infrastructure (VDI) keeps all data on the server, preventing data loss if a laptop is stolen."
+  },
+  {
+    "id": 49,
+    "question": "A company phone is configured to sync corporate email, contacts, and calendar items directly with a Microsoft messaging environment. Which protocol is commonly used for that mobile synchronization?",
+    "options": [
+      "A. POP3",
+      "B. IMAP",
+      "C. Exchange ActiveSync",
+      "D. SNMP"
+    ],
+    "answer": "C",
+    "explanation": "Exchange ActiveSync is commonly used for mobile synchronization of email, contacts, and calendar data in Microsoft-based environments. POP3 and IMAP focus on email retrieval, while SNMP is used for monitoring and management."
+  },
+  {
+    "id": 50,
+    "question": "What causes GPS 'signal bounce' in cities?",
+    "options": [
+      "A. Low battery",
+      "B. Multipath interference",
+      "C. Open apps",
+      "D. Bluetooth"
+    ],
+    "answer": "B",
+    "explanation": "Multipath interference occurs when GPS signals bounce off tall buildings before reaching the device."
+  },
+  {
+    "id": 51,
+    "question": "Who is responsible for physical data center security in the cloud?",
+    "options": [
+      "A. Customer",
+      "B. Provider",
+      "C. Government",
+      "D. ISP"
+    ],
+    "answer": "B",
+    "explanation": "In the shared responsibility model, the provider handles all physical infrastructure and security."
+  },
+  {
+    "id": 52,
+    "question": "A company wants a cloud product where users simply sign in and use the finished application without managing servers or platforms underneath. Which option is an example of SaaS?",
+    "options": [
+      "A. Azure VM",
+      "B. Amazon S3",
+      "C. Google Workspace",
+      "D. Windows 11"
+    ],
+    "answer": "C",
+    "explanation": "Google Workspace is Software as a Service because the provider delivers the complete application to the customer. Azure VMs and Amazon S3 are infrastructure-level services instead."
+  },
+  {
+    "id": 53,
+    "question": "Which connector secures a laptop keyboard ribbon cable?",
+    "options": [
+      "A. SATA",
+      "B. ZIF",
+      "C. Molex",
+      "D. USB"
+    ],
+    "answer": "B",
+    "explanation": "Zero Insertion Force (ZIF) connectors use a small lever to lock fragile ribbon cables in place."
+  },
+  {
+    "id": 54,
+    "question": "What converts DC to AC for older laptop backlights?",
+    "options": [
+      "A. Rectifier",
+      "B. Inverter",
+      "C. Transformer",
+      "D. Digitizer"
+    ],
+    "answer": "B",
+    "explanation": "Older CCFL screens require AC power; the inverter converts the laptop's DC power to high-voltage AC."
+  },
+  {
+    "id": 55,
+    "question": "A customer taps a smartphone against a payment terminal to complete a purchase from only a few centimeters away. Which wireless technology is being used?",
+    "options": [
+      "A. Bluetooth",
+      "B. Infrared",
+      "C. NFC",
+      "D. ANT+"
+    ],
+    "answer": "C",
+    "explanation": "Near Field Communication is designed for very short-range communication and is commonly used for tap-to-pay transactions. Bluetooth and ANT+ are meant for longer-range device pairing, not close-proximity payment taps."
+  },
+  {
+    "id": 56,
+    "question": "A gamer wants to connect a high-end monitor and get the best support for very high refresh rates and modern display features. Which cable standard is usually the best choice?",
+    "options": [
+      "A. VGA",
+      "B. DVI-D",
+      "C. DisplayPort",
+      "D. S-Video"
+    ],
+    "answer": "C",
+    "explanation": "DisplayPort is commonly the best choice for very high resolutions and refresh rates on modern monitors. VGA and S-Video are legacy analog standards, and DVI-D is more limited on newer displays."
+  },
+  {
+    "id": 57,
+    "question": "What is 'Rapid Elasticity'?",
+    "options": [
+      "A. Hardware sharing",
+      "B. Scaling on demand",
+      "C. Remote access",
+      "D. Pay-per-use"
+    ],
+    "answer": "B",
+    "explanation": "Rapid Elasticity allows cloud resources to expand or contract automatically as demand changes."
+  },
+  {
+    "id": 58,
+    "question": "What causes a smartphone battery to bulge?",
+    "options": [
+      "A. Heat/Overcharging",
+      "B. Airplane mode",
+      "C. Screen time",
+      "D. Screen protector"
+    ],
+    "answer": "A",
+    "explanation": "Bulging is caused by gas buildup inside the lithium-ion cell due to heat or chemical degradation."
+  },
+  {
+    "id": 59,
+    "question": "What ensures data remains secure if a device is stolen?",
+    "options": [
+      "A. Remote wipe",
+      "B. Full encryption",
+      "C. Biometrics",
+      "D. MFA"
+    ],
+    "answer": "B",
+    "explanation": "Even if the thief bypasses the lock screen, full device encryption makes the data unreadable without the key."
+  },
+  {
+    "id": 60,
+    "question": "A user installs virtualization software on top of Windows so they can run a few test virtual machines on a laptop. Which type of virtualization platform requires that host operating system to be installed first?",
+    "options": [
+      "A. Type 1",
+      "B. Type 2",
+      "C. Bare metal",
+      "D. Native"
+    ],
+    "answer": "B",
+    "explanation": "A Type 2 hypervisor runs as an application inside a host OS, so the operating system has to be in place first. Type 1 hypervisors run directly on the hardware instead."
+  },
+  {
+    "id": 61,
+    "question": "Which antenna connector is standard for internal Wi-Fi cards?",
+    "options": [
+      "A. BNC",
+      "B. MHF4 / U.FL",
+      "C. SMA",
+      "D. F-connector"
+    ],
+    "answer": "B",
+    "explanation": "Miniature MHF4 or U.FL connectors are the tiny gold circles found on laptop Wi-Fi modules."
+  },
+  {
+    "id": 62,
+    "question": "What cable rating is required for air-circulation spaces?",
+    "options": [
+      "A. PVC",
+      "B. Plenum",
+      "C. Riser",
+      "D. Shielded"
+    ],
+    "answer": "B",
+    "explanation": "Plenum cable uses fire-retardant jackets that don't release toxic smoke when burned."
+  },
+  {
+    "id": 63,
+    "question": "What prevents 'shoulder surfing'?",
+    "options": [
+      "A. Malware tracking",
+      "B. Blue light filter",
+      "C. Privacy filter",
+      "D. Encryption"
+    ],
+    "answer": "C",
+    "explanation": "A privacy filter is a physical film that makes the screen look black when viewed from an angle."
+  },
+  {
+    "id": 64,
+    "question": "A laser printer in the office is feeding two or three sheets at a time from the main tray. Which component is the MOST likely cause?",
+    "options": [
+      "A. Transfer roller",
+      "B. Fuser",
+      "C. Separation pad",
+      "D. Duplexer"
+    ],
+    "answer": "C",
+    "explanation": "The separation pad helps keep extra sheets from moving forward with the pickup roller. When it is worn, the printer is more likely to grab multiple pages at once."
+  },
+  {
+    "id": 65,
+    "question": "Accessing more cloud power instantly is called:",
+    "options": [
+      "A. Pooling",
+      "B. Elasticity",
+      "C. Access",
+      "D. Availability"
+    ],
+    "answer": "B",
+    "explanation": "Elasticity allows users to scale up resources instantly during peak traffic and scale down later."
+  },
+  {
+    "id": 66,
+    "question": "A small office complains that video calls become choppy whenever someone starts a large download. Which router setting should a technician configure to prioritize the conferencing traffic?",
+    "options": [
+      "A. Port forwarding",
+      "B. MAC filtering",
+      "C. QoS",
+      "D. DMZ"
+    ],
+    "answer": "C",
+    "explanation": "Quality of Service lets a router prioritize delay-sensitive traffic such as voice and video over less time-critical traffic like bulk downloads. The other options do not solve bandwidth prioritization."
+  },
+  {
+    "id": 67,
+    "question": "Bulging capacitors are a sign of a failing:",
+    "options": [
+      "A. HDD",
+      "B. Audio",
+      "C. Motherboard",
+      "D. Printer"
+    ],
+    "answer": "C",
+    "explanation": "Capacitors on motherboards can leak or bulge as they age, causing instability or failure to POST."
+  },
+  {
+    "id": 68,
+    "question": "Using a phone to give a laptop internet via USB is:",
+    "options": [
+      "A. Hotspot",
+      "B. Tethering",
+      "C. Ad-hoc",
+      "D. NFC"
+    ],
+    "answer": "B",
+    "explanation": "Tethering specifically refers to using a physical connection (USB/Bluetooth) to share a cellular link."
+  },
+  {
+    "id": 69,
+    "question": "Which is a private IP address?",
+    "options": [
+      "A. 8.8.8.8",
+      "B. 172.217.1.1",
+      "C. 192.168.1.50",
+      "D. 13.107.4.52"
+    ],
+    "answer": "C",
+    "explanation": "192.168.x.x is the most common private range used in home and small business networks."
+  },
+  {
+    "id": 70,
+    "question": "A technician needs to verify whether a wall outlet is actually supplying the expected electrical voltage before blaming a PC power issue on the computer itself. Which tool should be used?",
+    "options": [
+      "A. Multimeter",
+      "B. PSU tester",
+      "C. Loopback plug",
+      "D. Toner probe"
+    ],
+    "answer": "A",
+    "explanation": "A multimeter can measure AC voltage at a wall outlet directly. A PSU tester is for power supply connectors, while loopback plugs and toner probes are used for network and cable testing instead."
+  },
+  {
+    "id": 71,
+    "question": "Which storage has no moving parts?",
+    "options": [
+      "A. HDD",
+      "B. SSHD",
+      "C. NVMe SSD",
+      "D. Optical"
+    ],
+    "answer": "C",
+    "explanation": "Solid State Drives (SSDs) use flash memory and have zero mechanical moving parts."
+  },
+  {
+    "id": 72,
+    "question": "The best fix for 'dead pixels' is replacing the:",
+    "options": [
+      "A. GPU",
+      "B. Drivers",
+      "C. LCD Panel",
+      "D. Resolution"
+    ],
+    "answer": "C",
+    "explanation": "Dead pixels are physical defects in the screen hardware; software fixes rarely work for true dead pixels."
+  },
+  {
+    "id": 73,
+    "question": "Which protocol sends email from client to server?",
+    "options": [
+      "A. POP3",
+      "B. IMAP",
+      "C. SMTP",
+      "D. SNMP"
+    ],
+    "answer": "C",
+    "explanation": "Simple Mail Transfer Protocol (SMTP) is used to send (push) mail to a server."
+  },
+  {
+    "id": 74,
+    "question": "Minimum drives for RAID 10?",
+    "options": [
+      "A. 2",
+      "B. 3",
+      "C. 4",
+      "D. 5"
+    ],
+    "answer": "C",
+    "explanation": "RAID 10 is a 'stripe of mirrors' and requires at least four drives (two mirrored pairs)."
+  },
+  {
+    "id": 75,
+    "question": "Which mobile part converts touch to digital signals?",
+    "options": [
+      "A. Inverter",
+      "B. Digitizer",
+      "C. LCD",
+      "D. CMOS"
+    ],
+    "answer": "B",
+    "explanation": "The digitizer is the input component of a touchscreen display."
+  },
+  {
+    "id": 76,
+    "question": "What is the step after implementing a solution?",
+    "options": [
+      "A. Document",
+      "B. Verify functionality",
+      "C. Theory",
+      "D. Ask user"
+    ],
+    "answer": "B",
+    "explanation": "You must always verify the fix works and that you didn't break anything else before closing the ticket."
+  },
+  {
+    "id": 77,
+    "question": "A user says they can reach websites by IP address but not by hostname. Which service should the technician check FIRST?",
+    "options": [
+      "A. DHCP",
+      "B. DNS",
+      "C. NTP",
+      "D. SSH"
+    ],
+    "answer": "B",
+    "explanation": "If IP-based connectivity works but name-based browsing fails, DNS is the most likely issue because DNS translates hostnames into IP addresses."
+  },
+  {
+    "id": 78,
+    "question": "Which cable supports 4K and power on modern laptops?",
+    "options": [
+      "A. HDMI 1.4",
+      "B. VGA",
+      "C. USB-C DisplayPort Alt",
+      "D. DVI-I"
+    ],
+    "answer": "C",
+    "explanation": "USB-C using DisplayPort Alt Mode can carry video while simultaneously charging the laptop."
+  },
+  {
+    "id": 79,
+    "question": "Wi-Fi 6E adds which frequency band?",
+    "options": [
+      "A. 2.4 GHz",
+      "B. 6 GHz",
+      "C. 10 GHz",
+      "D. 60 GHz"
+    ],
+    "answer": "B",
+    "explanation": "Wi-Fi 6E (802.11ax) specifically unlocked the 6GHz spectrum for consumer use."
+  },
+  {
+    "id": 80,
+    "question": "Internal keyboard failed but USB works. Next step?",
+    "options": [
+      "A. Reinstall OS",
+      "B. Check ribbon cable",
+      "C. New Motherboard",
+      "D. Video drivers"
+    ],
+    "answer": "B",
+    "explanation": "If an external keyboard works, it's a physical hardware issue with the internal keyboard or its cable."
+  },
+  {
+    "id": 81,
+    "question": "Cloud model for 'renting' a dev platform?",
+    "options": [
+      "A. SaaS",
+      "B. IaaS",
+      "C. PaaS",
+      "D. SECaaS"
+    ],
+    "answer": "C",
+    "explanation": "PaaS (Platform as a Service) is built specifically for developers to code and deploy apps."
+  },
+  {
+    "id": 82,
+    "question": "Major benefit of NVMe over SATA HDD?",
+    "options": [
+      "A. Capacity",
+      "B. Speed",
+      "C. Color",
+      "D. Wi-Fi"
+    ],
+    "answer": "B",
+    "explanation": "NVMe drives communicate directly via PCIe, offering massive speed improvements over SATA-based storage."
+  },
+  {
+    "id": 83,
+    "question": "Tool for terminating wires in a patch panel?",
+    "options": [
+      "A. Crimper",
+      "B. Punchdown",
+      "C. Stripper",
+      "D. Loopback"
+    ],
+    "answer": "B",
+    "explanation": "The punchdown tool pushes the wire into the IDC connector and trims the excess."
+  },
+  {
+    "id": 84,
+    "question": "Tech for managing corporate smartphone security?",
+    "options": [
+      "A. VPN",
+      "B. MDM",
+      "C. IMAP",
+      "D. WPS"
+    ],
+    "answer": "B",
+    "explanation": "Mobile Device Management (MDM) software is used to enforce corporate security on mobile endpoints."
+  },
+  {
+    "id": 85,
+    "question": "A firewall administrator needs to allow encrypted web browsing to external websites. Which destination port should be opened for standard HTTPS traffic?",
+    "options": [
+      "A. 80",
+      "B. 443",
+      "C. 21",
+      "D. 22"
+    ],
+    "answer": "B",
+    "explanation": "HTTPS uses TCP port 443 for encrypted web traffic. Port 80 is standard HTTP without TLS, while ports 21 and 22 are used for FTP and SSH."
+  },
+  {
+    "id": 86,
+    "question": "A Windows laptop shows an IP address of 169.254.0.1 and cannot reach network resources. What does this MOST likely indicate?",
+    "options": [
+      "A. Hidden network SSID",
+      "B. APIPA address after DHCP failure",
+      "C. Static IP conflict",
+      "D. DNS filtering issue"
+    ],
+    "answer": "B",
+    "explanation": "A 169.254.x.x address is an APIPA address. Windows assigns it automatically when the device cannot obtain a lease from a DHCP server."
+  },
+  {
+    "id": 87,
+    "question": "Standard laptop RAM form factor?",
+    "options": [
+      "A. DIMM",
+      "B. SODIMM",
+      "C. MicroDIMM",
+      "D. SIMM"
+    ],
+    "answer": "B",
+    "explanation": "Small Outline DIMMs (SODIMM) are the standard for notebook memory."
+  },
+  {
+    "id": 88,
+    "question": "Component that bonds toner to paper?",
+    "options": [
+      "A. Drum",
+      "B. Fuser",
+      "C. Transfer roller",
+      "D. Laser"
+    ],
+    "answer": "B",
+    "explanation": "The fuser uses high heat and pressure to permanently 'fuse' toner into the paper fibers."
+  },
+  {
+    "id": 89,
+    "question": "Loud grinding in an HDD indicates:",
+    "options": [
+      "A. Malware",
+      "B. Failure",
+      "C. Mouse lag",
+      "D. Monitor error"
+    ],
+    "answer": "B",
+    "explanation": "Grinding is a mechanical failure; back up data immediately if possible."
+  },
+  {
+    "id": 90,
+    "question": "EMI-immune network cable?",
+    "options": [
+      "A. Cat 6a",
+      "B. Fiber optic",
+      "C. Coax",
+      "D. STP"
+    ],
+    "answer": "B",
+    "explanation": "Fiber optic uses light instead of electricity, making it immune to all electromagnetic interference."
+  },
+  {
+    "id": 91,
+    "question": "Pay-as-you-go cloud feature?",
+    "options": [
+      "A. Pooling",
+      "B. Measured service",
+      "C. Elasticity",
+      "D. Network access"
+    ],
+    "answer": "B",
+    "explanation": "Measured service allows for precise billing based on used resources (like storage or bandwidth)."
+  },
+  {
+    "id": 92,
+    "question": "Laptop charging slowly. Check first:",
+    "options": [
+      "A. RAM",
+      "B. AC adapter",
+      "C. HDD",
+      "D. Fan"
+    ],
+    "answer": "B",
+    "explanation": "The power supply/adapter is the most common cause of power or charging issues."
+  },
+  {
+    "id": 93,
+    "question": "Tech for Apple/Google Pay?",
+    "options": [
+      "A. Bluetooth",
+      "B. NFC",
+      "C. Infrared",
+      "D. RFID"
+    ],
+    "answer": "B",
+    "explanation": "NFC is the standard for contactless point-of-sale transactions."
+  },
+  {
+    "id": 94,
+    "question": "Default RDP port?",
+    "options": [
+      "A. 22",
+      "B. 80",
+      "C. 443",
+      "D. 3389"
+    ],
+    "answer": "D",
+    "explanation": "Remote Desktop Protocol (RDP) uses port 3389 by default."
+  },
+  {
+    "id": 95,
+    "question": "Minimum disks for RAID 5?",
+    "options": [
+      "A. 2",
+      "B. 3",
+      "C. 4",
+      "D. 5"
+    ],
+    "answer": "B",
+    "explanation": "RAID 5 (Striping with parity) requires at least three drives to store the parity info."
+  },
+  {
+    "id": 96,
+    "question": "Sensor for screen orientation?",
+    "options": [
+      "A. Digitizer",
+      "B. Accelerometer",
+      "C. Proximity",
+      "D. Magnetometer"
+    ],
+    "answer": "B",
+    "explanation": "The accelerometer measures movement and orientation to rotate the screen."
+  },
+  {
+    "id": 97,
+    "question": "Tool to test PSU voltage?",
+    "options": [
+      "A. Multimeter",
+      "B. Loopback",
+      "C. Toner probe",
+      "D. Wi-Fi analyzer"
+    ],
+    "answer": "A",
+    "explanation": "A multimeter allows you to check specific voltage rails (3.3V, 5V, 12V) on a PSU."
+  },
+  {
+    "id": 98,
+    "question": "Which is a private IP address?",
+    "options": [
+      "A. 8.8.8.8",
+      "B. 10.0.0.1",
+      "C. 157.240.22.35",
+      "D. 172.67.147.200"
+    ],
+    "answer": "B",
+    "explanation": "10.0.0.0 through 10.255.255.255 is a Class A private IP range."
+  },
+  {
+    "id": 99,
+    "question": "What prevents 'shoulder surfing'?",
+    "options": [
+      "A. Anti-glare",
+      "B. Privacy filter",
+      "C. Biometric",
+      "D. VPN"
+    ],
+    "answer": "B",
+    "explanation": "Privacy filters narrow the viewing angle of the screen."
+  },
+  {
+    "id": 100,
+    "question": "Protocol for auto IP assignment?",
+    "options": [
+      "A. DNS",
+      "B. DHCP",
+      "C. NTP",
+      "D. SNMP"
+    ],
+    "answer": "B",
+    "explanation": "DHCP (Dynamic Host Configuration Protocol) automatically assigns IP addresses to devices."
+  },
+  {
+    "id": 101,
+    "question": "Laptop screen black but external works. Likely cause?",
+    "options": [
+      "A. Failed GPU",
+      "B. Failed internal LCD/backlight",
+      "C. OS corruption",
+      "D. PSU"
+    ],
+    "answer": "B",
+    "explanation": "If the external monitor works, the GPU is fine; the fault is in the laptop's internal display hardware."
+  },
+  {
+    "id": 102,
+    "question": "A technician needs to connect a copper Ethernet device to a fiber uplink on the network. Which device should they use to bridge the two media types?",
+    "options": [
+      "A. Punchdown tool",
+      "B. Media converter",
+      "C. Loopback plug",
+      "D. Crimper"
+    ],
+    "answer": "B",
+    "explanation": "A media converter is used to translate between copper Ethernet and fiber-optic cabling when the network uses different media types."
+  },
+  {
+    "id": 103,
+    "question": "Distributes network traffic across servers?",
+    "options": [
+      "A. Surge protector",
+      "B. Load Balancer",
+      "C. AC/DC converter",
+      "D. Encryption"
+    ],
+    "answer": "B",
+    "explanation": "Load balancers distribute user requests among a pool of servers to prevent overloading one."
+  },
+  {
+    "id": 104,
+    "question": "Extra power connector for high-end GPU?",
+    "options": [
+      "A. Molex",
+      "B. SATA",
+      "C. 6+2-pin PCIe",
+      "D. 4/8-pin CPU"
+    ],
+    "answer": "C",
+    "explanation": "PCI Express power connectors (6 or 8 pin) provide the wattage needed for modern graphics cards."
+  },
+  {
+    "id": 105,
+    "question": "Highest throughput Wi-Fi utilizing 160MHz channels?",
+    "options": [
+      "A. 802.11g",
+      "B. 802.11ac",
+      "C. 802.11ax (6E)",
+      "D. 802.11n"
+    ],
+    "answer": "C",
+    "explanation": "Wi-Fi 6 and 6E support 160MHz channels for massive data throughput."
+  },
+  {
+    "id": 106,
+    "question": "Laptop cursor 'jumps' while typing?",
+    "options": [
+      "A. Bad CPU",
+      "B. Palm on touchpad",
+      "C. Low battery",
+      "D. LCD ghosting"
+    ],
+    "answer": "B",
+    "explanation": "The 'jumping cursor' is almost always caused by the user's palm accidentally touching the touchpad."
+  },
+  {
+    "id": 107,
+    "question": "Relies on central server for processing?",
+    "options": [
+      "A. High-end GPU PC",
+      "B. Fat client",
+      "C. Thin client",
+      "D. 32GB RAM PC"
+    ],
+    "answer": "C",
+    "explanation": "Thin clients have minimal local hardware and do most work on a remote server."
+  },
+  {
+    "id": 108,
+    "question": "A Static IP connection is:",
+    "options": [
+      "A. Dynamic",
+      "B. Manually assigned",
+      "C. DHCP based",
+      "D. USB only"
+    ],
+    "answer": "B",
+    "explanation": "Static IPs are typed in by hand and do not change unless the admin changes them."
+  },
+  {
+    "id": 109,
+    "question": "Which of the following tools is used to test the signal integrity, attenuation, and identify breaks in a fiber optic cable?",
+    "options": [
+      "A. Multimeter",
+      "B. OTDR",
+      "C. Toner Probe",
+      "D. Wire Map Tester"
+    ],
+    "answer": "B",
+    "explanation": "An OTDR (Optical Time-Domain Reflectometer) is used for fiber optics to detect the location of breaks and measure light loss (attenuation)."
+  },
+  {
+    "id": 110,
+    "question": "SLP (Service Location Protocol) port?",
+    "options": [
+      "A. 427",
+      "B. 445",
+      "C. 548",
+      "D. 631"
+    ],
+    "answer": "A",
+    "explanation": "SLP uses port 427 to help devices find services like printers on a local network."
+  },
+  {
+    "id": 111,
+    "question": "Printer grabs multiple sheets. Replace:",
+    "options": [
+      "A. Fuser",
+      "B. Separation Pad",
+      "C. Transfer Roller",
+      "D. Laser"
+    ],
+    "answer": "B",
+    "explanation": "The separation pad is responsible for ensuring only one sheet of paper is pulled at a time."
+  },
+  {
+    "id": 112,
+    "question": "Most secure Wi-Fi encryption in 1201?",
+    "options": [
+      "A. WEP",
+      "B. WPA",
+      "C. WPA2",
+      "D. WPA3"
+    ],
+    "answer": "D",
+    "explanation": "WPA3 is the current standard for Wi-Fi security, offering improved encryption over WPA2."
+  },
+  {
+    "id": 113,
+    "question": "Enables smartphone 'Auto-Brightness'?",
+    "options": [
+      "A. Digitizer",
+      "B. Ambient Light Sensor",
+      "C. Wi-Fi Ant.",
+      "D. CMOS"
+    ],
+    "answer": "B",
+    "explanation": "The ambient light sensor detects external light levels to adjust screen brightness automatically."
+  },
+  {
+    "id": 114,
+    "question": "Manages network devices like switches?",
+    "options": [
+      "A. SMTP",
+      "B. SNMP",
+      "C. SMB",
+      "D. SFTP"
+    ],
+    "answer": "B",
+    "explanation": "SNMP (Simple Network Management Protocol) is used to monitor and manage network equipment."
+  },
+  {
+    "id": 115,
+    "question": "Desktop shuts down while gaming. Likely cause?",
+    "options": [
+      "A. Mouse",
+      "B. Overheating CPU/GPU",
+      "C. Browser",
+      "D. RAM"
+    ],
+    "answer": "B",
+    "explanation": "High-load tasks like gaming generate heat; if cooling fails, the system shuts down to prevent damage."
+  },
+  {
+    "id": 116,
+    "question": "Storage with spinning platter?",
+    "options": [
+      "A. SSD",
+      "B. NVMe",
+      "C. HDD",
+      "D. SD Card"
+    ],
+    "answer": "C",
+    "explanation": "Hard Disk Drives (HDD) use magnetic spinning platters to store data."
+  },
+  {
+    "id": 117,
+    "question": "Network connection for department printer?",
+    "options": [
+      "A. USB",
+      "B. Bluetooth",
+      "C. Ethernet/Wi-Fi",
+      "D. Serial"
+    ],
+    "answer": "C",
+    "explanation": "Ethernet or Wi-Fi allows the printer to be accessible by everyone on the local network."
+  },
+  {
+    "id": 118,
+    "question": "Benefit of Managed Switch?",
+    "options": [
+      "A. Cheaper",
+      "B. VLAN configuration",
+      "C. No power",
+      "D. Speed boost"
+    ],
+    "answer": "B",
+    "explanation": "Managed switches allow for advanced configurations like Virtual LANs (VLANs) and port mirroring."
+  },
+  {
+    "id": 119,
+    "question": "A user says their laptop suddenly cannot see any Wi-Fi networks, but nearby devices are still connected normally. What should the technician check FIRST?",
+    "options": [
+      "A. Firewall settings",
+      "B. Airplane Mode",
+      "C. External antennas",
+      "D. ISP outage status"
+    ],
+    "answer": "B",
+    "explanation": "When one laptop loses all wireless connectivity while other devices stay online, the fastest first check is whether Airplane Mode or the wireless radio was disabled locally."
+  },
+  {
+    "id": 120,
+    "question": "A small business wants off-site backups for virtual servers without buying and maintaining its own storage hardware in a second location. Which cloud model best fits this need?",
+    "options": [
+      "A. SaaS",
+      "B. IaaS",
+      "C. PaaS",
+      "D. PAN"
+    ],
+    "answer": "B",
+    "explanation": "IaaS provides storage, compute, and other infrastructure resources that an organization can use for backup and disaster recovery without owning the underlying hardware."
+  },
+  {
+    "id": 121,
+    "question": "Provides light for laptop image?",
+    "options": [
+      "A. Digitizer",
+      "B. Inverter/Backlight",
+      "C. Video Card",
+      "D. Refresh Rate"
+    ],
+    "answer": "B",
+    "explanation": "The backlight provides the illumination; the inverter (on older CCFL) provides the power for it."
+  },
+  {
+    "id": 122,
+    "question": "A Windows workstation keeps resolving an old IP address for an internal server even after DNS records were updated. Which command should the technician run to clear the local resolver cache?",
+    "options": [
+      "A. ipconfig /release",
+      "B. ipconfig /flushdns",
+      "C. ipconfig /clear",
+      "D. ipconfig /all"
+    ],
+    "answer": "B",
+    "explanation": "ipconfig /flushdns clears cached DNS entries on the local machine so Windows will request fresh name-resolution data instead of reusing stale records."
+  },
+  {
+    "id": 123,
+    "question": "Phone hot with bad signal. Reason?",
+    "options": [
+      "A. Bad battery",
+      "B. Signal searching",
+      "C. Virus",
+      "D. Brightness"
+    ],
+    "answer": "B",
+    "explanation": "Phones use extra power to boost their radios when searching for a weak signal, causing heat and drain."
+  },
+  {
+    "id": 124,
+    "question": "RAID for disk mirroring?",
+    "options": [
+      "A. RAID 0",
+      "B. RAID 1",
+      "C. RAID 5",
+      "D. RAID 10"
+    ],
+    "answer": "B",
+    "explanation": "RAID 1 mirrors data across two drives for high redundancy."
+  },
+  {
+    "id": 125,
+    "question": "Ghost image on laser printer?",
+    "options": [
+      "A. Low toner",
+      "B. Drum/Fuser failure",
+      "C. Paper weight",
+      "D. Inkjet nozzles"
+    ],
+    "answer": "B",
+    "explanation": "Ghosting is usually caused by a drum that isn't discharging properly or a worn fuser."
+  },
+  {
+    "id": 126,
+    "question": "Maps external port to private IP?",
+    "options": [
+      "A. Triggering",
+      "B. Port Forwarding",
+      "C. Reservation",
+      "D. Filtering"
+    ],
+    "answer": "B",
+    "explanation": "Port forwarding allows external traffic to reach a specific device inside a private network."
+  },
+  {
+    "id": 127,
+    "question": "KVM switch controls:",
+    "options": [
+      "A. Voltage",
+      "B. Multiple computers",
+      "C. Digital signal",
+      "D. Wireless range"
+    ],
+    "answer": "B",
+    "explanation": "Keyboard Video Mouse (KVM) switches allow one set of peripherals to control many machines."
+  },
+  {
+    "id": 128,
+    "question": "Apple Filing Protocol port?",
+    "options": [
+      "A. 445",
+      "B. 548",
+      "C. 427",
+      "D. 143"
+    ],
+    "answer": "B",
+    "explanation": "AFP uses port 548 for file sharing on older Apple networks."
+  },
+  {
+    "id": 129,
+    "question": "Applied to CPU for heat transfer?",
+    "options": [
+      "A. Alcohol",
+      "B. Thermal paste",
+      "C. Glue",
+      "D. Air"
+    ],
+    "answer": "B",
+    "explanation": "Thermal paste fills microscopic gaps between the CPU and heat sink to improve cooling."
+  },
+  {
+    "id": 130,
+    "question": "Provider serving multiple customers with shared physical gear?",
+    "options": [
+      "A. Elasticity",
+      "B. Resource Pooling",
+      "C. Pay-per-use",
+      "D. Mobile access"
+    ],
+    "answer": "B",
+    "explanation": "Resource pooling is a core cloud concept where hardware is shared dynamically among users."
+  },
+  {
+    "id": 131,
+    "question": "Weak Wi-Fi except when near router. Check first:",
+    "options": [
+      "A. OS Update",
+      "B. Internal antenna",
+      "C. RAM seating",
+      "D. BIOS version"
+    ],
+    "answer": "B",
+    "explanation": "If range is the issue, a disconnected or loose internal antenna wire is the most likely hardware cause."
+  },
+  {
+    "id": 132,
+    "question": "Printer for carbon forms?",
+    "options": [
+      "A. Laser",
+      "B. Inkjet",
+      "C. Dot Matrix",
+      "D. Thermal"
+    ],
+    "answer": "C",
+    "explanation": "Dot Matrix printers are impact printers, which is required to push ink through multi-part carbon paper."
+  },
+  {
+    "id": 133,
+    "question": "Port-based access control framework?",
+    "options": [
+      "A. 802.11ax",
+      "B. 802.3af",
+      "C. 802.1X",
+      "D. 802.11ac"
+    ],
+    "answer": "C",
+    "explanation": "802.1X is the standard for port-based network access control (NAC)."
+  },
+  {
+    "id": 134,
+    "question": "PC reboots when specific USB is plugged in?",
+    "options": [
+      "A. Too fast",
+      "B. Electrical short",
+      "C. OS incompatibility",
+      "D. Overheating"
+    ],
+    "answer": "B",
+    "explanation": "A physical short in a USB port or device can cause the system to power cycle instantly."
+  },
+  {
+    "id": 135,
+    "question": "Cat5e max speed at 100m?",
+    "options": [
+      "A. 100 Mbps",
+      "B. 1 Gbps",
+      "C. 10 Gbps",
+      "D. 40 Gbps"
+    ],
+    "answer": "B",
+    "explanation": "Cat5e is rated for Gigabit speeds (1000 Mbps) up to the standard 100-meter length."
+  },
+  {
+    "id": 136,
+    "question": "Cloud for 3rd party apps over internet?",
+    "options": [
+      "A. Private",
+      "B. Public",
+      "C. Hybrid",
+      "D. Shared"
+    ],
+    "answer": "B",
+    "explanation": "Public clouds like AWS or Azure host applications accessible to any authorized user over the web."
+  },
+  {
+    "id": 137,
+    "question": "Physical connection for RJ-45 connector?",
+    "options": [
+      "A. Punchdown",
+      "B. Crimper",
+      "C. Stripper",
+      "D. Loopback"
+    ],
+    "answer": "B",
+    "explanation": "A crimper tool is used to attach the RJ-45 plug to the end of an Ethernet cable."
+  },
+  {
+    "id": 138,
+    "question": "Laptop specific RAM form factor?",
+    "options": [
+      "A. DIMM",
+      "B. SODIMM",
+      "C. RDIMM",
+      "D. LRDIMM"
+    ],
+    "answer": "B",
+    "explanation": "Small Outline DIMMs (SODIMM) are the standard for laptop memory upgrades."
+  },
+  {
+    "id": 139,
+    "question": "Printing from iPhone without drivers?",
+    "options": [
+      "A. Bonjour",
+      "B. AirPrint",
+      "C. Cloud Print",
+      "D. NFC"
+    ],
+    "answer": "B",
+    "explanation": "AirPrint is the Apple technology that allows driverless printing from iOS devices."
+  },
+  {
+    "id": 140,
+    "question": "Encrypted command-line access to switch?",
+    "options": [
+      "A. Telnet",
+      "B. SSH",
+      "C. RDP",
+      "D. FTP"
+    ],
+    "answer": "B",
+    "explanation": "SSH (Secure Shell) provides encrypted remote access, unlike Telnet which is plain text."
+  },
+  {
+    "id": 141,
+    "question": "Fastest storage for video editing?",
+    "options": [
+      "A. SATA SSD",
+      "B. HDD",
+      "C. NVMe PCIe SSD",
+      "D. SSHD"
+    ],
+    "answer": "C",
+    "explanation": "NVMe SSDs use the PCIe bus for extreme speeds, perfect for high-bandwidth tasks like 4K video editing."
+  },
+  {
+    "id": 142,
+    "question": "Maintains BIOS time when power is off?",
+    "options": [
+      "A. Capacitor",
+      "B. CMOS Battery",
+      "C. Heat Sink",
+      "D. Northbridge"
+    ],
+    "answer": "B",
+    "explanation": "The CMOS battery provides the tiny amount of power needed to keep the system clock running."
+  },
+  {
+    "id": 143,
+    "question": "A Mac user needs to access a Windows-only accounting application, but the company wants the app hosted centrally instead of installed locally on the Mac. Which solution best fits?",
+    "options": [
+      "A. VDI",
+      "B. Bare-metal hypervisor on the Mac",
+      "C. Dual boot",
+      "D. Local file synchronization"
+    ],
+    "answer": "A",
+    "explanation": "VDI lets the user connect to a centrally hosted virtual desktop or Windows environment, which is a cleaner fit when the business wants centralized management instead of local installation."
+  },
+  {
+    "id": 144,
+    "question": "Distorted image but touch works. Replace:",
+    "options": [
+      "A. Digitizer",
+      "B. LCD / OLED Panel",
+      "C. Inverter",
+      "D. GPU"
+    ],
+    "answer": "B",
+    "explanation": "If the touch works, the digitizer is fine; distortion in the image points to the display panel (LCD/OLED)."
+  },
+  {
+    "id": 145,
+    "question": "Connects local network to internet?",
+    "options": [
+      "A. Hub",
+      "B. Switch",
+      "C. Router",
+      "D. Access Point"
+    ],
+    "answer": "C",
+    "explanation": "A router is responsible for routing traffic between different networks (LAN to WAN)."
+  },
+  {
+    "id": 146,
+    "question": "Standard IMAP port?",
+    "options": [
+      "A. 110",
+      "B. 143",
+      "C. 25",
+      "D. 993"
+    ],
+    "answer": "B",
+    "explanation": "Port 143 is the standard unencrypted port for the IMAP mail protocol."
+  },
+  {
+    "id": 147,
+    "question": "Wipe HDD so data is unrecoverable?",
+    "options": [
+      "A. Standard Format",
+      "B. Delete partition",
+      "C. Degaussing / Secure Erase",
+      "D. Recycle Bin"
+    ],
+    "answer": "C",
+    "explanation": "Degaussing uses magnets to destroy HDD data; Secure Erase is the software equivalent for SSDs."
+  },
+  {
+    "id": 148,
+    "question": "Turns on computer remotely?",
+    "options": [
+      "A. Wake-on-LAN",
+      "B. PXE Boot",
+      "C. Remote Desktop",
+      "D. SNMP"
+    ],
+    "answer": "A",
+    "explanation": "Wake-on-LAN (WoL) allows a 'magic packet' to power on a computer over the network."
+  },
+  {
+    "id": 149,
+    "question": "Final troubleshooting step?",
+    "options": [
+      "A. Verify functionality",
+      "B. Plan of action",
+      "C. Document findings",
+      "D. Identify problem"
+    ],
+    "answer": "C",
+    "explanation": "Always document your findings and the solution as the final step for future reference."
+  },
+  {
+    "id": 150,
+    "question": "A user's laptop connects to the office Wi-Fi but cannot access the internet. A 'ping' to 8.8.8.8 fails, but a 'ping' to the internal file server works. What is the most likely cause?",
+    "options": [
+      "A. Failed NIC",
+      "B. Incorrect DNS settings",
+      "C. Gateway is misconfigured",
+      "D. DHCP server is down"
+    ],
+    "answer": "C",
+    "explanation": "If internal resources are reachable but external ones aren't, the gateway (router) path is likely the issue."
+  },
+  {
+    "id": 151,
+    "question": "Which RAID level provides the best balance of performance and redundancy using a minimum of three drives?",
+    "options": [
+      "A. RAID 0",
+      "B. RAID 1",
+      "C. RAID 5",
+      "D. RAID 10"
+    ],
+    "answer": "C",
+    "explanation": "RAID 5 uses striping with parity, allowing for high performance and the ability to lose one drive without data loss."
+  },
+  {
+    "id": 152,
+    "question": "A technician needs to verify if a laptop's webcam is physically disconnected. Which tool in Windows would show if the hardware is recognized by the system?",
+    "options": [
+      "A. Disk Management",
+      "B. Device Manager",
+      "C. Event Viewer",
+      "D. Task Manager"
+    ],
+    "answer": "B",
+    "explanation": "Device Manager displays all hardware recognized by the OS and shows yellow exclamation marks if there are driver or connection issues."
+  },
+  {
+    "id": 153,
+    "question": "Which connector is used to provide power specifically to a high-end SATA SSD?",
+    "options": [
+      "A. 4-pin Molex",
+      "B. 15-pin SATA",
+      "C. 6-pin PCIe",
+      "D. 8-pin EPS"
+    ],
+    "answer": "B",
+    "explanation": "SATA drives use a flat 15-pin power connector from the PSU."
+  },
+  {
+    "id": 154,
+    "question": "A technician is setting up a SOHO router and wants to ensure that a specific gaming console always receives the same IP address. What should be configured?",
+    "options": [
+      "A. DHCP Exclusion",
+      "B. DHCP Reservation",
+      "C. Port Forwarding",
+      "D. QoS"
+    ],
+    "answer": "B",
+    "explanation": "A reservation (Static DHCP) ensures a specific MAC address is always assigned the same IP."
+  },
+  {
+    "id": 155,
+    "question": "Which mobile device screen technology does NOT require a backlight because the pixels themselves emit light?",
+    "options": [
+      "A. LCD",
+      "B. IPS",
+      "C. OLED",
+      "D. TN"
+    ],
+    "answer": "C",
+    "explanation": "OLED (Organic Light Emitting Diode) pixels produce their own light, allowing for true blacks and thinner displays."
+  },
+  {
+    "id": 156,
+    "question": "A printer is producing images that smear when touched. Which component is likely failing?",
+    "options": [
+      "A. Imaging Drum",
+      "B. Transfer Roller",
+      "C. Fuser",
+      "D. Pickup Roller"
+    ],
+    "answer": "C",
+    "explanation": "The fuser's job is to melt (fuse) the toner to the paper. If the ink is smearing, the fuser isn't getting hot enough."
+  },
+  {
+    "id": 157,
+    "question": "Which cloud model allows a company to share resources with other companies that have similar security requirements?",
+    "options": [
+      "A. Public",
+      "B. Private",
+      "C. Hybrid",
+      "D. Community"
+    ],
+    "answer": "D",
+    "explanation": "Community clouds are shared by organizations with common goals or regulatory requirements."
+  },
+  {
+    "id": 158,
+    "question": "A technician wants to boot a computer from the network to install an OS image. Which BIOS/UEFI setting must be enabled?",
+    "options": [
+      "A. Secure Boot",
+      "B. PXE",
+      "C. Fast Boot",
+      "D. TPM"
+    ],
+    "answer": "B",
+    "explanation": "The Preboot eXecution Environment (PXE) allows a device to boot from a network interface."
+  },
+  {
+    "id": 159,
+    "question": "A technician is troubleshooting automatic service discovery for network devices and printers that rely on the Service Location Protocol. Which default port should they check first?",
+    "options": [
+      "A. 427",
+      "B. 445",
+      "C. 548",
+      "D. 631"
+    ],
+    "answer": "A",
+    "explanation": "SLP uses port 427 for service discovery traffic. The other ports are associated with different services such as SMB, AFP, and IPP printing."
+  },
+  {
+    "id": 160,
+    "question": "A technician is installing a fiber optic cable that needs to cover a distance of 5 kilometers. Which type of fiber should be used?",
+    "options": [
+      "A. Multimode",
+      "B. Single-mode",
+      "C. Shielded Twisted Pair",
+      "D. Coaxial"
+    ],
+    "answer": "B",
+    "explanation": "Single-mode fiber is designed for long distances (up to 40km or more) using a laser light source."
+  },
+  {
+    "id": 161,
+    "question": "A legacy macOS file-sharing service still uses Apple Filing Protocol instead of SMB. Which default port is associated with AFP traffic?",
+    "options": [
+      "A. 445",
+      "B. 548",
+      "C. 427",
+      "D. 143"
+    ],
+    "answer": "B",
+    "explanation": "AFP commonly uses port 548. Port 445 is associated with SMB, while the other choices belong to unrelated network services."
+  },
+  {
+    "id": 162,
+    "question": "Which technology allows a technician to share their smartphone's cellular data with a laptop via a physical USB cable?",
+    "options": [
+      "A. Hotspot",
+      "B. Tethering",
+      "C. Ad-hoc",
+      "D. NFC"
+    ],
+    "answer": "B",
+    "explanation": "Tethering specifically refers to sharing data via a physical connection (USB or Bluetooth)."
+  },
+  {
+    "id": 163,
+    "question": "A user's laptop screen is flickering. The flickering stops when the technician adjusts the lid. What is the most likely cause?",
+    "options": [
+      "A. Bad GPU",
+      "B. Failed Backlight",
+      "C. Loose or damaged video ribbon cable",
+      "D. Corrupt display driver"
+    ],
+    "answer": "C",
+    "explanation": "The video ribbon cable runs through the hinge; adjusting the lid often pinches or moves a frayed cable."
+  },
+  {
+    "id": 164,
+    "question": "Which type of storage device uses a spinning platter and is most susceptible to data loss from a physical drop?",
+    "options": [
+      "A. NVMe SSD",
+      "B. SATA SSD",
+      "C. HDD",
+      "D. SD Card"
+    ],
+    "answer": "C",
+    "explanation": "Hard Disk Drives (HDD) have mechanical arms and spinning platters that can be physically damaged by shock."
+  },
+  {
+    "id": 165,
+    "question": "Which tool would a technician use to verify that a physical Ethernet wall jack is wired correctly to the patch panel?",
+    "options": [
+      "A. Loopback plug",
+      "B. Cable tester/Wire map tester",
+      "C. Multimeter",
+      "D. Toner probe"
+    ],
+    "answer": "B",
+    "explanation": "A wire map tester checks that each of the 8 pins on one end matches the pins on the other."
+  },
+  {
+    "id": 166,
+    "question": "Which wireless standard operates in the 5GHz band and was the first to introduce MU-MIMO support?",
+    "options": [
+      "A. 802.11n",
+      "B. 802.11ac",
+      "C. 802.11g",
+      "D. 802.11ax"
+    ],
+    "answer": "B",
+    "explanation": "802.11ac (Wi-Fi 5) introduced Multi-User Multiple-Input Multiple-Output to improve efficiency."
+  },
+  {
+    "id": 167,
+    "question": "A technician is replacing a smartphone battery. Which of the following is the most important safety step?",
+    "options": [
+      "A. Wear a grounded wrist strap",
+      "B. Use a metal pry tool",
+      "C. Do not puncture the battery",
+      "D. Freeze the battery before removal"
+    ],
+    "answer": "C",
+    "explanation": "Puncturing a Lithium-ion battery can lead to a thermal runaway and fire."
+  },
+  {
+    "id": 168,
+    "question": "Which cloud characteristic allows a user to access more storage instantly without human intervention from the provider?",
+    "options": [
+      "A. Resource pooling",
+      "B. On-demand self-service",
+      "C. Measured service",
+      "D. Rapid elasticity"
+    ],
+    "answer": "B",
+    "explanation": "On-demand self-service means the user can provision resources automatically as needed."
+  },
+  {
+    "id": 169,
+    "question": "Which hardware component is responsible for converting the laptop's DC power into the AC power needed for an older CCFL backlight?",
+    "options": [
+      "A. Rectifier",
+      "B. Inverter",
+      "C. Transformer",
+      "D. Converter"
+    ],
+    "answer": "B",
+    "explanation": "Inverters are specific to older CCFL (Cold Cathode Fluorescent Lamp) displays."
+  },
+  {
+    "id": 170,
+    "question": "A technician is troubleshooting a laser printer that produces pages where the toner smears when touched immediately after printing. Which printer component is the MOST likely cause?",
+    "options": [
+      "A. Pickup roller",
+      "B. Transfer roller",
+      "C. Fuser assembly",
+      "D. Separation pad"
+    ],
+    "answer": "C",
+    "explanation": "If toner rubs off the page, the fuser is the most likely fault because it uses heat and pressure to bond toner permanently to the paper."
+  },
+  {
+    "id": 171,
+    "question": "Which motherboard component is responsible for the Power-On Self-Test (POST)?",
+    "options": [
+      "A. CMOS",
+      "B. BIOS/UEFI",
+      "C. Northbridge",
+      "D. CPU"
+    ],
+    "answer": "B",
+    "explanation": "The BIOS/UEFI firmware runs the POST to check hardware health before booting the OS."
+  },
+  {
+    "id": 172,
+    "question": "Which RAID level requires at least 4 drives and is known as a 'stripe of mirrors'?",
+    "options": [
+      "A. RAID 0",
+      "B. RAID 1",
+      "C. RAID 5",
+      "D. RAID 10"
+    ],
+    "answer": "D",
+    "explanation": "RAID 10 (1+0) combines the speed of RAID 0 with the redundancy of RAID 1."
+  },
+  {
+    "id": 173,
+    "question": "A technician is using a loopback plug. Which of the following are they testing?",
+    "options": [
+      "A. Wi-Fi signal strength",
+      "B. A physical network port's transmit/receive capability",
+      "C. The voltage of a power outlet",
+      "D. The continuity of a long fiber run"
+    ],
+    "answer": "B",
+    "explanation": "Loopback plugs redirect a signal back into the same port to see if the NIC is functioning."
+  },
+  {
+    "id": 174,
+    "question": "Which cloud model is used by a single organization but can be managed by a third party?",
+    "options": [
+      "A. Public",
+      "B. Private",
+      "C. Hybrid",
+      "D. Community"
+    ],
+    "answer": "B",
+    "explanation": "A private cloud is dedicated to one organization, regardless of who manages the hardware."
+  },
+  {
+    "id": 175,
+    "question": "Which expansion slot was designed specifically for high-end graphics cards before PCIe became the standard?",
+    "options": [
+      "A. PCI",
+      "B. AGP",
+      "C. ISA",
+      "D. DIMM"
+    ],
+    "answer": "B",
+    "explanation": "AGP (Accelerated Graphics Port) was the precursor to PCIe for dedicated video cards."
+  },
+  {
+    "id": 176,
+    "question": "A laptop’s touchpad is behaving erratically. The technician notices the case is bulging slightly. What should they investigate?",
+    "options": [
+      "A. Failing hard drive",
+      "B. Swollen battery",
+      "C. Overheating CPU",
+      "D. Loose screws"
+    ],
+    "answer": "B",
+    "explanation": "A swollen battery often pushes against the underside of the touchpad, causing erratic behavior."
+  },
+  {
+    "id": 177,
+    "question": "A technician is reviewing firewall rules for an older Windows environment that still uses NetBIOS name resolution. Which port handles the NetBIOS Name Service?",
+    "options": [
+      "A. 137",
+      "B. 138",
+      "C. 139",
+      "D. 445"
+    ],
+    "answer": "A",
+    "explanation": "NetBIOS Name Service uses port 137. Port 138 is for NetBIOS datagrams, 139 is for NetBIOS session service, and 445 is SMB over TCP."
+  },
+  {
+    "id": 178,
+    "question": "A user wants the fastest everyday storage upgrade for a PC and specifically wants a device with no moving parts and much faster seek times than a hard drive. Which storage type fits best?",
+    "options": [
+      "A. HDD",
+      "B. Tape drive",
+      "C. SSD",
+      "D. CD-ROM"
+    ],
+    "answer": "C",
+    "explanation": "An SSD uses flash storage instead of spinning platters, so it has no moving parts and much faster access times than an HDD or other mechanical media."
+  },
+  {
+    "id": 179,
+    "question": "Which laptop component is often integrated into the display bezel?",
+    "options": [
+      "A. RAM",
+      "B. Wi-Fi Antenna",
+      "C. Motherboard",
+      "D. Battery"
+    ],
+    "answer": "B",
+    "explanation": "Antennas are placed in the lid for better signal reception, away from the metal-heavy base."
+  },
+  {
+    "id": 180,
+    "question": "A technician needs to configure a printer so it is reachable by hostname. Which service should they update?",
+    "options": [
+      "A. DHCP",
+      "B. DNS",
+      "C. SNMP",
+      "D. NTP"
+    ],
+    "answer": "B",
+    "explanation": "DNS maps hostnames (like 'PRINTER01') to IP addresses."
+  },
+  {
+    "id": 181,
+    "question": "While building a desktop PC, a technician needs to connect the dedicated 12V power lead near the processor socket on the motherboard. Which power connector is used for that CPU connection?",
+    "options": [
+      "A. 24-pin ATX",
+      "B. 4/8-pin EPS",
+      "C. 6-pin PCIe",
+      "D. 15-pin SATA"
+    ],
+    "answer": "B",
+    "explanation": "The 4-pin or 8-pin EPS connector provides dedicated CPU power. The 24-pin ATX connector powers the motherboard generally, PCIe connectors are for graphics cards, and SATA power is for drives."
+  },
+  {
+    "id": 182,
+    "question": "A printer is producing 'speckled' pages. What is the most likely cause?",
+    "options": [
+      "A. Dirty fuser",
+      "B. Excess toner inside the machine",
+      "C. Clogged ink nozzle",
+      "D. Wrong paper weight"
+    ],
+    "answer": "B",
+    "explanation": "Loose toner inside the printer often sticks to the paper during the printing process."
+  },
+  {
+    "id": 183,
+    "question": "Which wireless standard is capable of using both 2.4GHz and 5GHz frequencies simultaneously?",
+    "options": [
+      "A. 802.11b",
+      "B. 802.11g",
+      "C. 802.11n",
+      "D. 802.11a"
+    ],
+    "answer": "C",
+    "explanation": "802.11n (Wi-Fi 4) was the first major standard to introduce dual-band support."
+  },
+  {
+    "id": 184,
+    "question": "Which cloud characteristic involves the provider dynamically assigning physical resources to multiple users?",
+    "options": [
+      "A. Broad network access",
+      "B. Resource pooling",
+      "C. Rapid elasticity",
+      "D. Measured service"
+    ],
+    "answer": "B",
+    "explanation": "Pooling allows the provider to serve many customers using the same hardware infrastructure."
+  },
+  {
+    "id": 185,
+    "question": "What is the maximum speed of a USB 3.0 (USB 3.1 Gen 1) connection?",
+    "options": [
+      "A. 480 Mbps",
+      "B. 5 Gbps",
+      "C. 10 Gbps",
+      "D. 20 Gbps"
+    ],
+    "answer": "B",
+    "explanation": "USB 3.0/3.1 Gen 1 provides a theoretical maximum speed of 5 Gigabits per second."
+  },
+  {
+    "id": 186,
+    "question": "A user reports they can only see an image on their laptop screen when in a very bright room. What failed?",
+    "options": [
+      "A. Digitizer",
+      "B. Backlight/Inverter",
+      "C. GPU",
+      "D. LCD Panel"
+    ],
+    "answer": "B",
+    "explanation": "If the LCD is working but unlit, the backlight or its power source is the problem."
+  },
+  {
+    "id": 187,
+    "question": "Which networking device is used to extend a signal across a longer distance without making routing decisions?",
+    "options": [
+      "A. Router",
+      "B. Switch",
+      "C. Repeater/Extender",
+      "D. Firewall"
+    ],
+    "answer": "C",
+    "explanation": "A repeater simply takes a signal and re-broadcasts it to extend the range."
+  },
+  {
+    "id": 188,
+    "question": "Which type of RAM is typically used for a laptop's video memory if it doesn't have a dedicated card?",
+    "options": [
+      "A. Shared system RAM",
+      "B. VRAM",
+      "C. GDDR6",
+      "D. HBM"
+    ],
+    "answer": "A",
+    "explanation": "Integrated graphics (onboard) use a portion of the system's SODIMM RAM as video memory."
+  },
+  {
+    "id": 189,
+    "question": "An administrator needs to transfer files securely to a Linux server using the same encrypted protocol family as SSH. Which port and protocol combination should be allowed through the firewall?",
+    "options": [
+      "A. Port 20/21 using FTP",
+      "B. Port 22 using SFTP",
+      "C. Port 69 using TFTP",
+      "D. Port 445 using SMB"
+    ],
+    "answer": "B",
+    "explanation": "SFTP transfers files over the SSH service and uses TCP port 22 by default. FTP and TFTP do not provide the same encrypted SSH-based protection."
+  },
+  {
+    "id": 190,
+    "question": "A technician is making a custom Ethernet patch cable and needs to attach an RJ-45 connector to the end of a UTP cable. Which tool should they use?",
+    "options": [
+      "A. Punchdown tool",
+      "B. Crimper",
+      "C. Wire stripper",
+      "D. Multimeter"
+    ],
+    "answer": "B",
+    "explanation": "A crimper secures the RJ-45 connector pins into the cable conductors. A punchdown tool is for patch panels and keystone jacks, not for crimping modular plugs."
+  },
+  {
+    "id": 191,
+    "question": "A smartphone screen responds to touch in the wrong location. What should the technician try first?",
+    "options": [
+      "A. Replace the digitizer",
+      "B. Calibrate the screen",
+      "C. Perform a factory reset",
+      "D. Update the OS"
+    ],
+    "answer": "B",
+    "explanation": "Calibration is a software fix that aligns the touch input with the visual display."
+  },
+  {
+    "id": 192,
+    "question": "Which technology is used for short-range communication like mobile payments?",
+    "options": [
+      "A. Bluetooth",
+      "B. NFC",
+      "C. Infrared",
+      "D. 802.11ax"
+    ],
+    "answer": "B",
+    "explanation": "NFC (Near Field Communication) works within a range of about 4 centimeters."
+  },
+  {
+    "id": 193,
+    "question": "Which motherboard component manages communication between the CPU and the RAM?",
+    "options": [
+      "A. Southbridge",
+      "B. Northbridge/Memory Controller",
+      "C. BIOS",
+      "D. CMOS"
+    ],
+    "answer": "B",
+    "explanation": "The Northbridge (or integrated memory controller in modern CPUs) handles high-speed communication."
+  },
+  {
+    "id": 194,
+    "question": "Which type of printer uses an electrical charge to attract toner to a drum?",
+    "options": [
+      "A. Inkjet",
+      "B. Impact",
+      "C. Laser",
+      "D. Thermal"
+    ],
+    "answer": "C",
+    "explanation": "Laser printers use the 'Electrostatic' process to move toner."
+  },
+  {
+    "id": 195,
+    "question": "Which cloud model involves a mix of on-premises infrastructure and public cloud services?",
+    "options": [
+      "A. Public",
+      "B. Private",
+      "C. Hybrid",
+      "D. Community"
+    ],
+    "answer": "C",
+    "explanation": "Hybrid clouds allow organizations to keep sensitive data local while using public clouds for scale."
+  },
+  {
+    "id": 196,
+    "question": "Which port is used for unencrypted web traffic?",
+    "options": [
+      "A. 22",
+      "B. 80",
+      "C. 443",
+      "D. 3389"
+    ],
+    "answer": "B",
+    "explanation": "HTTP uses port 80; HTTPS uses port 443."
+  },
+  {
+    "id": 197,
+    "question": "A technician is using a multimeter to test a wall outlet. What should the setting be?",
+    "options": [
+      "A. DC Voltage",
+      "B. AC Voltage",
+      "C. Continuity",
+      "D. Resistance"
+    ],
+    "answer": "B",
+    "explanation": "Wall outlets provide Alternating Current (AC)."
+  },
+  {
+    "id": 198,
+    "question": "What is the primary benefit of ECC RAM?",
+    "options": [
+      "A. Higher clock speeds",
+      "B. Lower power consumption",
+      "C. Detecting and correcting memory errors",
+      "D. Smaller physical size"
+    ],
+    "answer": "C",
+    "explanation": "ECC (Error Correction Code) RAM is used in servers to prevent data corruption."
+  },
+  {
+    "id": 199,
+    "question": "A technician needs to find where a network cable goes through a wall. Which tool should they use?",
+    "options": [
+      "A. Multimeter",
+      "B. Tone generator and probe",
+      "C. Loopback plug",
+      "D. Wi-Fi analyzer"
+    ],
+    "answer": "B",
+    "explanation": "The tone generator sends a signal that the probe can detect through walls or in bundles."
+  },
+  {
+    "id": 200,
+    "question": "A technician is configuring a virtual machine and wants to ensure it can communicate with other VMs on the same host but NOT the physical network. Which mode should be used?",
+    "options": [
+      "A. Bridged",
+      "B. NAT",
+      "C. Internal/Host-only",
+      "D. Public"
+    ],
+    "answer": "C",
+    "explanation": "Host-only or Internal networking isolates VMs to a private network within the hypervisor."
+  },
+  {
+    "id": 201,
+    "question": "Which type of printer uses a heating element and special chemically-treated paper to create images?",
+    "options": [
+      "A. Laser",
+      "B. Inkjet",
+      "C. Thermal",
+      "D. Impact"
+    ],
+    "answer": "C",
+    "explanation": "Thermal printers (common for receipts) use heat to turn specific areas of chemically-treated paper black."
+  },
+  {
+    "id": 202,
+    "question": "A user reports their laptop is plugged in but the battery is not charging. Which of the following should be checked first?",
+    "options": [
+      "A. Replace the motherboard",
+      "B. Perform a battery calibration",
+      "C. Verify the AC adapter and power port",
+      "D. Reinstall the OS"
+    ],
+    "answer": "C",
+    "explanation": "Always start with the simplest physical connections: the power brick and the DC-in jack."
+  },
+  {
+    "id": 203,
+    "question": "Which cloud service model provides the end-user with a complete, usable application like Microsoft 365 or Salesforce?",
+    "options": [
+      "A. IaaS",
+      "B. PaaS",
+      "C. SaaS",
+      "D. DaaS"
+    ],
+    "answer": "C",
+    "explanation": "Software as a Service (SaaS) delivers a finished product managed by the provider."
+  },
+  {
+    "id": 204,
+    "question": "Which networking protocol is used to retrieve email from a server and delete it from the server once downloaded?",
+    "options": [
+      "A. IMAP",
+      "B. POP3",
+      "C. SMTP",
+      "D. SNMP"
+    ],
+    "answer": "B",
+    "explanation": "POP3 (Port 110) traditionally downloads and removes mail from the server, unlike IMAP which syncs it."
+  },
+  {
+    "id": 205,
+    "question": "A technician is installing a CPU and notices small gold pins on the motherboard socket rather than on the CPU itself. Which socket type is this?",
+    "options": [
+      "A. PGA",
+      "B. LGA",
+      "C. BGA",
+      "D. DIP"
+    ],
+    "answer": "B",
+    "explanation": "Land Grid Array (LGA) sockets have pins on the motherboard; Pin Grid Array (PGA) has pins on the CPU."
+  },
+  {
+    "id": 206,
+    "question": "Which port is used by the SMB/CIFS protocol for modern Windows file sharing?",
+    "options": [
+      "A. 139",
+      "B. 445",
+      "C. 548",
+      "D. 427"
+    ],
+    "answer": "B",
+    "explanation": "Modern SMB (Server Message Block) runs directly over TCP on port 445."
+  },
+  {
+    "id": 207,
+    "question": "A user needs a cable to connect a laptop to a projector. Both devices have a port with a 'lightning bolt' icon. Which cable is most likely required?",
+    "options": [
+      "A. USB 3.0",
+      "B. Thunderbolt",
+      "C. Mini-DisplayPort",
+      "D. FireWire"
+    ],
+    "answer": "B",
+    "explanation": "The lightning bolt symbol indicates a Thunderbolt port, which supports high-speed data and video."
+  },
+  {
+    "id": 208,
+    "question": "Which tool is used to test the voltage levels of a power supply's 24-pin connector?",
+    "options": [
+      "A. Loopback plug",
+      "B. PSU Tester / Multimeter",
+      "C. Cable stripper",
+      "D. Tone probe"
+    ],
+    "answer": "B",
+    "explanation": "A PSU tester or a multimeter can verify if the 3.3V, 5V, and 12V rails are outputting correctly."
+  },
+  {
+    "id": 209,
+    "question": "Which wireless standard operates in both 2.4GHz and 5GHz and supports speeds up to 600 Mbps?",
+    "options": [
+      "A. 802.11g",
+      "B. 802.11a",
+      "C. 802.11n",
+      "D. 802.11ac"
+    ],
+    "answer": "C",
+    "explanation": "802.11n (Wi-Fi 4) was the first major dual-band standard to reach these speeds using MIMO."
+  },
+  {
+    "id": 210,
+    "question": "Which component in a laser printer is responsible for cleaning the excess toner off the imaging drum?",
+    "options": [
+      "A. Fuser",
+      "B. Transfer roller",
+      "C. Cleaning blade",
+      "D. Pickup roller"
+    ],
+    "answer": "C",
+    "explanation": "The rubber cleaning blade scrapes residual toner into a waste hopper before the next cycle."
+  },
+  {
+    "id": 211,
+    "question": "Which type of storage provides the fastest data access for a gaming laptop?",
+    "options": [
+      "A. 7200 RPM HDD",
+      "B. SATA SSD",
+      "C. NVMe SSD",
+      "D. SSHD"
+    ],
+    "answer": "C",
+    "explanation": "NVMe SSDs use the PCIe bus, bypassing the slower SATA interface for much higher speeds."
+  },
+  {
+    "id": 212,
+    "question": "Which cloud concept allows a provider to serve multiple customers by 'carving up' physical hardware into virtual instances?",
+    "options": [
+      "A. Rapid elasticity",
+      "B. Measured service",
+      "C. Resource pooling",
+      "D. On-demand self-service"
+    ],
+    "answer": "C",
+    "explanation": "Resource pooling allows the cloud provider to share hardware dynamically among many users."
+  },
+  {
+    "id": 213,
+    "question": "A technician needs to find the IP address of a web server based on its domain name. Which command should they use?",
+    "options": [
+      "A. ipconfig",
+      "B. nslookup",
+      "C. netstat",
+      "D. nbtstat"
+    ],
+    "answer": "B",
+    "explanation": "nslookup queries DNS servers to find IP addresses associated with hostnames."
+  },
+  {
+    "id": 214,
+    "question": "Which laptop component is most likely to be an OLED panel?",
+    "options": [
+      "A. The hard drive",
+      "B. The screen",
+      "C. The touchpad",
+      "D. The battery"
+    ],
+    "answer": "B",
+    "explanation": "OLED is a high-end display technology used for screens."
+  },
+  {
+    "id": 215,
+    "question": "Which port is used by the SLP (Service Location Protocol)?",
+    "options": [
+      "A. 427",
+      "B. 548",
+      "C. 445",
+      "D. 143"
+    ],
+    "answer": "A",
+    "explanation": "SLP uses port 427 to help devices find services like printers on the local network."
+  },
+  {
+    "id": 216,
+    "question": "A printer is producing vertical black lines down every page. What is the most likely cause?",
+    "options": [
+      "A. Low toner",
+      "B. Scratched imaging drum",
+      "C. Failed fuser",
+      "D. Clogged ink nozzle"
+    ],
+    "answer": "B",
+    "explanation": "A physical scratch on the imaging drum will pick up toner and create a continuous line on the page."
+  },
+  {
+    "id": 217,
+    "question": "Which technology allows a single physical network cable to carry multiple separate virtual networks?",
+    "options": [
+      "A. VPN",
+      "B. VLAN / Trunking",
+      "C. DHCP",
+      "D. DNS"
+    ],
+    "answer": "B",
+    "explanation": "VLANs allow network admins to segment traffic; trunking allows multiple VLANs over one physical link."
+  },
+  {
+    "id": 218,
+    "question": "A technician is installing RAM in a dual-channel motherboard. How should the modules be installed?",
+    "options": [
+      "A. In any two slots",
+      "B. In slots of the same color",
+      "C. Only in the first slot",
+      "D. In the slots closest to the CPU"
+    ],
+    "answer": "B",
+    "explanation": "Dual-channeling requires pairs of modules to be placed in specific slots (usually color-coded)."
+  },
+  {
+    "id": 219,
+    "question": "Which cloud model is a collaboration between several organizations with shared security or compliance goals?",
+    "options": [
+      "A. Public",
+      "B. Private",
+      "C. Hybrid",
+      "D. Community"
+    ],
+    "answer": "D",
+    "explanation": "Community clouds are for specific groups, like government agencies or hospitals."
+  },
+  {
+    "id": 220,
+    "question": "Which protocol is used to provide encrypted web traffic?",
+    "options": [
+      "A. HTTP",
+      "B. HTTPS",
+      "C. FTP",
+      "D. SSH"
+    ],
+    "answer": "B",
+    "explanation": "HTTPS (Port 443) uses SSL/TLS to encrypt web communications."
+  },
+  {
+    "id": 221,
+    "question": "A user's phone is very hot and the battery is draining, but they are not using any apps. What should the technician check?",
+    "options": [
+      "A. Screen brightness",
+      "B. Signal strength / Roaming",
+      "C. The charging cable",
+      "D. The SIM card"
+    ],
+    "answer": "B",
+    "explanation": "Searching for a weak signal causes a mobile radio to use significantly more power."
+  },
+  {
+    "id": 222,
+    "question": "Which port is used by the Telnet protocol?",
+    "options": [
+      "A. 21",
+      "B. 22",
+      "C. 23",
+      "D. 25"
+    ],
+    "answer": "C",
+    "explanation": "Telnet uses port 23; it is unencrypted and rarely used today in favor of SSH."
+  },
+  {
+    "id": 223,
+    "question": "Which hardware device is used to connect a computer to a cable or DSL provider's network?",
+    "options": [
+      "A. Switch",
+      "B. Hub",
+      "C. Modem",
+      "D. Bridge"
+    ],
+    "answer": "C",
+    "explanation": "A modem modulates and demodulates signals between the ISP and the local network."
+  },
+  {
+    "id": 224,
+    "question": "Which type of storage is commonly used for mobile device expansion and digital cameras?",
+    "options": [
+      "A. NVMe",
+      "B. SATA",
+      "C. SD / MicroSD",
+      "D. HDD"
+    ],
+    "answer": "C",
+    "explanation": "SD and MicroSD cards are the standard for small-format portable storage expansion."
+  },
+  {
+    "id": 225,
+    "question": "Which tool is used to remove the insulation from the end of a network cable?",
+    "options": [
+      "A. Crimper",
+      "B. Punchdown tool",
+      "C. Wire stripper",
+      "D. Multimeter"
+    ],
+    "answer": "C",
+    "explanation": "Wire strippers remove the outer jacket without damaging the copper strands inside."
+  },
+  {
+    "id": 226,
+    "question": "Which cloud concept refers to the ability to scale up or down resource capacity as needed?",
+    "options": [
+      "A. Rapid elasticity",
+      "B. Measured service",
+      "C. Pooling",
+      "D. Broad access"
+    ],
+    "answer": "A",
+    "explanation": "Elasticity allows a system to handle spikes in traffic by automatically adding resources."
+  },
+  {
+    "id": 227,
+    "question": "What is the primary function of a BIOS/UEFI 'Supervisor Password'?",
+    "options": [
+      "A. To encrypt the hard drive",
+      "B. To prevent unauthorized users from changing BIOS settings",
+      "C. To log into Windows",
+      "D. To bypass the firewall"
+    ],
+    "answer": "B",
+    "explanation": "Supervisor passwords protect the firmware configuration from being altered."
+  },
+  {
+    "id": 228,
+    "question": "Which type of internal laptop expansion card is primarily used for Wi-Fi and Bluetooth?",
+    "options": [
+      "A. M.2 / Mini-PCIe",
+      "B. DIMM",
+      "C. SATA",
+      "D. AGP"
+    ],
+    "answer": "A",
+    "explanation": "Most modern laptops use M.2 (or older Mini-PCIe) for wireless connectivity modules."
+  },
+  {
+    "id": 229,
+    "question": "A user's laser printer is producing documents where the toner rubs off easily. What should be replaced?",
+    "options": [
+      "A. Toner cartridge",
+      "B. Imaging drum",
+      "C. Fuser assembly",
+      "D. Pickup rollers"
+    ],
+    "answer": "C",
+    "explanation": "The fuser uses heat to melt toner into the paper; if it rubs off, the fuser isn't working."
+  },
+  {
+    "id": 230,
+    "question": "Which port is used for secure file transfer (SFTP)?",
+    "options": [
+      "A. 20",
+      "B. 21",
+      "C. 22",
+      "D. 23"
+    ],
+    "answer": "C",
+    "explanation": "SFTP runs over SSH, which uses port 22."
+  },
+  {
+    "id": 231,
+    "question": "Which component allows a laptop to be used as a desktop by connecting it to multiple monitors and peripherals with one cable?",
+    "options": [
+      "A. USB Hub",
+      "B. Port Replicator / Docking Station",
+      "C. Inverter",
+      "D. KVM Switch"
+    ],
+    "answer": "B",
+    "explanation": "Docking stations provide desktop-like connectivity for portable laptops."
+  },
+  {
+    "id": 232,
+    "question": "Which networking protocol uses Port 53?",
+    "options": [
+      "A. HTTP",
+      "B. DNS",
+      "C. DHCP",
+      "D. SMTP"
+    ],
+    "answer": "B",
+    "explanation": "DNS (Domain Name System) uses port 53 for name resolution."
+  },
+  {
+    "id": 233,
+    "question": "A technician is installing a motherboard and needs to ensure it doesn't touch the metal case. What should they use?",
+    "options": [
+      "A. Thermal paste",
+      "B. Standoffs",
+      "C. IO Shield",
+      "D. ZIF socket"
+    ],
+    "answer": "B",
+    "explanation": "Standoffs (spacers) keep the motherboard elevated and prevent electrical shorts against the case."
+  },
+  {
+    "id": 234,
+    "question": "Which cloud service model is essentially 'hardware for rent'?",
+    "options": [
+      "A. SaaS",
+      "B. PaaS",
+      "C. IaaS",
+      "D. DaaS"
+    ],
+    "answer": "C",
+    "explanation": "Infrastructure as a Service (IaaS) provides servers, storage, and networking as a service."
+  },
+  {
+    "id": 235,
+    "question": "Which wireless frequency offers more channels and higher speeds but has a shorter range?",
+    "options": [
+      "A. 2.4 GHz",
+      "B. 5.0 GHz",
+      "C. 900 MHz",
+      "D. 1.2 GHz"
+    ],
+    "answer": "B",
+    "explanation": "5GHz is faster and less congested but cannot penetrate walls as well as 2.4GHz."
+  },
+  {
+    "id": 236,
+    "question": "Which type of RAM must be refreshed constantly to maintain data?",
+    "options": [
+      "A. SRAM",
+      "B. DRAM",
+      "C. ROM",
+      "D. Flash"
+    ],
+    "answer": "B",
+    "explanation": "Dynamic RAM (DRAM) uses capacitors that leak charge and require frequent 'refresh' cycles."
+  },
+  {
+    "id": 237,
+    "question": "Which tool is used to check for a physical break in a long fiber optic cable run?",
+    "options": [
+      "A. Cable tester",
+      "B. Multimeter",
+      "C. OTDR",
+      "D. Loopback plug"
+    ],
+    "answer": "C",
+    "explanation": "An OTDR can pinpoint the exact distance to a break in a fiber optic line."
+  },
+  {
+    "id": 238,
+    "question": "Which port is used by the IMAP protocol?",
+    "options": [
+      "A. 110",
+      "B. 143",
+      "C. 443",
+      "D. 993"
+    ],
+    "answer": "B",
+    "explanation": "IMAP (unencrypted) uses port 143; IMAPS (encrypted) uses port 993."
+  },
+  {
+    "id": 239,
+    "question": "What is the maximum speed of a Category 6 (Cat 6) cable at 100 meters?",
+    "options": [
+      "A. 100 Mbps",
+      "B. 1 Gbps",
+      "C. 10 Gbps",
+      "D. 40 Gbps"
+    ],
+    "answer": "B",
+    "explanation": "Cat 6 supports 10Gbps at shorter distances (up to 55m), but is rated for 1Gbps at 100m."
+  },
+  {
+    "id": 240,
+    "question": "Which motherboard component acts as a security chip for hardware encryption?",
+    "options": [
+      "A. BIOS",
+      "B. CMOS",
+      "C. TPM",
+      "D. Northbridge"
+    ],
+    "answer": "C",
+    "explanation": "The Trusted Platform Module (TPM) stores encryption keys and certificates."
+  },
+  {
+    "id": 241,
+    "question": "A technician needs to connect a workstation to a network using a protocol that ensures reliable, ordered delivery. Which protocol is this?",
+    "options": [
+      "A. UDP",
+      "B. TCP",
+      "C. IP",
+      "D. ICMP"
+    ],
+    "answer": "B",
+    "explanation": "TCP (Transmission Control Protocol) is connection-oriented and ensures data arrives correctly."
+  },
+  {
+    "id": 242,
+    "question": "Which technology is used to provide power to a device through a network cable?",
+    "options": [
+      "A. PoE",
+      "B. QoS",
+      "C. WPS",
+      "D. DMZ"
+    ],
+    "answer": "A",
+    "explanation": "Power over Ethernet (PoE) allows devices like IP cameras to get power and data over one cable."
+  },
+  {
+    "id": 243,
+    "question": "Which laptop component is most likely to be found behind the display panel?",
+    "options": [
+      "A. RAM",
+      "B. Wi-Fi Antennas",
+      "C. Battery",
+      "D. Hard Drive"
+    ],
+    "answer": "B",
+    "explanation": "Placing antennas in the lid (the highest point) provides the best wireless reception."
+  },
+  {
+    "id": 244,
+    "question": "Which port is used by the RDP protocol?",
+    "options": [
+      "A. 22",
+      "B. 443",
+      "C. 3389",
+      "D. 5900"
+    ],
+    "answer": "C",
+    "explanation": "Remote Desktop Protocol (RDP) uses port 3389."
+  },
+  {
+    "id": 245,
+    "question": "Which type of printer uses a 'ribbon' and is commonly used for multi-part forms?",
+    "options": [
+      "A. Laser",
+      "B. Inkjet",
+      "C. Impact / Dot Matrix",
+      "D. Thermal"
+    ],
+    "answer": "C",
+    "explanation": "Impact printers physically strike a ribbon to transfer ink to paper."
+  },
+  {
+    "id": 246,
+    "question": "A technician is installing a liquid cooling system. Which component sits directly on the CPU?",
+    "options": [
+      "A. Radiator",
+      "B. Pump / Water block",
+      "C. Reservoir",
+      "D. Fan"
+    ],
+    "answer": "B",
+    "explanation": "The water block transfers heat from the CPU to the liquid coolant."
+  },
+  {
+    "id": 247,
+    "question": "Which cloud characteristic allows users to pay for only the storage they actually use?",
+    "options": [
+      "A. Pooling",
+      "B. Elasticity",
+      "C. Measured service",
+      "D. Self-service"
+    ],
+    "answer": "C",
+    "explanation": "Measured service is 'pay-per-use' billing."
+  },
+  {
+    "id": 248,
+    "question": "Which port is used by the SNMP protocol for receiving traps?",
+    "options": [
+      "A. 161",
+      "B. 162",
+      "C. 443",
+      "D. 514"
+    ],
+    "answer": "B",
+    "explanation": "SNMP uses 161 for queries and 162 for 'traps' (unsolicited notifications)."
+  },
+  {
+    "id": 249,
+    "question": "What is the primary purpose of a laptop's fn (Function) key?",
+    "options": [
+      "A. To access the BIOS",
+      "B. To toggle hardware features like volume and brightness",
+      "C. To right-click",
+      "D. To refresh the page"
+    ],
+    "answer": "B",
+    "explanation": "The 'fn' key allows small laptop keyboards to have dual functions for many keys."
+  },
+  {
+    "id": 250,
+    "question": "Which connector type is used to provide power to a 3.5-inch internal magnetic hard drive?",
+    "options": [
+      "A. 8-pin EPS",
+      "B. 15-pin SATA",
+      "C. 4-pin Berg",
+      "D. 6-pin PCIe"
+    ],
+    "answer": "B",
+    "explanation": "The 15-pin SATA power connector is the standard for both 3.5-inch HDDs and 2.5-inch SSDs."
+  },
+  {
+    "id": 251,
+    "question": "A technician is installing a home theater PC. Which cable allows for the transmission of both high-definition video and multi-channel digital audio?",
+    "options": [
+      "A. VGA",
+      "B. DVI-D",
+      "C. HDMI",
+      "D. S-Video"
+    ],
+    "answer": "C",
+    "explanation": "HDMI was designed specifically to carry uncompressed video and audio data in a single cable."
+  },
+  {
+    "id": 252,
+    "question": "Which networking device operates at Layer 3 of the OSI model and makes forwarding decisions based on IP addresses?",
+    "options": [
+      "A. Hub",
+      "B. Switch",
+      "C. Router",
+      "D. Bridge"
+    ],
+    "answer": "C",
+    "explanation": "Routers are Layer 3 devices; they connect different networks and use IP routing tables."
+  },
+  {
+    "id": 253,
+    "question": "A user wants to ensure their laptop screen is visible in direct sunlight. Which display specification should they look for?",
+    "options": [
+      "A. High Refresh Rate",
+      "B. High Contrast Ratio",
+      "C. High Nits (Brightness)",
+      "D. Low Latency"
+    ],
+    "answer": "C",
+    "explanation": "Nits are a unit of measurement for luminance (brightness). Higher nits help overcome glare from sunlight."
+  },
+  {
+    "id": 254,
+    "question": "Which tool is used to test the continuity of a copper wire to ensure there are no internal breaks?",
+    "options": [
+      "A. Loopback plug",
+      "B. Multimeter",
+      "C. Toner probe",
+      "D. Wi-Fi analyzer"
+    ],
+    "answer": "B",
+    "explanation": "Setting a multimeter to 'Continuity' mode causes a beep if electricity can flow from one end to the other."
+  },
+  {
+    "id": 255,
+    "question": "A technician is replacing a laptop's internal speakers. Which component must usually be removed first in most laptop designs?",
+    "options": [
+      "A. The LCD screen",
+      "B. The bottom case or palmrest",
+      "C. The CPU",
+      "D. The Wi-Fi antenna"
+    ],
+    "answer": "B",
+    "explanation": "Most internal laptop repairs begin with removing the bottom base cover or the palmrest assembly."
+  },
+  {
+    "id": 256,
+    "question": "Which wireless standard is limited to the 2.4GHz band and has a maximum speed of 54 Mbps?",
+    "options": [
+      "A. 802.11a",
+      "B. 802.11b",
+      "C. 802.11g",
+      "D. 802.11ac"
+    ],
+    "answer": "C",
+    "explanation": "802.11g offers 54 Mbps on the 2.4GHz band; 802.11a offers the same speed but only on 5GHz."
+  },
+  {
+    "id": 257,
+    "question": "Which type of storage is commonly used in high-end servers for its high speed and reliability, utilizing a 12Gbps interface?",
+    "options": [
+      "A. SATA SSD",
+      "B. SAS (Serial Attached SCSI)",
+      "C. NVMe",
+      "D. USB 3.2"
+    ],
+    "answer": "B",
+    "explanation": "SAS drives are faster and more reliable versions of SATA, specifically used in enterprise environments."
+  },
+  {
+    "id": 258,
+    "question": "A user's laser printer keeps displaying a 'Replace Maintenance Kit' error. What is typically included in this kit?",
+    "options": [
+      "A. Toner and Ink",
+      "B. Fuser and Pickup Rollers",
+      "C. Motherboard and RAM",
+      "D. Paper Tray and LCD"
+    ],
+    "answer": "B",
+    "explanation": "Maintenance kits usually replace the high-wear items like the fuser assembly and rubber rollers."
+  },
+  {
+    "id": 259,
+    "question": "Which port is used by the LDAP protocol for unencrypted directory services?",
+    "options": [
+      "A. 389",
+      "B. 636",
+      "C. 3389",
+      "D. 443"
+    ],
+    "answer": "A",
+    "explanation": "LDAP uses port 389; LDAPS (Secure) uses port 636."
+  },
+  {
+    "id": 260,
+    "question": "Which laptop component converts the movement of a finger into a mouse cursor's movement?",
+    "options": [
+      "A. Digitizer",
+      "B. Touchpad",
+      "C. Inverter",
+      "D. Trackball"
+    ],
+    "answer": "B",
+    "explanation": "The touchpad (trackpad) is the primary pointing device on a laptop."
+  },
+  {
+    "id": 261,
+    "question": "A technician needs to connect a server to a SAN (Storage Area Network). Which cable type is most commonly used for this high-speed connection?",
+    "options": [
+      "A. Cat 5e",
+      "B. Fiber Optic",
+      "C. Coaxial",
+      "D. USB-C"
+    ],
+    "answer": "B",
+    "explanation": "Fiber optics provide the low latency and high bandwidth required for SAN environments."
+  },
+  {
+    "id": 262,
+    "question": "Which motherboard component is used to store the specific time, date, and hardware configuration settings?",
+    "options": [
+      "A. BIOS chip",
+      "B. CMOS RAM",
+      "C. Southbridge",
+      "D. TPM"
+    ],
+    "answer": "B",
+    "explanation": "While the BIOS is the code, the CMOS RAM is the memory that stores the settings, powered by the CMOS battery."
+  },
+  {
+    "id": 263,
+    "question": "A user reports that their mobile device's screen is completely black, but they can still hear sounds and feel vibrations. What is the most likely hardware failure?",
+    "options": [
+      "A. The battery",
+      "B. The digitizer",
+      "C. The display assembly (LCD/OLED)",
+      "D. The charging port"
+    ],
+    "answer": "C",
+    "explanation": "Sound and vibration mean the phone is 'alive,' but the lack of image points to a dead display panel."
+  },
+  {
+    "id": 264,
+    "question": "Which cloud characteristic refers to multiple customers sharing the same physical storage and processing power?",
+    "options": [
+      "A. Rapid elasticity",
+      "B. Resource pooling",
+      "C. Measured service",
+      "D. Broad network access"
+    ],
+    "answer": "B",
+    "explanation": "Resource pooling is a fundamental cloud tenant where resources are logically separated but physically shared."
+  },
+  {
+    "id": 265,
+    "question": "Which port is used by the POP3S (Secure) protocol?",
+    "options": [
+      "A. 110",
+      "B. 143",
+      "C. 993",
+      "D. 995"
+    ],
+    "answer": "D",
+    "explanation": "POP3 uses 110; the secure version (POP3S) uses 995."
+  },
+  {
+    "id": 266,
+    "question": "Which type of RAM is specifically used in graphics cards for high-speed video processing?",
+    "options": [
+      "A. DDR5",
+      "B. GDDR6",
+      "C. SODIMM",
+      "D. LPDDR4"
+    ],
+    "answer": "B",
+    "explanation": "GDDR (Graphics Double Data Rate) is optimized for the high bandwidth needed by GPUs."
+  },
+  {
+    "id": 267,
+    "question": "A technician is installing a new SOHO router. Which of the following is the first thing they should change for security?",
+    "options": [
+      "A. The SSID",
+      "B. The default administrator password",
+      "C. The Wi-Fi channel",
+      "D. The DHCP range"
+    ],
+    "answer": "B",
+    "explanation": "Default passwords (like 'admin/admin') are public knowledge and are the first point of attack."
+  },
+  {
+    "id": 268,
+    "question": "Which type of printer is most likely to be used for printing carbonless multi-part shipping labels?",
+    "options": [
+      "A. Laser",
+      "B. Thermal",
+      "C. Dot Matrix",
+      "D. Inkjet"
+    ],
+    "answer": "C",
+    "explanation": "Impact printers (Dot Matrix) are required for 'impact' paper that requires physical pressure to mark multiple layers."
+  },
+  {
+    "id": 269,
+    "question": "Which tool is used to monitor and analyze the traffic on a wireless network to find interference?",
+    "options": [
+      "A. Loopback plug",
+      "B. Wi-Fi Analyzer",
+      "C. Tone probe",
+      "D. Multimeter"
+    ],
+    "answer": "B",
+    "explanation": "A Wi-Fi analyzer shows which channels are congested by neighboring networks."
+  },
+  {
+    "id": 270,
+    "question": "Which type of CPU cooling uses a metal block with fins and a fan but no liquid?",
+    "options": [
+      "A. Passive cooling",
+      "B. Active air cooling",
+      "C. Liquid cooling",
+      "D. Immersion cooling"
+    ],
+    "answer": "B",
+    "explanation": "Active air cooling uses a heat sink (passive) plus a fan (active) to move heat away."
+  },
+  {
+    "id": 271,
+    "question": "Which port is used by the IMAPS (Secure) protocol?",
+    "options": [
+      "A. 143",
+      "B. 465",
+      "C. 587",
+      "D. 993"
+    ],
+    "answer": "D",
+    "explanation": "IMAP uses 143; the secure version (IMAPS) uses 993."
+  },
+  {
+    "id": 272,
+    "question": "A technician is replacing a laptop's Wi-Fi card. How many wires must usually be reconnected to the card?",
+    "options": [
+      "A. 1",
+      "B. 2 (Main and Aux)",
+      "C. 4",
+      "D. 8"
+    ],
+    "answer": "B",
+    "explanation": "Most laptop Wi-Fi cards use two small antenna wires (Main and Auxiliary) for diversity and better signal."
+  },
+  {
+    "id": 273,
+    "question": "Which cloud model allows a developer to upload their code and have the provider handle the scaling and execution automatically?",
+    "options": [
+      "A. IaaS",
+      "B. PaaS",
+      "C. SaaS",
+      "D. Public"
+    ],
+    "answer": "B",
+    "explanation": "PaaS (Platform as a Service) provides the 'framework' for developers so they don't have to manage the underlying OS."
+  },
+  {
+    "id": 274,
+    "question": "Which type of USB connector is commonly used on the printer side of a USB cable?",
+    "options": [
+      "A. Type-A",
+      "B. Type-B",
+      "C. Mini-USB",
+      "D. Micro-USB"
+    ],
+    "answer": "B",
+    "explanation": "The square-shaped USB Type-B is the standard connector for printers and larger peripherals."
+  },
+  {
+    "id": 275,
+    "question": "A user's laser printer is producing documents with a repeated horizontal spot every 3 inches. What is the most likely cause?",
+    "options": [
+      "A. Low toner",
+      "B. A defect or smudge on the imaging drum",
+      "C. A clogged ink nozzle",
+      "D. Wrong paper size"
+    ],
+    "answer": "B",
+    "explanation": "Repeated marks at regular intervals (based on the circumference of a roller) indicate a physical defect on that roller/drum."
+  },
+  {
+    "id": 276,
+    "question": "A web server is configured to require encrypted browser connections using TLS. Which default port should the technician expect clients to use?",
+    "options": [
+      "A. 80",
+      "B. 443",
+      "C. 8080",
+      "D. 8443"
+    ],
+    "answer": "B",
+    "explanation": "HTTPS uses TCP port 443 by default for secure web traffic. Port 80 is the standard for unencrypted HTTP."
+  },
+  {
+    "id": 277,
+    "question": "Which type of storage is non-volatile and used to store the BIOS/UEFI firmware?",
+    "options": [
+      "A. DRAM",
+      "B. SRAM",
+      "C. ROM / Flash Memory",
+      "D. HDD"
+    ],
+    "answer": "C",
+    "explanation": "Firmware is stored on a flash memory chip (a type of ROM) so it isn't lost when power is removed."
+  },
+  {
+    "id": 278,
+    "question": "Which tool is used to verify that an Ethernet cable is 'straight-through' or 'crossover'?",
+    "options": [
+      "A. Tone probe",
+      "B. Cable tester",
+      "C. Loopback plug",
+      "D. Multimeter"
+    ],
+    "answer": "B",
+    "explanation": "A cable tester/wire mapper shows the pin-to-pin mapping of the cable."
+  },
+  {
+    "id": 279,
+    "question": "Which laptop component converts high-voltage AC from a wall outlet to low-voltage DC?",
+    "options": [
+      "A. Inverter",
+      "B. AC Adapter (Power Brick)",
+      "C. Rectifier",
+      "D. Battery"
+    ],
+    "answer": "B",
+    "explanation": "The external power brick handles the conversion of wall power to the DC current needed by the laptop."
+  },
+  {
+    "id": 280,
+    "question": "Which networking device is used to connect multiple computers in a LAN and sends data only to the intended recipient?",
+    "options": [
+      "A. Hub",
+      "B. Switch",
+      "C. Repeater",
+      "D. Bridge"
+    ],
+    "answer": "B",
+    "explanation": "A switch uses MAC addresses to intelligently direct traffic to the correct port."
+  },
+  {
+    "id": 281,
+    "question": "Which port is used by the SSH protocol?",
+    "options": [
+      "A. 20",
+      "B. 21",
+      "C. 22",
+      "D. 23"
+    ],
+    "answer": "C",
+    "explanation": "SSH uses port 22; it is the secure replacement for Telnet (23) and FTP (21)."
+  },
+  {
+    "id": 282,
+    "question": "Which type of RAM is physically smaller and used in laptops?",
+    "options": [
+      "A. DIMM",
+      "B. SODIMM",
+      "C. MicroDIMM",
+      "D. SIMM"
+    ],
+    "answer": "B",
+    "explanation": "SODIMMs (Small Outline) are roughly half the size of standard desktop DIMMs."
+  },
+  {
+    "id": 283,
+    "question": "A user's laser printer is producing completely blank pages. What should the technician check first?",
+    "options": [
+      "A. The fuser",
+      "B. The toner cartridge seal",
+      "C. The paper tray",
+      "D. The network cable"
+    ],
+    "answer": "B",
+    "explanation": "If the printer is new or the toner was just replaced, the plastic shipping seal might still be on the cartridge."
+  },
+  {
+    "id": 284,
+    "question": "Which cloud service model is known as 'On-Demand Software'?",
+    "options": [
+      "A. IaaS",
+      "B. PaaS",
+      "C. SaaS",
+      "D. SECaaS"
+    ],
+    "answer": "C",
+    "explanation": "SaaS (Software as a Service) delivers ready-to-use applications via the internet."
+  },
+  {
+    "id": 285,
+    "question": "Which port is used by the SMTP protocol for sending email (unencrypted)?",
+    "options": [
+      "A. 25",
+      "B. 110",
+      "C. 143",
+      "D. 445"
+    ],
+    "answer": "A",
+    "explanation": "SMTP uses port 25 for basic mail transfer between servers."
+  },
+  {
+    "id": 286,
+    "question": "Which tool is used to test if a specific IP address is reachable on a network?",
+    "options": [
+      "A. nslookup",
+      "B. ping",
+      "C. tracert",
+      "D. ipconfig"
+    ],
+    "answer": "B",
+    "explanation": "Ping uses ICMP Echo Requests to check if a remote host is online and responding."
+  },
+  {
+    "id": 287,
+    "question": "Which motherboard component is used to manage data flow between the CPU and slower peripherals like USB ports?",
+    "options": [
+      "A. Northbridge",
+      "B. Southbridge",
+      "C. CMOS",
+      "D. TPM"
+    ],
+    "answer": "B",
+    "explanation": "The Southbridge (now often part of the Chipset/PCH) manages slower input/output functions."
+  },
+  {
+    "id": 288,
+    "question": "A technician is installing a CPU into a ZIF socket. What does 'ZIF' stand for?",
+    "options": [
+      "A. Zero Internal Friction",
+      "B. Zero Insertion Force",
+      "C. Zone Interface Framework",
+      "D. Zinc Iron Filament"
+    ],
+    "answer": "B",
+    "explanation": "ZIF sockets use a lever to lock the CPU in place without requiring the user to push it down."
+  },
+  {
+    "id": 289,
+    "question": "Which port is used by the Telnet protocol?",
+    "options": [
+      "A. 20",
+      "B. 21",
+      "C. 22",
+      "D. 23"
+    ],
+    "answer": "D",
+    "explanation": "Telnet uses port 23; it is unencrypted and transmits data (including passwords) in plain text."
+  },
+  {
+    "id": 290,
+    "question": "Which type of storage device has no moving parts and is the standard for modern operating system drives?",
+    "options": [
+      "A. HDD",
+      "B. SSHD",
+      "C. SSD",
+      "D. DVD-RW"
+    ],
+    "answer": "C",
+    "explanation": "Solid State Drives (SSD) use flash memory and offer vastly superior speeds over mechanical HDDs."
+  },
+  {
+    "id": 291,
+    "question": "Which wireless standard operates in the 5GHz band and can reach speeds up to 1300 Mbps?",
+    "options": [
+      "A. 802.11g",
+      "B. 802.11n",
+      "C. 802.11ac",
+      "D. 802.11ax"
+    ],
+    "answer": "C",
+    "explanation": "802.11ac (Wi-Fi 5) was a 5GHz-only standard that drastically increased wireless speeds."
+  },
+  {
+    "id": 292,
+    "question": "A user reports that their laptop battery is charging to 100%, but the laptop dies after only 10 minutes of use. What is the solution?",
+    "options": [
+      "A. Replace the AC adapter",
+      "B. Calibrate the screen",
+      "C. Replace the battery",
+      "D. Reinstall the OS"
+    ],
+    "answer": "C",
+    "explanation": "Batteries have a limited lifespan; if they cannot hold a charge despite showing 100%, they are chemically exhausted."
+  },
+  {
+    "id": 293,
+    "question": "A client device can reach the network but cannot resolve hostnames like example.com into IP addresses. Which destination port should the technician verify is open for DNS traffic?",
+    "options": [
+      "A. 53",
+      "B. 67",
+      "C. 68",
+      "D. 80"
+    ],
+    "answer": "A",
+    "explanation": "DNS uses port 53 for name resolution queries. Ports 67 and 68 are used by DHCP, while port 80 is used by HTTP."
+  },
+  {
+    "id": 294,
+    "question": "Which motherboard component stores encryption keys and provides hardware-based security for Windows BitLocker?",
+    "options": [
+      "A. BIOS",
+      "B. TPM",
+      "C. CMOS",
+      "D. Northbridge"
+    ],
+    "answer": "B",
+    "explanation": "The Trusted Platform Module (TPM) is a secure cryptoprocessor used for hardware security."
+  },
+  {
+    "id": 295,
+    "question": "A technician needs to find the MAC address of a local computer. Which command should they use?",
+    "options": [
+      "A. ipconfig",
+      "B. ipconfig /all",
+      "C. ping",
+      "D. nslookup"
+    ],
+    "answer": "B",
+    "explanation": "The '/all' switch on ipconfig shows detailed information, including the physical (MAC) address."
+  },
+  {
+    "id": 296,
+    "question": "A technician is testing a web server that is intentionally running without TLS for an internal lab. Which default port is associated with standard HTTP traffic?",
+    "options": [
+      "A. 21",
+      "B. 22",
+      "C. 80",
+      "D. 443"
+    ],
+    "answer": "C",
+    "explanation": "HTTP uses TCP port 80 by default for unencrypted web traffic. Port 443 is the default when HTTPS is used instead."
+  },
+  {
+    "id": 297,
+    "question": "Which tool is used to verify the pinning of a newly crimped RJ-45 connector?",
+    "options": [
+      "A. Toner probe",
+      "B. Multimeter",
+      "C. Cable tester",
+      "D. Loopback plug"
+    ],
+    "answer": "C",
+    "explanation": "A cable tester checks each wire to ensure they were crimped in the correct order (T568A or T568B)."
+  },
+  {
+    "id": 298,
+    "question": "Final step in the CompTIA Troubleshooting Methodology?",
+    "options": [
+      "A. Verify full system functionality",
+      "B. Establish a plan of action",
+      "C. Document findings, actions, and outcomes",
+      "D. Identify the problem"
+    ],
+    "answer": "C",
+    "explanation": "Documentation is always the last step to ensure the knowledge is shared for future issues."
+  }
+]
