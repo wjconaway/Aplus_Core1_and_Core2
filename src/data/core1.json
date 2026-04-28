@@ -49,7 +49,7 @@
   },
   {
     "id": 5,
-    "question": "Which RAM type is the modern standard offering the highest speed?",
+    "question": "A technician is upgrading a modern desktop motherboard that supports the newest mainstream system memory standard. Which RAM type should be installed?",
     "options": [
       "A. DDR3",
       "B. DDR4",
@@ -57,7 +57,7 @@
       "D. GDDR6"
     ],
     "answer": "C",
-    "explanation": "DDR5 is the newest generation of system memory covered in the Core 1 exam."
+    "explanation": "DDR5 is the newest mainstream system RAM generation covered on the exam. GDDR6 is graphics memory, while DDR3 and DDR4 are older desktop memory standards."
   },
   {
     "id": 6,
@@ -73,7 +73,7 @@
   },
   {
     "id": 7,
-    "question": "Which cloud model provides the most control over the OS and hardware?",
+    "question": "A company wants to rent cloud infrastructure but still manage its own operating systems, virtual machines, and installed software. Which cloud model best fits that requirement?",
     "options": [
       "A. SaaS",
       "B. PaaS",
@@ -81,7 +81,7 @@
       "D. DaaS"
     ],
     "answer": "C",
-    "explanation": "Infrastructure as a Service (IaaS) gives the customer control over the OS and the software stack."
+    "explanation": "Infrastructure as a Service provides the customer with virtualized compute, storage, and networking while still leaving the customer in control of the OS and software stack."
   },
   {
     "id": 8,
@@ -109,19 +109,19 @@
   },
   {
     "id": 10,
-    "question": "The first step in the troubleshooting methodology is:",
+    "question": "A user says their laptop suddenly cannot reach the network, and the technician has not investigated yet. According to the CompTIA troubleshooting methodology, what should the technician do first?",
     "options": [
-      "A. Establish a theory",
+      "A. Establish a theory of probable cause",
       "B. Identify the problem",
-      "C. Test the theory",
-      "D. Verify functionality"
+      "C. Test the theory to determine cause",
+      "D. Verify full system functionality"
     ],
     "answer": "B",
-    "explanation": "You must always identify the problem first by gathering info from the user and checking logs."
+    "explanation": "The first troubleshooting step is to identify the problem by gathering information, questioning the user, and observing symptoms before jumping to theories or fixes."
   },
   {
     "id": 11,
-    "question": "Which Wi-Fi frequency was added to Wi-Fi 6E?",
+    "question": "A company upgrades to Wi-Fi 6E so compatible devices can use newer spectrum with less interference than the traditional bands. Which frequency band was added for Wi-Fi 6E?",
     "options": [
       "A. 2.4 GHz",
       "B. 5.0 GHz",
@@ -129,11 +129,11 @@
       "D. 60 GHz"
     ],
     "answer": "C",
-    "explanation": "The 6GHz band was added to the 802.11ax standard to create Wi-Fi 6E."
+    "explanation": "Wi-Fi 6E extends 802.11ax into the 6 GHz band. That additional spectrum helps reduce congestion compared with relying only on 2.4 GHz and 5 GHz."
   },
   {
     "id": 12,
-    "question": "Which hypervisor runs directly on the 'bare metal' hardware?",
+    "question": "A data center server is dedicated to virtualization and runs the hypervisor directly on the hardware instead of inside a host operating system. What type of hypervisor is this?",
     "options": [
       "A. Type 2",
       "B. Type 1",
@@ -141,7 +141,7 @@
       "D. Client-side"
     ],
     "answer": "B",
-    "explanation": "Type 1 hypervisors (like ESXi or Hyper-V) run directly on hardware without a host OS."
+    "explanation": "A Type 1 hypervisor runs directly on bare-metal hardware, which is why it is commonly used in enterprise virtualization platforms such as Hyper-V Server and ESXi."
   },
   {
     "id": 13,
@@ -169,7 +169,7 @@
   },
   {
     "id": 15,
-    "question": "Which RAM module is compatible with a DDR5 motherboard?",
+    "question": "A technician is installing memory into a desktop motherboard that supports DDR5. Which module type is the correct match for that system?",
     "options": [
       "A. DDR4 DIMM",
       "B. DDR5 SODIMM",
@@ -177,7 +177,7 @@
       "D. DDR3 DIMM"
     ],
     "answer": "C",
-    "explanation": "Desktop motherboards require DIMMs; only DDR5 DIMMs will fit into DDR5 slots."
+    "explanation": "A desktop DDR5 motherboard uses DDR5 DIMMs. SODIMMs are typically used in laptops, and older DDR3 or DDR4 modules are not compatible with DDR5 slots."
   },
   {
     "id": 16,
@@ -205,7 +205,7 @@
   },
   {
     "id": 18,
-    "question": "Which USB-C feature allows it to carry a video signal?",
+    "question": "A user connects a USB-C laptop to an external monitor with a USB-C video adapter. Which USB-C capability allows that port to carry native video output?",
     "options": [
       "A. Power Delivery",
       "B. DisplayPort Alt Mode",
@@ -213,11 +213,11 @@
       "D. VGA Mode"
     ],
     "answer": "B",
-    "explanation": "DisplayPort Alt Mode allows a USB-C port to output native DisplayPort video signals."
+    "explanation": "DisplayPort Alt Mode allows a USB-C port to transmit video over the connector. Power Delivery handles charging, and VGA Mode is not a real USB-C standard feature."
   },
   {
     "id": 19,
-    "question": "Which device uses a MAC address table to forward data frames?",
+    "question": "A technician wants a network device that learns MAC addresses and forwards frames only out the correct port instead of repeating traffic everywhere. Which device should be used?",
     "options": [
       "A. Hub",
       "B. Bridge",
@@ -225,19 +225,19 @@
       "D. Router"
     ],
     "answer": "C",
-    "explanation": "Switches are Layer 2 devices that use MAC addresses to forward traffic to specific ports."
+    "explanation": "A switch maintains a MAC address table and forwards Layer 2 traffic only where it needs to go. A hub just repeats traffic, and a router makes Layer 3 forwarding decisions based on IP addresses."
   },
   {
     "id": 20,
-    "question": "A faint image visible only with a flashlight suggests a failed:",
+    "question": "A laptop screen appears black, but when a technician shines a flashlight at the display they can barely see the desktop image. Which component has most likely failed?",
     "options": [
       "A. Inverter",
-      "B. Video Card",
-      "C. LCD Panel",
+      "B. Video card",
+      "C. LCD panel",
       "D. Backlight"
     ],
     "answer": "D",
-    "explanation": "If the image is there but not lit, the backlight (or its power source, the inverter) is out."
+    "explanation": "If the image is still present but no longer illuminated, the backlight is the most likely failure. A completely failed video card or LCD panel would usually prevent any usable image from appearing at all."
   },
   {
     "id": 21,
@@ -265,15 +265,15 @@
   },
   {
     "id": 23,
-    "question": "Loud clicking from a computer usually indicates a failing:",
+    "question": "A desktop starts making a repeated clicking noise and then struggles to open files stored on its internal drive. Which component is most likely failing?",
     "options": [
       "A. SSD",
-      "B. NVMe",
+      "B. NVMe module",
       "C. HDD",
       "D. RAM"
     ],
     "answer": "C",
-    "explanation": "Magnetic HDDs have moving arms; a rhythmic clicking is the 'click of death' indicating mechanical failure."
+    "explanation": "Traditional hard disk drives have moving mechanical parts, so repeated clicking is a classic sign of HDD failure. SSD and NVMe storage have no moving heads, so they do not produce that kind of mechanical click."
   },
   {
     "id": 24,
@@ -289,15 +289,15 @@
   },
   {
     "id": 25,
-    "question": "An IP address of 169.254.12.45 indicates:",
+    "question": "A Windows laptop cannot reach network resources and shows the IP address 169.254.12.45 after startup. What is the most likely cause?",
     "options": [
-      "A. DNS offline",
-      "B. DHCP unreachable",
-      "C. Bad NIC",
-      "D. Wrong Gateway"
+      "A. DNS is unavailable",
+      "B. The device could not contact a DHCP server",
+      "C. The NIC has completely failed",
+      "D. The default gateway address is incorrect"
     ],
     "answer": "B",
-    "explanation": "APIPA (Automatic Private IP Addressing) occurs when a client can't find a DHCP server."
+    "explanation": "An address in the 169.254.x.x range is an APIPA address. Windows assigns it when the client cannot obtain a lease from DHCP."
   },
   {
     "id": 26,
@@ -421,15 +421,15 @@
   },
   {
     "id": 36,
-    "question": "A server's time drifting after reboots suggests a bad:",
+    "question": "A desktop repeatedly loses its date and time whenever it is unplugged overnight, even though Windows is otherwise working normally. Which component should the technician replace first?",
     "options": [
       "A. CMOS battery",
-      "B. PSU",
+      "B. Power supply",
       "C. CPU fan",
-      "D. OS Drive"
+      "D. Storage drive"
     ],
     "answer": "A",
-    "explanation": "The CMOS battery maintains the system clock while the computer is unpowered."
+    "explanation": "The CMOS battery helps preserve BIOS/UEFI settings and the real-time clock when the system is powered off. If the clock resets after the machine is unplugged, the battery is the most likely culprit."
   },
   {
     "id": 37,
@@ -493,19 +493,19 @@
   },
   {
     "id": 42,
-    "question": "Which cloud characteristic describes billing for exact usage?",
+    "question": "A company moves a workload to the cloud and is billed based on the exact amount of storage and compute consumed each month. Which cloud characteristic does this describe?",
     "options": [
-      "A. Elasticity",
-      "B. Pooling",
+      "A. Rapid elasticity",
+      "B. Resource pooling",
       "C. Measured service",
-      "D. Self-service"
+      "D. On-demand self-service"
     ],
     "answer": "C",
-    "explanation": "Measured service (or metered service) means you are billed based on the amount of resources used."
+    "explanation": "Measured service means cloud usage is metered so customers are billed according to the resources they actually consume, such as storage, bandwidth, or compute time."
   },
   {
     "id": 43,
-    "question": "Which tech provides cellular data without a physical card?",
+    "question": "A phone can be activated on a cellular network without inserting a removable SIM card because the subscriber identity is built into the device. Which technology makes this possible?",
     "options": [
       "A. NFC",
       "B. eSIM",
@@ -513,7 +513,7 @@
       "D. VPN"
     ],
     "answer": "B",
-    "explanation": "eSIM is a software-based SIM embedded in the device's hardware."
+    "explanation": "An eSIM is an embedded digital SIM that can be provisioned by a carrier without a physical card swap. NFC and Bluetooth are short-range wireless technologies, and a VPN has nothing to do with cellular activation."
   },
   {
     "id": 44,
@@ -577,7 +577,7 @@
   },
   {
     "id": 49,
-    "question": "Which protocol is common for syncing mobile contacts/calendars?",
+    "question": "A company phone is configured to sync corporate email, contacts, and calendar items directly with a Microsoft messaging environment. Which protocol is commonly used for that mobile synchronization?",
     "options": [
       "A. POP3",
       "B. IMAP",
@@ -585,7 +585,7 @@
       "D. SNMP"
     ],
     "answer": "C",
-    "explanation": "ActiveSync is the standard protocol for corporate push-email, contacts, and calendar syncing."
+    "explanation": "Exchange ActiveSync is commonly used for mobile synchronization of email, contacts, and calendar data in Microsoft-based environments. POP3 and IMAP focus on email retrieval, while SNMP is used for monitoring and management."
   },
   {
     "id": 50,
@@ -613,7 +613,7 @@
   },
   {
     "id": 52,
-    "question": "Which is an example of SaaS?",
+    "question": "A company wants a cloud product where users simply sign in and use the finished application without managing servers or platforms underneath. Which option is an example of SaaS?",
     "options": [
       "A. Azure VM",
       "B. Amazon S3",
@@ -621,7 +621,7 @@
       "D. Windows 11"
     ],
     "answer": "C",
-    "explanation": "SaaS (Software as a Service) provides the final application directly to the end user via a browser."
+    "explanation": "Google Workspace is Software as a Service because the provider delivers the complete application to the customer. Azure VMs and Amazon S3 are infrastructure-level services instead."
   },
   {
     "id": 53,
@@ -649,7 +649,7 @@
   },
   {
     "id": 55,
-    "question": "Which tech is used for contactless payments (inches range)?",
+    "question": "A customer taps a smartphone against a payment terminal to complete a purchase from only a few centimeters away. Which wireless technology is being used?",
     "options": [
       "A. Bluetooth",
       "B. Infrared",
@@ -657,11 +657,11 @@
       "D. ANT+"
     ],
     "answer": "C",
-    "explanation": "Near Field Communication (NFC) is the very short-range standard used for mobile payments."
+    "explanation": "Near Field Communication is designed for very short-range communication and is commonly used for tap-to-pay transactions. Bluetooth and ANT+ are meant for longer-range device pairing, not close-proximity payment taps."
   },
   {
     "id": 56,
-    "question": "Which cable is best for the highest monitor refresh rates?",
+    "question": "A gamer wants to connect a high-end monitor and get the best support for very high refresh rates and modern display features. Which cable standard is usually the best choice?",
     "options": [
       "A. VGA",
       "B. DVI-D",
@@ -669,7 +669,7 @@
       "D. S-Video"
     ],
     "answer": "C",
-    "explanation": "DisplayPort supports the highest resolutions and refresh rates (e.g., 144Hz+) compared to older standards."
+    "explanation": "DisplayPort is commonly the best choice for very high resolutions and refresh rates on modern monitors. VGA and S-Video are legacy analog standards, and DVI-D is more limited on newer displays."
   },
   {
     "id": 57,
@@ -709,7 +709,7 @@
   },
   {
     "id": 60,
-    "question": "Which virtualization requires an OS to be installed first?",
+    "question": "A user installs virtualization software on top of Windows so they can run a few test virtual machines on a laptop. Which type of virtualization platform requires that host operating system to be installed first?",
     "options": [
       "A. Type 1",
       "B. Type 2",
@@ -717,7 +717,7 @@
       "D. Native"
     ],
     "answer": "B",
-    "explanation": "Type 2 hypervisors (like VMware Workstation or VirtualBox) run as apps inside a host OS."
+    "explanation": "A Type 2 hypervisor runs as an application inside a host OS, so the operating system has to be in place first. Type 1 hypervisors run directly on the hardware instead."
   },
   {
     "id": 61,
@@ -781,15 +781,15 @@
   },
   {
     "id": 66,
-    "question": "Which SOHO setting prioritizes video conferencing traffic?",
+    "question": "A small office complains that video calls become choppy whenever someone starts a large download. Which router setting should a technician configure to prioritize the conferencing traffic?",
     "options": [
-      "A. Port Forwarding",
-      "B. MAC Filtering",
+      "A. Port forwarding",
+      "B. MAC filtering",
       "C. QoS",
       "D. DMZ"
     ],
     "answer": "C",
-    "explanation": "Quality of Service (QoS) allows you to prioritize delay-sensitive traffic like VoIP or Video over downloads."
+    "explanation": "Quality of Service lets a router prioritize delay-sensitive traffic such as voice and video over less time-critical traffic like bulk downloads. The other options do not solve bandwidth prioritization."
   },
   {
     "id": 67,
@@ -829,15 +829,15 @@
   },
   {
     "id": 70,
-    "question": "Which tool tests voltage from a wall outlet?",
+    "question": "A technician needs to verify whether a wall outlet is actually supplying the expected electrical voltage before blaming a PC power issue on the computer itself. Which tool should be used?",
     "options": [
       "A. Multimeter",
-      "B. PSU Tester",
-      "C. Loopback",
-      "D. Toner Probe"
+      "B. PSU tester",
+      "C. Loopback plug",
+      "D. Toner probe"
     ],
     "answer": "A",
-    "explanation": "A multimeter is used to measure AC voltage from a socket or DC voltage from a battery or PSU pin."
+    "explanation": "A multimeter can measure AC voltage at a wall outlet directly. A PSU tester is for power supply connectors, while loopback plugs and toner probes are used for network and cable testing instead."
   },
   {
     "id": 71,
@@ -1897,7 +1897,7 @@
   },
   {
     "id": 159,
-    "question": "Which port is used by the SLP protocol?",
+    "question": "A technician is troubleshooting automatic service discovery for network devices and printers that rely on the Service Location Protocol. Which default port should they check first?",
     "options": [
       "A. 427",
       "B. 445",
@@ -1905,7 +1905,7 @@
       "D. 631"
     ],
     "answer": "A",
-    "explanation": "Service Location Protocol (SLP) uses port 427 to find services like printers on a network."
+    "explanation": "SLP uses port 427 for service discovery traffic. The other ports are associated with different services such as SMB, AFP, and IPP printing."
   },
   {
     "id": 160,
@@ -1921,7 +1921,7 @@
   },
   {
     "id": 161,
-    "question": "Which port is used by the AFP (Apple Filing Protocol) for file services?",
+    "question": "A legacy macOS file-sharing service still uses Apple Filing Protocol instead of SMB. Which default port is associated with AFP traffic?",
     "options": [
       "A. 445",
       "B. 548",
@@ -1929,7 +1929,7 @@
       "D. 143"
     ],
     "answer": "B",
-    "explanation": "AFP uses port 548 for file transfers between macOS devices."
+    "explanation": "AFP commonly uses port 548. Port 445 is associated with SMB, while the other choices belong to unrelated network services."
   },
   {
     "id": 162,
@@ -2113,7 +2113,7 @@
   },
   {
     "id": 177,
-    "question": "Which port is used by the NetBIOS protocol for name resolution?",
+    "question": "A technician is reviewing firewall rules for an older Windows environment that still uses NetBIOS name resolution. Which port handles the NetBIOS Name Service?",
     "options": [
       "A. 137",
       "B. 138",
@@ -2121,19 +2121,19 @@
       "D. 445"
     ],
     "answer": "A",
-    "explanation": "NetBIOS over TCP/IP uses port 137 for its Name Service."
+    "explanation": "NetBIOS Name Service uses port 137. Port 138 is for NetBIOS datagrams, 139 is for NetBIOS session service, and 445 is SMB over TCP."
   },
   {
     "id": 178,
-    "question": "Which type of storage has the fastest seek time and no moving parts?",
+    "question": "A user wants the fastest everyday storage upgrade for a PC and specifically wants a device with no moving parts and much faster seek times than a hard drive. Which storage type fits best?",
     "options": [
       "A. HDD",
-      "B. Tape Drive",
+      "B. Tape drive",
       "C. SSD",
       "D. CD-ROM"
     ],
     "answer": "C",
-    "explanation": "SSDs use flash memory, resulting in near-instantaneous seek times compared to mechanical drives."
+    "explanation": "An SSD uses flash storage instead of spinning platters, so it has no moving parts and much faster access times than an HDD or other mechanical media."
   },
   {
     "id": 179,
@@ -2161,7 +2161,7 @@
   },
   {
     "id": 181,
-    "question": "Which connector is used to provide extra 12V power to the CPU?",
+    "question": "While building a desktop PC, a technician needs to connect the dedicated 12V power lead near the processor socket on the motherboard. Which power connector is used for that CPU connection?",
     "options": [
       "A. 24-pin ATX",
       "B. 4/8-pin EPS",
@@ -2169,7 +2169,7 @@
       "D. 15-pin SATA"
     ],
     "answer": "B",
-    "explanation": "The EPS (Entry-level Power Supply) connector provides dedicated power to the processor."
+    "explanation": "The 4-pin or 8-pin EPS connector provides dedicated CPU power. The 24-pin ATX connector powers the motherboard generally, PCIe connectors are for graphics cards, and SATA power is for drives."
   },
   {
     "id": 182,
@@ -2257,19 +2257,19 @@
   },
   {
     "id": 189,
-    "question": "Which port and protocol are used to transfer files securely via SSH?",
+    "question": "An administrator needs to transfer files securely to a Linux server using the same encrypted protocol family as SSH. Which port and protocol combination should be allowed through the firewall?",
     "options": [
-      "A. Port 20/21 (FTP)",
-      "B. Port 22 (SFTP)",
-      "C. Port 69 (TFTP)",
-      "D. Port 445 (SMB)"
+      "A. Port 20/21 using FTP",
+      "B. Port 22 using SFTP",
+      "C. Port 69 using TFTP",
+      "D. Port 445 using SMB"
     ],
     "answer": "B",
-    "explanation": "SFTP (Secure FTP) runs over the SSH protocol on port 22."
+    "explanation": "SFTP transfers files over the SSH service and uses TCP port 22 by default. FTP and TFTP do not provide the same encrypted SSH-based protection."
   },
   {
     "id": 190,
-    "question": "Which tool would you use to attach an RJ-45 connector to a UTP cable?",
+    "question": "A technician is making a custom Ethernet patch cable and needs to attach an RJ-45 connector to the end of a UTP cable. Which tool should they use?",
     "options": [
       "A. Punchdown tool",
       "B. Crimper",
@@ -2277,7 +2277,7 @@
       "D. Multimeter"
     ],
     "answer": "B",
-    "explanation": "A crimper 'crimps' the connector pins into the copper wires."
+    "explanation": "A crimper secures the RJ-45 connector pins into the cable conductors. A punchdown tool is for patch panels and keystone jacks, not for crimping modular plugs."
   },
   {
     "id": 191,
@@ -3301,7 +3301,7 @@
   },
   {
     "id": 276,
-    "question": "Which port is used by the HTTPS protocol?",
+    "question": "A web server is configured to require encrypted browser connections using TLS. Which default port should the technician expect clients to use?",
     "options": [
       "A. 80",
       "B. 443",
@@ -3309,7 +3309,7 @@
       "D. 8443"
     ],
     "answer": "B",
-    "explanation": "Port 443 is the standard port for encrypted web traffic (HTTPS)."
+    "explanation": "HTTPS uses TCP port 443 by default for secure web traffic. Port 80 is the standard for unencrypted HTTP."
   },
   {
     "id": 277,
@@ -3505,7 +3505,7 @@
   },
   {
     "id": 293,
-    "question": "Which port is used by the DNS protocol?",
+    "question": "A client device can reach the network but cannot resolve hostnames like example.com into IP addresses. Which destination port should the technician verify is open for DNS traffic?",
     "options": [
       "A. 53",
       "B. 67",
@@ -3513,7 +3513,7 @@
       "D. 80"
     ],
     "answer": "A",
-    "explanation": "DNS (Domain Name System) uses port 53 for resolving names to IPs."
+    "explanation": "DNS uses port 53 for name resolution queries. Ports 67 and 68 are used by DHCP, while port 80 is used by HTTP."
   },
   {
     "id": 294,
@@ -3541,7 +3541,7 @@
   },
   {
     "id": 296,
-    "question": "Which port is used by the HTTP protocol?",
+    "question": "A technician is testing a web server that is intentionally running without TLS for an internal lab. Which default port is associated with standard HTTP traffic?",
     "options": [
       "A. 21",
       "B. 22",
@@ -3549,7 +3549,7 @@
       "D. 443"
     ],
     "answer": "C",
-    "explanation": "Port 80 is the standard port for unencrypted web traffic (HTTP)."
+    "explanation": "HTTP uses TCP port 80 by default for unencrypted web traffic. Port 443 is the default when HTTPS is used instead."
   },
   {
     "id": 297,

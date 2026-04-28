@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "question": "Which command-line tool in Windows is used to check and repair errors on a hard drive?",
+    "question": "A Windows workstation was shut down improperly and now reports file system errors on the drive. Which command-line tool should a technician use to scan the disk and attempt repairs?",
     "options": [
       "A. SFC",
       "B. CHKDSK",
@@ -9,7 +9,7 @@
       "D. BOOTREC"
     ],
     "answer": "B",
-    "explanation": "CHKDSK (Check Disk) scans the file system for logical and physical errors."
+    "explanation": "CHKDSK checks a volume for file system problems and disk errors. SFC repairs protected system files, DISM services Windows images, and BOOTREC focuses on boot recovery tasks."
   },
   {
     "id": 2,
@@ -73,7 +73,7 @@
   },
   {
     "id": 7,
-    "question": "Which Linux command is used to display the current working directory?",
+    "question": "A Linux user is deep in the terminal and wants to confirm the exact directory they are currently working in before running a script. Which command should they use?",
     "options": [
       "A. ls",
       "B. cd",
@@ -81,7 +81,7 @@
       "D. grep"
     ],
     "answer": "C",
-    "explanation": "pwd stands for 'print working directory.'"
+    "explanation": "pwd stands for print working directory and displays the full path of the current location. ls lists files, cd changes directories, and grep searches text."
   },
   {
     "id": 8,
@@ -157,7 +157,7 @@
   },
   {
     "id": 14,
-    "question": "Which macOS feature is used to search for files, folders, and apps across the entire system?",
+    "question": "A Mac user needs the fastest built-in way to search for an app, document, or setting from anywhere in macOS. Which feature should they use?",
     "options": [
       "A. Finder",
       "B. Spotlight",
@@ -165,7 +165,7 @@
       "D. iCloud"
     ],
     "answer": "B",
-    "explanation": "Spotlight (Cmd + Space) is the built-in search tool for macOS."
+    "explanation": "Spotlight is macOS's built-in system-wide search feature. Finder browses files, Mission Control manages open windows, and iCloud is a cloud service rather than a local search tool."
   },
   {
     "id": 15,
@@ -181,7 +181,7 @@
   },
   {
     "id": 16,
-    "question": "Which command-line tool in Windows is used to check the integrity of system files and replace corrupted ones?",
+    "question": "A technician suspects corrupted Windows system files after repeated operating system errors. Which command-line tool should they run first to verify and repair protected system files?",
     "options": [
       "A. CHKDSK",
       "B. SFC",
@@ -189,11 +189,11 @@
       "D. TASKLIST"
     ],
     "answer": "B",
-    "explanation": "SFC (System File Checker) scans and repairs core Windows system files."
+    "explanation": "SFC scans protected Windows system files and replaces corrupted versions when possible. CHKDSK focuses on disks, DISM services Windows images, and TASKLIST only displays running processes."
   },
   {
     "id": 17,
-    "question": "Which Linux command is used to change the owner of a file?",
+    "question": "A Linux administrator needs to transfer ownership of a file from one user account to another. Which command should they use?",
     "options": [
       "A. chmod",
       "B. chown",
@@ -201,7 +201,7 @@
       "D. mv"
     ],
     "answer": "B",
-    "explanation": "chown stands for 'change owner.'"
+    "explanation": "chown changes the owner of a file or directory. chmod changes permissions, sudo runs commands with elevated privileges, and mv moves or renames files."
   },
   {
     "id": 18,
@@ -229,7 +229,7 @@
   },
   {
     "id": 20,
-    "question": "Which tool in macOS allows you to view system resource usage, similar to Windows Task Manager?",
+    "question": "A Mac is running slowly, and the technician wants to see which processes are consuming CPU, memory, disk, and network resources. Which macOS tool should they open?",
     "options": [
       "A. Force Quit",
       "B. Activity Monitor",
@@ -237,7 +237,7 @@
       "D. Terminal"
     ],
     "answer": "B",
-    "explanation": "Activity Monitor shows CPU, Memory, Disk, and Network usage for macOS."
+    "explanation": "Activity Monitor is the macOS utility that shows live process and resource usage, making it the closest equivalent to Windows Task Manager for troubleshooting performance issues."
   },
   {
     "id": 21,
@@ -289,7 +289,7 @@
   },
   {
     "id": 25,
-    "question": "Which mobile OS is 'Open Source'?",
+    "question": "A technician is comparing mobile operating systems and needs the one most associated with an open-source platform built on the Linux kernel. Which OS fits that description?",
     "options": [
       "A. iOS",
       "B. Android",
@@ -297,7 +297,7 @@
       "D. Blackberry OS"
     ],
     "answer": "B",
-    "explanation": "Android is based on the Linux kernel and is open source, unlike the closed-source iOS."
+    "explanation": "Android is the open-source mobile platform in this group and is based on the Linux kernel. iOS is the well-known closed-source alternative."
   },
   {
     "id": 26,
@@ -325,7 +325,7 @@
   },
   {
     "id": 28,
-    "question": "Which Linux command allows a user to run a command with administrative privileges?",
+    "question": "A Linux technician needs to run a single maintenance command with elevated privileges without permanently switching into the root account. Which command should they use?",
     "options": [
       "A. su",
       "B. sudo",
@@ -333,7 +333,7 @@
       "D. admin"
     ],
     "answer": "B",
-    "explanation": "sudo (superuser do) allows users to execute commands as the root user."
+    "explanation": "sudo runs an individual command with elevated privileges. su is used to switch users, while root and admin are not the correct command to do this job."
   },
   {
     "id": 29,
@@ -433,7 +433,7 @@
   },
   {
     "id": 37,
-    "question": "Which type of script uses the extension '.ps1'?",
+    "question": "A Windows administrator sends over a script file named cleanup.ps1. What type of script file is that?",
     "options": [
       "A. Python",
       "B. JavaScript",
@@ -441,11 +441,11 @@
       "D. Shell script"
     ],
     "answer": "C",
-    "explanation": "PowerShell scripts use the .ps1 extension."
+    "explanation": "The .ps1 extension identifies a PowerShell script. Python typically uses .py, JavaScript often uses .js, and shell scripts commonly use .sh."
   },
   {
     "id": 38,
-    "question": "An attacker creates a fake Wi-Fi access point with the same name as a legitimate one. What is this called?",
+    "question": "Employees connect to a wireless network named exactly like the company's real SSID, but it was set up by an attacker to intercept traffic. What type of attack is this?",
     "options": [
       "A. Evil Twin",
       "B. War Driving",
@@ -453,7 +453,7 @@
       "D. Spoofing"
     ],
     "answer": "A",
-    "explanation": "An Evil Twin is a rogue AP designed to look like a trusted network to intercept data."
+    "explanation": "An evil twin is a rogue wireless access point that impersonates a legitimate network so victims connect to it and expose their traffic or credentials."
   },
   {
     "id": 39,
@@ -481,7 +481,7 @@
   },
   {
     "id": 41,
-    "question": "Which Linux command is used to search for a specific string of text within a file?",
+    "question": "A Linux administrator wants to search a log file for every line containing the word error without opening the file in an editor. Which command should they use?",
     "options": [
       "A. find",
       "B. locate",
@@ -489,7 +489,7 @@
       "D. cat"
     ],
     "answer": "C",
-    "explanation": "grep (Global Regular Expression Print) searches for patterns in files."
+    "explanation": "grep is used to search file contents for matching text or patterns. find and locate are used to search for files, while cat simply displays file contents."
   },
   {
     "id": 42,
@@ -505,7 +505,7 @@
   },
   {
     "id": 43,
-    "question": "Which Windows tool is used to manage services, startup apps, and boot options?",
+    "question": "A technician is troubleshooting a Windows boot issue and wants to change boot options and temporarily limit which services load during startup. Which tool should they open?",
     "options": [
       "A. msconfig",
       "B. regedit",
@@ -513,7 +513,7 @@
       "D. perfmon"
     ],
     "answer": "A",
-    "explanation": "System Configuration (msconfig) is used for managing the boot environment and startup troubleshooting."
+    "explanation": "System Configuration (msconfig) is commonly used during startup troubleshooting to adjust boot settings and control how Windows starts. Registry Editor, Task Manager, and Performance Monitor do not fill that same boot-configuration role."
   },
   {
     "id": 44,
@@ -541,7 +541,7 @@
   },
   {
     "id": 46,
-    "question": "Which file system is the default for modern Windows installations?",
+    "question": "A technician installs Windows 11 on a new internal SSD using the normal modern setup defaults. Which file system will Windows typically use for the main system partition?",
     "options": [
       "A. FAT32",
       "B. exFAT",
@@ -549,7 +549,7 @@
       "D. ext4"
     ],
     "answer": "C",
-    "explanation": "NTFS (New Technology File System) supports larger volumes and security permissions."
+    "explanation": "Modern Windows installations normally use NTFS for the main partition because it supports permissions, journaling, large volumes, and other features Windows relies on."
   },
   {
     "id": 47,
@@ -601,7 +601,7 @@
   },
   {
     "id": 51,
-    "question": "Which Linux command is used to delete a file?",
+    "question": "A Linux technician needs to delete an outdated script file from the command line. Which command is normally used to remove a file?",
     "options": [
       "A. del",
       "B. erase",
@@ -609,7 +609,7 @@
       "D. move"
     ],
     "answer": "C",
-    "explanation": "rm stands for 'remove.'"
+    "explanation": "rm is the standard Linux command for removing files. The other choices are not the normal Linux command used for that task."
   },
   {
     "id": 52,
@@ -637,15 +637,15 @@
   },
   {
     "id": 54,
-    "question": "Which type of social engineering attack focuses on high-level executives?",
+    "question": "Attackers craft a fake urgent financial request specifically for the CEO and other senior executives at a company. What type of social engineering attack is this?",
     "options": [
       "A. Whaling",
       "B. Phishing",
       "C. Vishing",
-      "D. Spear Phishing"
+      "D. Spear phishing"
     ],
     "answer": "A",
-    "explanation": "Whaling is a targeted phishing attack aimed at 'big fish' like CEOs."
+    "explanation": "Whaling is a form of targeted phishing aimed specifically at high-value executive targets such as CEOs or CFOs. It is more specialized than general phishing."
   },
   {
     "id": 55,
@@ -709,7 +709,7 @@
   },
   {
     "id": 60,
-    "question": "Which Linux command is used to move or rename a file?",
+    "question": "A Linux user wants to rename notes.txt to notes-old.txt from the command line without editing the file contents. Which command is commonly used for that job?",
     "options": [
       "A. ren",
       "B. move",
@@ -717,7 +717,7 @@
       "D. cp"
     ],
     "answer": "C",
-    "explanation": "In Linux, 'mv' serves both as a move command and a rename command."
+    "explanation": "mv is used in Linux both to move files and to rename them. cp copies a file instead, and ren or move are not the normal standard Linux commands here."
   },
   {
     "id": 61,
@@ -769,7 +769,7 @@
   },
   {
     "id": 65,
-    "question": "Which Windows tool allows you to schedule a script to run every Sunday at 2:00 AM?",
+    "question": "An administrator wants a cleanup script to run automatically every Sunday at 2:00 AM on a Windows PC. Which built-in tool should be used?",
     "options": [
       "A. Task Manager",
       "B. Task Scheduler",
@@ -777,7 +777,7 @@
       "D. System Configuration"
     ],
     "answer": "B",
-    "explanation": "Task Scheduler is designed for automated, time-based, or event-based triggers."
+    "explanation": "Task Scheduler is designed to launch programs or scripts based on time-based or event-based triggers. The other tools monitor or troubleshoot the system but do not schedule recurring jobs."
   },
   {
     "id": 66,
@@ -805,7 +805,7 @@
   },
   {
     "id": 68,
-    "question": "Which Linux command is used to display the contents of a text file on the screen?",
+    "question": "A technician wants to quickly print the contents of a small text file to the Linux terminal for review. Which command is the straightforward choice?",
     "options": [
       "A. ls",
       "B. cat",
@@ -813,7 +813,7 @@
       "D. cd"
     ],
     "answer": "B",
-    "explanation": "The 'cat' (concatenate) command is used to display file contents to the terminal."
+    "explanation": "cat displays file contents directly in the terminal. ls lists files, grep searches for matching text, and cd changes directories."
   },
   {
     "id": 69,
@@ -1009,7 +1009,7 @@
   },
   {
     "id": 85,
-    "question": "Which Linux command is used to shut down or reboot the system?",
+    "question": "A Linux administrator needs to restart a server from the command line in a controlled way instead of just terminating the current shell session. Which command is commonly used for shutdown or reboot operations?",
     "options": [
       "A. exit",
       "B. shutdown",
@@ -1017,7 +1017,7 @@
       "D. kill"
     ],
     "answer": "B",
-    "explanation": "The 'shutdown' command (e.g., shutdown -r now) is used to power off or restart Linux."
+    "explanation": "The shutdown command is used to power off or reboot a Linux system safely. exit only closes the shell, and kill is used to signal processes rather than perform a normal system shutdown."
   },
   {
     "id": 86,
@@ -1069,7 +1069,7 @@
   },
   {
     "id": 90,
-    "question": "Which Linux command is used to edit text files directly in the terminal?",
+    "question": "A technician is connected to a Linux server over SSH and needs to edit a configuration file without a graphical interface. Which command-line editor is the classic standard choice?",
     "options": [
       "A. ls",
       "B. cat",
@@ -1077,7 +1077,7 @@
       "D. grep"
     ],
     "answer": "C",
-    "explanation": "vi (or vim) is the classic, standard terminal-based text editor for Linux."
+    "explanation": "vi is a classic terminal-based text editor used on Linux systems. ls lists files, cat displays file contents, and grep searches text rather than editing it."
   },
   {
     "id": 91,
@@ -1105,7 +1105,7 @@
   },
   {
     "id": 93,
-    "question": "Which type of script is used to add interactivity to web pages?",
+    "question": "A web developer wants a page to respond when a user clicks a button, opens a menu, or submits a form in the browser. Which scripting language is primarily used for that client-side interactivity?",
     "options": [
       "A. PowerShell",
       "B. Batch",
@@ -1113,7 +1113,7 @@
       "D. Python"
     ],
     "answer": "C",
-    "explanation": "JavaScript is the primary scripting language for web browsers."
+    "explanation": "JavaScript is the standard scripting language for adding interactivity in web browsers. PowerShell and Batch are administrative scripting tools, and Python is not the primary browser-side scripting language."
   },
   {
     "id": 94,
@@ -1129,7 +1129,7 @@
   },
   {
     "id": 95,
-    "question": "Which Linux command is used to display the IP address of the network interfaces?",
+    "question": "A Linux administrator wants to view the IP addressing assigned to the system's network interfaces from the terminal. Which command choice best fits that job?",
     "options": [
       "A. ipconfig",
       "B. ifconfig / ip addr",
@@ -1137,7 +1137,7 @@
       "D. ping"
     ],
     "answer": "B",
-    "explanation": "Older Linux used 'ifconfig'; modern versions use 'ip addr'."
+    "explanation": "Linux systems commonly use ifconfig on older systems or ip addr on modern ones to display interface addressing. ipconfig is the Windows command, while netstat and ping serve different networking purposes."
   },
   {
     "id": 96,
@@ -1177,7 +1177,7 @@
   },
   {
     "id": 99,
-    "question": "Which Linux command is used to update the list of available software packages?",
+    "question": "On an Ubuntu system, a technician wants to refresh the local package index before installing updates. Which command should they run?",
     "options": [
       "A. sudo apt-get update",
       "B. sudo install",
@@ -1185,7 +1185,7 @@
       "D. rpm -i"
     ],
     "answer": "A",
-    "explanation": "In Debian/Ubuntu-based systems, 'apt-get update' refreshes the local package index."
+    "explanation": "sudo apt-get update refreshes the package list on Debian-based distributions such as Ubuntu. The other commands either install packages directly or belong to different package-management workflows."
   },
   {
     "id": 100,
@@ -1369,7 +1369,7 @@
   },
   {
     "id": 115,
-    "question": "Which Linux command is used to display the manual or help page for another command?",
+    "question": "A Linux user cannot remember the syntax for the tar command and wants to open the built-in manual page for it. Which command should they use?",
     "options": [
       "A. help",
       "B. man",
@@ -1377,7 +1377,7 @@
       "D. cat"
     ],
     "answer": "B",
-    "explanation": "The 'man' command (short for manual) provides detailed documentation for CLI tools."
+    "explanation": "man opens the manual page for a command and is the standard way to view detailed built-in command documentation on Linux systems."
   },
   {
     "id": 116,
@@ -1453,7 +1453,7 @@
   },
   {
     "id": 122,
-    "question": "Which Windows tool is used to check for memory (RAM) errors during the boot process?",
+    "question": "A PC intermittently crashes with suspected RAM issues, and the technician wants Windows to restart into a memory test. Which tool should they use?",
     "options": [
       "A. Performance Monitor",
       "B. Windows Memory Diagnostic",
@@ -1461,7 +1461,7 @@
       "D. Device Manager"
     ],
     "answer": "B",
-    "explanation": "Windows Memory Diagnostic (mdsched.exe) restarts the PC to perform a low-level RAM stress test."
+    "explanation": "Windows Memory Diagnostic reboots the system and runs a memory test before Windows fully loads, which helps detect RAM-related problems."
   },
   {
     "id": 123,
@@ -1477,7 +1477,7 @@
   },
   {
     "id": 124,
-    "question": "Which Linux command allows you to change your own password?",
+    "question": "A Linux user wants to update their own account password from the terminal. Which command should they run?",
     "options": [
       "A. chown",
       "B. chmod",
@@ -1485,7 +1485,7 @@
       "D. ps"
     ],
     "answer": "C",
-    "explanation": "The 'passwd' command is used to update a user's authentication tokens."
+    "explanation": "The passwd command is used to change a user's password. chown changes ownership, chmod changes permissions, and ps lists running processes."
   },
   {
     "id": 125,
@@ -1573,7 +1573,7 @@
   },
   {
     "id": 132,
-    "question": "Which Linux command is used to list all currently running processes?",
+    "question": "A Linux administrator wants to view the currently running processes from the command line while troubleshooting a system issue. Which command should they use?",
     "options": [
       "A. ls",
       "B. ps",
@@ -1581,7 +1581,7 @@
       "D. cat"
     ],
     "answer": "B",
-    "explanation": "The 'ps' command (process status) displays active processes in the current shell."
+    "explanation": "The ps command displays process information from the command line. ls lists files, grep searches text, and cat displays file contents."
   },
   {
     "id": 133,
@@ -1633,7 +1633,7 @@
   },
   {
     "id": 137,
-    "question": "Which Linux command is used to display the last few lines of a log file?",
+    "question": "A technician wants to watch the newest log entries appear as they are written to a Linux log file during troubleshooting. Which command is the classic choice for that task?",
     "options": [
       "A. head",
       "B. tail",
@@ -1641,7 +1641,7 @@
       "D. nano"
     ],
     "answer": "B",
-    "explanation": "The 'tail' command shows the end of a file; 'head' shows the beginning."
+    "explanation": "tail is used to view the end of a file and is commonly paired with options like -f to follow new log entries in real time. head shows the beginning of a file instead."
   },
   {
     "id": 138,
@@ -1669,15 +1669,15 @@
   },
   {
     "id": 140,
-    "question": "Which type of script is most likely to use the '.vbs' extension?",
+    "question": "A legacy Windows login script is saved with a .vbs extension. What type of script file is it?",
     "options": [
       "A. JavaScript",
       "B. Visual Basic Script",
-      "C. Shell Script",
+      "C. Shell script",
       "D. Python"
     ],
     "answer": "B",
-    "explanation": "VBScript is a legacy Windows-specific scripting language."
+    "explanation": "The .vbs extension identifies a VBScript file, which is an older Windows scripting language. It is different from .js JavaScript, .py Python, or .sh shell scripts."
   },
   {
     "id": 141,
@@ -1705,7 +1705,7 @@
   },
   {
     "id": 143,
-    "question": "Which Linux command is used to create a new directory?",
+    "question": "A Linux technician needs to create a new folder named backups from the command line. Which command should they use?",
     "options": [
       "A. mkdir",
       "B. newdir",
@@ -1713,7 +1713,7 @@
       "D. touch"
     ],
     "answer": "A",
-    "explanation": "mkdir stands for 'make directory.'"
+    "explanation": "mkdir means make directory and is the standard Linux command for creating a new folder. touch creates a file, and cd changes directories."
   },
   {
     "id": 144,
@@ -1837,15 +1837,15 @@
   },
   {
     "id": 154,
-    "question": "Which Linux command is used to view the last 10 lines of a text file?",
+    "question": "A Linux user wants to preview only the first 10 lines of a configuration file before editing it. Which command should they use?",
     "options": [
       "A. head",
       "B. end",
       "C. tail",
       "D. cat"
     ],
-    "answer": "C",
-    "explanation": "The 'tail' command is used to see the end of a file (defaulting to 10 lines)."
+    "answer": "A",
+    "explanation": "head shows the first lines of a file, with 10 lines as the default. tail shows the end of the file, while cat prints the whole file to the screen."
   },
   {
     "id": 155,
@@ -2089,7 +2089,7 @@
   },
   {
     "id": 175,
-    "question": "Which type of script uses the extension '.sh'?",
+    "question": "A Linux administrator is given a file named backup.sh to automate a nightly task. What type of script is that file most likely to be?",
     "options": [
       "A. Python",
       "B. Windows Batch",
@@ -2097,7 +2097,7 @@
       "D. VBScript"
     ],
     "answer": "C",
-    "explanation": ".sh is the standard extension for Unix/Linux shell scripts."
+    "explanation": "The .sh extension is commonly used for shell scripts on Unix and Linux systems. Windows Batch scripts usually use .bat, while Python and VBScript use different extensions."
   },
   {
     "id": 176,
@@ -2533,7 +2533,7 @@
   },
   {
     "id": 212,
-    "question": "Which type of script uses the extension '.py'?",
+    "question": "A developer hands a technician a script named inventory.py to run during a maintenance task. What type of script is it?",
     "options": [
       "A. PowerShell",
       "B. JavaScript",
@@ -2541,7 +2541,7 @@
       "D. VBScript"
     ],
     "answer": "C",
-    "explanation": ".py is the standard extension for Python scripts."
+    "explanation": "The .py extension is standard for Python scripts. PowerShell normally uses .ps1, JavaScript uses .js, and VBScript uses .vbs."
   },
   {
     "id": 213,
@@ -2845,7 +2845,7 @@
   },
   {
     "id": 238,
-    "question": "Which Linux command is used to display the computer's name?",
+    "question": "A Linux technician needs to confirm the system's network name from the command line while troubleshooting remote access. Which command should they use?",
     "options": [
       "A. whoami",
       "B. hostname",
@@ -2853,7 +2853,7 @@
       "D. ip addr"
     ],
     "answer": "B",
-    "explanation": "'hostname' tells you the network name of the machine."
+    "explanation": "hostname displays the system's host name. whoami shows the logged-in user, and ip addr displays interface addressing rather than the machine name itself."
   },
   {
     "id": 239,
@@ -2953,7 +2953,7 @@
   },
   {
     "id": 247,
-    "question": "Which type of malware records every key you press on your keyboard?",
+    "question": "A user's credentials keep getting stolen after they type them, and investigators suspect malware is recording every keystroke entered on the keyboard. What type of malware best fits this behavior?",
     "options": [
       "A. Ransomware",
       "B. Keylogger",
@@ -2961,7 +2961,7 @@
       "D. Rootkit"
     ],
     "answer": "B",
-    "explanation": "Keyloggers are used to steal sensitive data like passwords and credit card numbers."
+    "explanation": "A keylogger captures what a user types, which makes it especially useful for stealing usernames, passwords, and payment data. The other malware types have different main behaviors."
   },
   {
     "id": 248,
@@ -3229,7 +3229,7 @@
   },
   {
     "id": 270,
-    "question": "Which Linux command is used to change your current working directory?",
+    "question": "A Linux user is in /home/will and wants to move into /home/will/projects from the terminal. Which command is used to change into another directory?",
     "options": [
       "A. pwd",
       "B. ls",
@@ -3237,7 +3237,7 @@
       "D. mv"
     ],
     "answer": "C",
-    "explanation": "cd (change directory) is used to navigate the file system."
+    "explanation": "cd changes the current working directory. pwd only displays the current path, ls lists files, and mv moves or renames files and folders."
   },
   {
     "id": 271,
@@ -3409,7 +3409,7 @@
   },
   {
     "id": 285,
-    "question": "Which Linux command displays the amount of free and used disk space?",
+    "question": "A Linux administrator wants a quick view of how much disk space is used and available across mounted file systems. Which command should they run?",
     "options": [
       "A. free",
       "B. df",
@@ -3417,7 +3417,7 @@
       "D. ls"
     ],
     "answer": "B",
-    "explanation": "df (disk free) shows the usage of the entire file system."
+    "explanation": "df reports disk usage and free space for file systems. free is for memory usage, du measures directory usage, and ls lists directory contents."
   },
   {
     "id": 286,
@@ -3589,7 +3589,7 @@
   },
   {
     "id": 300,
-    "question": "Which Linux command is used to delete a file?",
+    "question": "A Linux technician needs to remove an old log file from the command line. Which command is normally used to delete a file?",
     "options": [
       "A. del",
       "B. rm",
@@ -3597,7 +3597,7 @@
       "D. mv"
     ],
     "answer": "B",
-    "explanation": "rm (remove) is the standard command for deleting files and directories."
+    "explanation": "rm is the standard Linux command for removing files. del and erase are not the normal Linux commands for this task, and mv is used to move or rename files."
   },
   {
     "id": 301,

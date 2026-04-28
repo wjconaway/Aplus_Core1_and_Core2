@@ -452,6 +452,33 @@ button { font: inherit; }
   background: color-mix(in srgb, var(--danger) 15%, var(--surface) 85%);
 }
 
+.command-snippet,
+.command-snippet-inline {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.95rem;
+}
+
+.command-snippet {
+  display: inline-block;
+  padding: 0.7rem 0.85rem;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--surface-alt) 88%, transparent);
+  border: 1px solid var(--border);
+}
+
+.platform-pill {
+  display: inline-flex;
+  width: fit-content;
+  padding: 0.3rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--primary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
 .pbq-correct { color: var(--success); }
 .pbq-incorrect { color: var(--warning); }
 

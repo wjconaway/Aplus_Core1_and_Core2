@@ -1,7 +1,7 @@
 import { Link, Navigate, Route, Routes, useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useMemo, useState } from 'react';
 import { certificationCatalog, exams } from './data/catalog';
-import { commonPortsPbq, laserPrinterPbq, troubleshootingPbq } from './data/pbqs';
+import { commandLinePbq, commonPortsPbq, laserPrinterPbq, troubleshootingPbq } from './data/pbqs';
 
 const THEME_KEY = 'aplus-theme';
 const APP_STATE_KEY = 'aplus-app-state-v1';
@@ -223,6 +223,7 @@ function App() {
         <Route path="/pbq/laser-printer" element={<LaserPrinterPbqPage />} />
         <Route path="/pbq/troubleshooting-methodology" element={<TroubleshootingPbqPage />} />
         <Route path="/pbq/common-ports" element={<CommonPortsPbqPage />} />
+        <Route path="/pbq/command-line-tools" element={<CommandLinePbqPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>
@@ -482,9 +483,14 @@ function CertificationPage({ certification, appState, startSession }) {
                       </>
                     ) : null}
                     {examMeta.id === 'core2' ? (
-                      <Link to="/pbq/troubleshooting-methodology" className="secondary-btn button-link-secondary">
-                        Troubleshooting PBQ
-                      </Link>
+                      <>
+                        <Link to="/pbq/troubleshooting-methodology" className="secondary-btn button-link-secondary">
+                          Troubleshooting PBQ
+                        </Link>
+                        <Link to="/pbq/command-line-tools" className="secondary-btn button-link-secondary">
+                          Command Line PBQ
+                        </Link>
+                      </>
                     ) : null}
                   </div>
                 </div>
@@ -875,6 +881,125 @@ function CommonPortsPbqPage() {
             </section>
           ) : null}
         </section>
+      </section>
+    </main>
+  );
+}
+
+function CommandLinePbqPage() {
+  const [commandOrder, setCommandOrder] = useState(() => shuffle(commandLinePbq.platformItems.map((item) => item.id)));
+  const [platformAnswers, setPlatformAnswers] = useState({});
+  const [scenarioAnswers, setScenarioAnswers] = useState({});
+  const [revealed, setRevealed] = useState(false);
+
+  const commandLookup = Object.fromEntries(commandLinePbq.platformItems.map((item) => [item.id, item]));
+  const platformCorrectCount = commandLinePbq.platformItems.filter((item) => platformAnswers[item.id] === item.answer).length;
+  const scenarioCorrectCount = commandLinePbq.scenarioItems.filter((item) => scenarioAnswers[item.id] === item.answer).length;
+
+  function resetPbq() {
+    setCommandOrder(shuffle(commandLinePbq.platformItems.map((item) => item.id)));
+    setPlatformAnswers({});
+    setScenarioAnswers({});
+    setRevealed(false);
+  }
+
+  return (
+    <main className="page">
+      <Link to="/certification/aplus" className="back-link">← Back to A+ certification</Link>
+      <section className="panel panel-large">
+        <div className="section-head">
+          <div>
+            <span className="badge">PBQ • {commandLinePbq.exam}</span>
+            <h1>{commandLinePbq.title}</h1>
+          </div>
+          <p>{commandLinePbq.subtitle}</p>
+        </div>
+
+        <div className="pbq-grid">
+          <article className="question-card">
+            <div className="section-head compact-head">
+              <div>
+                <h2>Part 1 — Sort commands by platform</h2>
+                <p>Classify each command as Windows, Linux, or macOS Terminal.</p>
+              </div>
+              <span className={`badge ${revealed && platformCorrectCount === commandLinePbq.platformItems.length ? 'badge-success' : ''}`}>{platformCorrectCount}/{commandLinePbq.platformItems.length}</span>
+            </div>
+            <div className="pbq-diagnosis-list">
+              {commandOrder.map((itemId) => {
+                const item = commandLookup[itemId];
+                return (
+                  <label key={item.id} className="pbq-diagnosis-card">
+                    <span className="command-snippet">{item.prompt}</span>
+                    <select
+                      className="pbq-select"
+                      value={platformAnswers[item.id] || ''}
+                      onChange={(event) => setPlatformAnswers((current) => ({ ...current, [item.id]: event.target.value }))}
+                    >
+                      <option value="">Choose the platform</option>
+                      {commandLinePbq.platformOptions.map((platform) => (
+                        <option key={platform.value} value={platform.value}>{platform.label}</option>
+                      ))}
+                    </select>
+                    {revealed ? <p className={platformAnswers[item.id] === item.answer ? 'pbq-correct' : 'pbq-incorrect'}>Correct: {commandLinePbq.platformOptions.find((platform) => platform.value === item.answer)?.label}. {item.explanation}</p> : null}
+                  </label>
+                );
+              })}
+            </div>
+          </article>
+
+          <article className="question-card">
+            <div className="section-head compact-head">
+              <div>
+                <h2>Part 2 — Choose the right command</h2>
+                <p>Pick the best command for each Windows, Linux, or macOS scenario.</p>
+              </div>
+              <span className={`badge ${revealed && scenarioCorrectCount === commandLinePbq.scenarioItems.length ? 'badge-success' : ''}`}>{scenarioCorrectCount}/{commandLinePbq.scenarioItems.length}</span>
+            </div>
+            <div className="pbq-diagnosis-list">
+              {commandLinePbq.scenarioItems.map((item) => (
+                <div key={item.id} className="pbq-diagnosis-card">
+                  <span className="platform-pill">{item.id.startsWith('win') ? 'Windows' : item.id.startsWith('linux') ? 'Linux' : 'macOS'}</span>
+                  <strong>{item.prompt}</strong>
+                  <div className="pbq-choice-list">
+                    {item.options.map((option) => {
+                      const letter = option.split('.')[0];
+                      const selected = scenarioAnswers[item.id] === letter;
+                      const correct = item.answer === letter;
+                      const stateClass = revealed ? (correct ? 'correct' : selected ? 'incorrect' : '') : selected ? 'selected' : '';
+                      return (
+                        <button
+                          key={option}
+                          type="button"
+                          className={`pbq-choice-btn ${stateClass}`}
+                          onClick={() => setScenarioAnswers((current) => ({ ...current, [item.id]: letter }))}
+                        >
+                          <span className="command-snippet-inline">{option}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                  {revealed ? <p className={scenarioAnswers[item.id] === item.answer ? 'pbq-correct' : 'pbq-incorrect'}>Correct: {item.answer}. {item.explanation}</p> : null}
+                </div>
+              ))}
+            </div>
+          </article>
+        </div>
+
+        <div className="post-exam-actions">
+          <button type="button" className="primary-btn" onClick={() => setRevealed(true)}>Check PBQ</button>
+          <button type="button" className="secondary-btn" onClick={resetPbq}>Reset PBQ</button>
+        </div>
+
+        {revealed ? (
+          <section className="explanation-card">
+            <p><strong>Platform result:</strong> {platformCorrectCount} of {commandLinePbq.platformItems.length} classified correctly.</p>
+            <p><strong>Scenario result:</strong> {scenarioCorrectCount} of {commandLinePbq.scenarioItems.length} answered correctly.</p>
+            <div className="info-pills">
+              <span className="info-pill">Domain: {commandLinePbq.domain}</span>
+              <span className="info-pill">Objective: {commandLinePbq.objective}</span>
+            </div>
+          </section>
+        ) : null}
       </section>
     </main>
   );

@@ -271,3 +271,130 @@ export const commonPortsPbq = {
   ],
   portOptions: ['21', '22', '23', '25', '53', '67', '69', '80', '110', '143', '161', '389', '443', '3389']
 };
+
+export const commandLinePbq = {
+  id: 'command-line-tools',
+  title: 'Command Line Tools PBQ',
+  subtitle: 'Sort commands by platform, then choose the best Windows, Linux, or macOS Terminal command for each scenario.',
+  certification: 'A+',
+  exam: 'Core 2 (220-1202)',
+  domain: 'Operating Systems',
+  objective: 'Use common tools and commands in Windows, Linux, and macOS',
+  platformItems: [
+    {
+      id: 'ipconfig',
+      prompt: 'ipconfig /all',
+      answer: 'windows',
+      explanation: 'ipconfig /all is a Windows command used to show detailed TCP/IP configuration.'
+    },
+    {
+      id: 'sfc',
+      prompt: 'sfc /scannow',
+      answer: 'windows',
+      explanation: 'sfc /scannow is a Windows System File Checker command.'
+    },
+    {
+      id: 'grep',
+      prompt: 'grep "error" /var/log/auth.log',
+      answer: 'linux',
+      explanation: 'grep is a standard Linux command for searching text inside files.'
+    },
+    {
+      id: 'apt',
+      prompt: 'sudo apt-get update',
+      answer: 'linux',
+      explanation: 'apt-get update is a Debian/Ubuntu Linux package index refresh command.'
+    },
+    {
+      id: 'softwareupdate',
+      prompt: 'softwareupdate -l',
+      answer: 'macos',
+      explanation: 'softwareupdate -l lists available macOS updates from Terminal.'
+    },
+    {
+      id: 'open',
+      prompt: 'open /Applications',
+      answer: 'macos',
+      explanation: 'open is a macOS Terminal command that opens files, folders, or apps from the shell.'
+    }
+  ],
+  platformOptions: [
+    { value: 'windows', label: 'Windows' },
+    { value: 'linux', label: 'Linux' },
+    { value: 'macos', label: 'macOS' }
+  ],
+  scenarioItems: [
+    {
+      id: 'win-network',
+      prompt: 'A Windows technician needs to display the full TCP/IP configuration for a desktop, including DNS and DHCP details. Which command should they run?',
+      options: [
+        'A. ipconfig /all',
+        'B. grep "dns" hosts',
+        'C. softwareupdate -l',
+        'D. pwd'
+      ],
+      answer: 'A',
+      explanation: 'ipconfig /all is the Windows command for detailed TCP/IP configuration output.'
+    },
+    {
+      id: 'linux-log-search',
+      prompt: 'A Linux admin wants to search a log file for every line containing the word failed. Which command is the best fit?',
+      options: [
+        'A. chkdsk',
+        'B. grep "failed" /var/log/auth.log',
+        'C. gpupdate /force',
+        'D. open /Applications'
+      ],
+      answer: 'B',
+      explanation: 'grep is used on Linux to search for matching text patterns inside a file.'
+    },
+    {
+      id: 'mac-updates',
+      prompt: 'A Mac user wants to list available macOS software updates from Terminal before installing anything. Which command should they use?',
+      options: [
+        'A. ipconfig /all',
+        'B. sfc /scannow',
+        'C. softwareupdate -l',
+        'D. tail -f /var/log/system.log'
+      ],
+      answer: 'C',
+      explanation: 'softwareupdate -l lists available updates in macOS from the Terminal.'
+    },
+    {
+      id: 'win-system-files',
+      prompt: 'A Windows system is acting unstable, and a technician wants to scan protected system files for corruption. Which command should they run?',
+      options: [
+        'A. sfc /scannow',
+        'B. rm oldfile.log',
+        'C. softwareupdate -l',
+        'D. grep "error" /var/log/messages'
+      ],
+      answer: 'A',
+      explanation: 'sfc /scannow checks protected Windows system files and repairs them when possible.'
+    },
+    {
+      id: 'linux-package-index',
+      prompt: 'A technician on Ubuntu wants to refresh the local package list before installing updates. Which command should they use?',
+      options: [
+        'A. ipconfig /all',
+        'B. sudo apt-get update',
+        'C. open /Applications',
+        'D. chkdsk'
+      ],
+      answer: 'B',
+      explanation: 'sudo apt-get update refreshes the package index on Debian-based Linux systems such as Ubuntu.'
+    },
+    {
+      id: 'mac-open-folder',
+      prompt: 'A macOS technician wants to open the Applications folder directly from Terminal. Which command is the best fit?',
+      options: [
+        'A. gpupdate /force',
+        'B. grep "app" inventory.txt',
+        'C. open /Applications',
+        'D. ifconfig'
+      ],
+      answer: 'C',
+      explanation: 'The open command is used in macOS Terminal to open folders, files, and applications from the shell.'
+    }
+  ]
+};
