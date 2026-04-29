@@ -1,15 +1,18 @@
 {
-  "name": "A+ Official Prep Hub",
+  "name": "A+ Prep Hub",
   "short_name": "A+ Hub",
-  "start_url": "./index.html",
+  "description": "Premium-feeling CompTIA A+ exam prep with study mode, exam mode, performance tracking, and PBQs.",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#0f172a",
+  "background_color": "#050816",
   "theme_color": "#2563eb",
   "icons": [
     {
-      "src": "https://flaticon.com",
-      "sizes": "512x512",
-      "type": "image/png"
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
     }
   ]
 }

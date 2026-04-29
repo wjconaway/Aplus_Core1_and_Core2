@@ -7,6 +7,27 @@ const THEME_KEY = 'aplus-theme';
 const APP_STATE_KEY = 'aplus-app-state-v1';
 const QUESTION_PRESETS = [10, 25, 50, 75];
 
+function createReviewSession(examId, questionIds) {
+  const uniqueIds = [...new Set(questionIds)].filter(Boolean);
+  return {
+    id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+    examId,
+    mode: 'review',
+    count: uniqueIds.length,
+    questionIds: shuffle(uniqueIds),
+    currentIndex: 0,
+    answers: {},
+    flagged: {},
+    skipped: {},
+    revealedCurrent: false,
+    startedAt: Date.now(),
+    elapsedMs: 0,
+    timerRunning: false,
+    timerLastStartedAt: null,
+    completedAt: null,
+  };
+}
+
 const EXAMS = {
   core1: {
     slug: 'core1',
@@ -14,7 +35,7 @@ const EXAMS = {
     title: 'Core 1',
     code: '220-1201',
     badge: 'Hardware & Network',
-    description: 'Imported from the legacy site and cleaned enough to build on without embarrassment.',
+    description: 'Build confidence on hardware, networking, mobile devices, and troubleshooting with a cleaner Core 1 bank.',
     questions: exams.core1,
   },
   core2: {
@@ -23,7 +44,7 @@ const EXAMS = {
     title: 'Core 2',
     code: '220-1202',
     badge: 'Software & Security',
-    description: 'Imported from the legacy site and cleaned enough to build on without embarrassment.',
+    description: 'Sharpen operating systems, security, software troubleshooting, and admin workflows with a stronger Core 2 bank.',
     questions: exams.core2,
   },
 };
@@ -148,6 +169,11 @@ function App() {
     return session;
   }
 
+  function setActiveSession(session) {
+    setAppState((current) => ({ ...current, activeSession: session }));
+    return session;
+  }
+
   function updateSession(mutator) {
     setAppState((current) => {
       if (!current.activeSession) return current;
@@ -206,7 +232,7 @@ function App() {
         />
         <Route
           path="/certification/:certId"
-          element={<CertificationRoute appState={appState} startSession={startSession} />}
+          element={<CertificationRoute appState={appState} startSession={startSession} setActiveSession={setActiveSession} />}
         />
         <Route
           path="/session"
@@ -234,6 +260,8 @@ function Dashboard({ appState, startSession }) {
   const navigate = useNavigate();
   const activeSession = appState.activeSession;
   const lastSummary = appState.lastSessionSummary;
+  const totalQuestionCount = Object.values(EXAMS).reduce((sum, exam) => sum + exam.questions.length, 0);
+  const totalPbqs = 4;
 
   const progressCards = Object.entries(EXAMS).map(([examId, exam]) => {
     const relevant = appState.history.filter((entry) => entry.examId === examId);
@@ -261,16 +289,30 @@ function Dashboard({ appState, startSession }) {
     <main className="page dashboard-page">
       <section className="hero dashboard-hero">
         <div>
-          <p className="eyebrow">Premium dashboard / dark-first</p>
-          <h1>Build recall, not fake confidence.</h1>
+          <p className="eyebrow">CompTIA A+ exam prep</p>
+          <h1>Study like the exam actually works.</h1>
           <p className="hero-copy">
-            Start fast, resume exactly where you left off, and see domain progress without turning the screen into a cockpit.
+            Move between focused study, full exam mode, missed-question review, and PBQs without losing your place.
           </p>
         </div>
         <div className="hero-stat-card">
           <span className="badge">Live now</span>
-          <h2>A+ Certification</h2>
-          <p>Network+ and Security+ stay visible, but honestly marked as coming soon.</p>
+          <h2>CompTIA A+</h2>
+          <p>Two exam banks, real progress tracking, and PBQs that feel closer to exam-day work.</p>
+          <div className="hero-stat-list">
+            <div>
+              <strong>{totalQuestionCount}+</strong>
+              <span>questions</span>
+            </div>
+            <div>
+              <strong>{totalPbqs}</strong>
+              <span>PBQs</span>
+            </div>
+            <div>
+              <strong>3</strong>
+              <span>study modes</span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -278,7 +320,7 @@ function Dashboard({ appState, startSession }) {
         <div className="panel panel-large">
           <div className="section-head">
             <h2>Certifications</h2>
-            <p>A+ is live. The others can wait until they deserve daylight.</p>
+            <p>A+ is ready now. The rest stay visible, but clearly marked as coming soon.</p>
           </div>
           <div className="cert-grid">
             {certificationCatalog.map((certification) => (
@@ -295,11 +337,11 @@ function Dashboard({ appState, startSession }) {
                       startSession({ examId: 'core1', mode: 'study', count: 25 });
                       navigate('/session');
                     }}>
-                      Fast start
+                      Quick start
                     </button>
                   </div>
                 ) : (
-                  <div className="coming-soon-note">Visible now. Not pretending it’s ready.</div>
+                  <div className="coming-soon-note">Visible now, clearly marked as coming soon.</div>
                 )}
               </article>
             ))}
@@ -309,7 +351,7 @@ function Dashboard({ appState, startSession }) {
         <div className="panel">
           <div className="section-head">
             <h2>Resume last session</h2>
-            <p>Exact state restore, including skips, flags, and paused timer state.</p>
+            <p>Pick up exactly where you left off, including skipped questions, flags, and paused exam time.</p>
           </div>
           {activeSession ? (
             <div className="resume-card">
@@ -323,7 +365,7 @@ function Dashboard({ appState, startSession }) {
               <p>{lastSummary.percent}% • {formatDuration(lastSummary.elapsedMs)}</p>
             </div>
           ) : (
-            <div className="empty-card">No saved session yet.</div>
+            <div className="empty-card">Start a study set and your saved session will show up here.</div>
           )}
         </div>
       </section>
@@ -331,7 +373,7 @@ function Dashboard({ appState, startSession }) {
       <section className="panel">
         <div className="section-head">
           <h2>Progress by domain</h2>
-          <p>Both percentages and raw counts, because pretty numbers alone are bullshit.</p>
+          <p>Track each domain with both percentages and raw counts.</p>
         </div>
         <div className="progress-domain-grid">
           {progressCards.map((card) => (
@@ -346,7 +388,7 @@ function Dashboard({ appState, startSession }) {
                   </p>
                 </div>
               ) : (
-                <p>Progress appears after real sessions, not fake placeholder stats.</p>
+                <p>Progress appears here after your first completed session.</p>
               )}
             </article>
           ))}
@@ -357,7 +399,7 @@ function Dashboard({ appState, startSession }) {
         <div className="panel">
           <div className="section-head">
             <h2>Recent activity</h2>
-            <p>Useful, but secondary.</p>
+            <p>Your latest scores, time spent, and recent runs.</p>
           </div>
           <div className="stack-list">
             {appState.history.length ? appState.history.slice(0, 5).map((item) => (
@@ -365,14 +407,14 @@ function Dashboard({ appState, startSession }) {
                 <strong>{EXAMS[item.examId].title} • {item.percent}%</strong>
                 <span>{item.score}/{item.total} correct • {formatDuration(item.elapsedMs)}</span>
               </div>
-            )) : <div className="empty-card">No activity yet.</div>}
+            )) : <div className="empty-card">Completed sessions will start showing up here.</div>}
           </div>
         </div>
 
         <div className="panel">
           <div className="section-head">
             <h2>Bookmarks</h2>
-            <p>Saved locally in the browser for now.</p>
+            <p>Saved locally in the browser so you can come back to tricky items.</p>
           </div>
           <div className="stack-list">
             {Object.values(appState.bookmarks).length ? Object.values(appState.bookmarks).slice(0, 5).map((bookmark) => (
@@ -380,7 +422,7 @@ function Dashboard({ appState, startSession }) {
                 <strong>{EXAMS[bookmark.examId].title}</strong>
                 <span>Question #{bookmark.questionId}</span>
               </div>
-            )) : <div className="empty-card">No bookmarked questions yet.</div>}
+            )) : <div className="empty-card">Save any question you want to revisit later.</div>}
           </div>
         </div>
       </section>
@@ -388,15 +430,30 @@ function Dashboard({ appState, startSession }) {
   );
 }
 
-function CertificationRoute({ appState, startSession }) {
+function CertificationRoute({ appState, startSession, setActiveSession }) {
   const { certId } = useParams();
   const certification = certificationCatalog.find((item) => item.id === certId);
   if (!certification || certification.status !== 'live') return <Navigate to="/" replace />;
-  return <CertificationPage certification={certification} appState={appState} startSession={startSession} />;
+  return <CertificationPage certification={certification} appState={appState} startSession={startSession} setActiveSession={setActiveSession} />;
 }
 
-function CertificationPage({ certification, appState, startSession }) {
+function CertificationPage({ certification, appState, startSession, setActiveSession }) {
   const navigate = useNavigate();
+
+  function startMissedReview(examId) {
+    const missedIds = [...new Set(
+      appState.history
+        .filter((entry) => entry.examId === examId)
+        .flatMap((entry) => entry.missedQuestionIds || [])
+    )];
+
+    if (!missedIds.length) return;
+
+    const reviewSession = createReviewSession(examId, missedIds);
+    if (!reviewSession.questionIds.length) return;
+    setActiveSession(reviewSession);
+    navigate('/session');
+  }
 
   return (
     <main className="page">
@@ -405,7 +462,7 @@ function CertificationPage({ certification, appState, startSession }) {
         <div className="section-head">
           <div>
             <span className="badge">Certification</span>
-            <h1>{certification.label}</h1>
+            <h1>{certification.label === 'A+' ? 'CompTIA A+' : certification.label}</h1>
           </div>
           <p>{certification.tagline}</p>
         </div>
@@ -414,6 +471,11 @@ function CertificationPage({ certification, appState, startSession }) {
           {certification.exams.map((examMeta) => {
             const exam = EXAMS[examMeta.id];
             const bookmarkCount = Object.values(appState.bookmarks).filter((bookmark) => bookmark.examId === examMeta.id).length;
+            const missedReviewCount = [...new Set(
+              appState.history
+                .filter((entry) => entry.examId === examMeta.id)
+                .flatMap((entry) => entry.missedQuestionIds || [])
+            )].length;
             return (
               <article key={examMeta.id} className="exam-setup-card">
                 <div>
@@ -421,9 +483,10 @@ function CertificationPage({ certification, appState, startSession }) {
                   <h2>{examMeta.label}</h2>
                   <p className="exam-code">{examMeta.code}</p>
                   <p>{exam.description}</p>
-                  <p className="muted-copy">{exam.questions.length} questions • bookmarks: {bookmarkCount}</p>
+                  <p className="muted-copy">{exam.questions.length} questions • bookmarks: {bookmarkCount} • missed to review: {missedReviewCount}</p>
                 </div>
 
+                <div className="control-label">Choose a question set</div>
                 <div className="preset-row">
                   {QUESTION_PRESETS.map((preset) => (
                     <button
@@ -466,11 +529,11 @@ function CertificationPage({ certification, appState, startSession }) {
                       type="button"
                       className="secondary-btn"
                       onClick={() => {
-                        startSession({ examId: examMeta.id, mode: 'review', count: 25 });
-                        navigate('/session');
+                        startMissedReview(examMeta.id);
                       }}
+                      disabled={!missedReviewCount}
                     >
-                      Missed Review
+                      {missedReviewCount ? `Missed Review (${missedReviewCount})` : 'Missed Review'}
                     </button>
                     {examMeta.id === 'core1' ? (
                       <>
@@ -1116,10 +1179,10 @@ function SessionPage({ appState, updateSession, finishSession, clearSession, tog
 
           <div className="post-exam-actions">
             <button type="button" className="primary-btn" onClick={() => {
-              const reviewSession = createSession({ examId: session.examId, mode: 'review', count: Math.max(metrics.missed.length, 1) });
-              reviewSession.questionIds = shuffle(metrics.missed.map((question) => question.id));
+              const reviewSession = createReviewSession(session.examId, metrics.missed.map((question) => question.id));
+              if (!reviewSession.questionIds.length) return;
               updateSession(() => reviewSession);
-            }}>
+            }} disabled={!metrics.missed.length}>
               Review missed questions
             </button>
             <button type="button" className="secondary-btn" onClick={() => {
@@ -1162,10 +1225,13 @@ function SessionPage({ appState, updateSession, finishSession, clearSession, tog
 
         <article className="question-card">
           <div className="question-toolbar">
-            <button type="button" className="ghost-btn" onClick={toggleFlag}>{session.flagged[current.id] ? '★ Flagged' : '☆ Flag question'}</button>
-            <button type="button" className="ghost-btn" onClick={() => toggleBookmark(session.examId, current.id)}>
-              {appState.bookmarks[`${session.examId}:${current.id}`] ? 'Saved' : 'Bookmark'}
-            </button>
+            <span className="info-pill">Question {session.currentIndex + 1}</span>
+            <div className="toolbar-actions">
+              <button type="button" className="ghost-btn" onClick={toggleFlag}>{session.flagged[current.id] ? '★ Flagged' : '☆ Flag question'}</button>
+              <button type="button" className="ghost-btn" onClick={() => toggleBookmark(session.examId, current.id)}>
+                {appState.bookmarks[`${session.examId}:${current.id}`] ? 'Saved' : 'Save question'}
+              </button>
+            </div>
           </div>
           <h2>{current.question}</h2>
           <div className="options">
@@ -1173,6 +1239,7 @@ function SessionPage({ appState, updateSession, finishSession, clearSession, tog
               const letter = option[0];
               const className = [
                 'option-btn',
+                selectedLetter === letter ? 'selected' : '',
                 revealed && current.answer === letter ? 'correct' : '',
                 revealed && selectedLetter === letter && current.answer !== letter ? 'incorrect' : '',
               ].filter(Boolean).join(' ');
@@ -1200,7 +1267,7 @@ function SessionPage({ appState, updateSession, finishSession, clearSession, tog
         )}
 
         <div className="nav-actions">
-          <button type="button" className="secondary-btn" onClick={skip}>Pass for now</button>
+          <button type="button" className="secondary-btn" onClick={skip}>Skip for now</button>
           {isExamMode && !revealed ? (
             <button type="button" className="primary-btn" onClick={() => updateSession((currentSession) => ({ ...currentSession, revealedCurrent: true }))} disabled={!selectedLetter}>
               Check answer

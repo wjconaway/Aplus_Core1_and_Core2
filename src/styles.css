@@ -60,7 +60,7 @@ button { font: inherit; }
   right: 1rem;
   z-index: 10;
   border: 1px solid var(--border);
-  background: var(--surface);
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
   color: var(--text);
   padding: 0.72rem 1rem;
   border-radius: 999px;
@@ -69,10 +69,41 @@ button { font: inherit; }
   backdrop-filter: blur(18px);
 }
 
+.theme-toggle:hover {
+  border-color: color-mix(in srgb, var(--primary) 55%, var(--border));
+}
+
 .hero {
   display: grid;
   gap: 1rem;
   margin-bottom: 1.5rem;
+}
+
+.hero-stat-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.hero-stat-list div {
+  padding: 0.85rem 0.9rem;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface-alt) 88%, transparent);
+}
+
+.hero-stat-list strong,
+.meta-pills strong {
+  display: block;
+  font-size: 1.1rem;
+  margin-bottom: 0.15rem;
+}
+
+.hero-stat-list span,
+.meta-pills span {
+  color: var(--muted);
+  font-size: 0.9rem;
 }
 
 .dashboard-hero {
@@ -105,6 +136,13 @@ button { font: inherit; }
   color: var(--muted);
 }
 
+.control-label {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 0.65rem;
+}
+
 .hero-stat-card,
 .panel,
 .question-card,
@@ -123,6 +161,17 @@ button { font: inherit; }
   box-shadow: var(--shadow);
   border-radius: 24px;
   backdrop-filter: blur(18px);
+}
+
+.exam-setup-card,
+.cert-card,
+.domain-progress-card,
+.resume-card,
+.empty-card,
+.stack-item,
+.question-card,
+.explanation-card {
+  transition: border-color 140ms ease, transform 140ms ease;
 }
 
 .hero-stat-card,
@@ -200,7 +249,9 @@ button { font: inherit; }
 .nav-actions,
 .preset-row,
 .question-toolbar,
-.info-pills {
+.info-pills,
+.toolbar-actions,
+.meta-pills {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
@@ -219,12 +270,14 @@ button { font: inherit; }
   cursor: pointer;
   font-weight: 700;
   border: 1px solid transparent;
+  transition: transform 140ms ease, border-color 140ms ease, box-shadow 140ms ease, opacity 140ms ease;
 }
 
 .primary-btn,
 .button-link {
   background: linear-gradient(135deg, var(--primary), var(--primary-strong));
   color: white;
+  box-shadow: 0 12px 26px color-mix(in srgb, var(--primary) 28%, transparent);
 }
 
 .button-link-secondary {
@@ -239,6 +292,26 @@ button { font: inherit; }
   background: color-mix(in srgb, var(--surface-alt) 88%, transparent);
   color: var(--text);
   border-color: var(--border);
+}
+
+.button-link:hover,
+.primary-btn:hover,
+.secondary-btn:hover,
+.ghost-btn:hover,
+.preset-chip:hover {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--primary) 55%, var(--border));
+}
+
+.button-link:disabled,
+.primary-btn:disabled,
+.secondary-btn:disabled,
+.ghost-btn:disabled,
+.preset-chip:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 .ghost-btn { padding: 0.6rem 0.8rem; }
@@ -264,6 +337,14 @@ button { font: inherit; }
   justify-content: space-between;
   gap: 1rem;
   align-items: center;
+}
+
+.meta-pills {
+  margin-top: 0.85rem;
+}
+
+.meta-pills .info-pill {
+  color: var(--text);
 }
 
 .resume-card strong,
@@ -297,14 +378,16 @@ button { font: inherit; }
 .progress-row p { color: var(--muted); margin: 0.5rem 0 0; }
 .progress-bar {
   width: 100%;
-  height: 10px;
+  height: 12px;
   border-radius: 999px;
   overflow: hidden;
   background: color-mix(in srgb, var(--surface-alt) 74%, transparent);
+  border: 1px solid color-mix(in srgb, var(--primary) 18%, transparent);
 }
 .progress-fill {
   height: 100%;
   background: linear-gradient(90deg, var(--primary), var(--primary-strong));
+  box-shadow: 0 0 24px color-mix(in srgb, var(--primary) 38%, transparent);
 }
 
 .options { display: grid; gap: 0.75rem; margin-top: 1rem; }
@@ -317,8 +400,17 @@ button { font: inherit; }
   background: color-mix(in srgb, var(--surface-strong) 88%, transparent);
   color: var(--text);
   cursor: pointer;
+  transition: border-color 140ms ease, transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
 }
-.option-btn:hover:not(:disabled) { border-color: var(--primary); }
+.option-btn:hover:not(:disabled) {
+  border-color: var(--primary);
+  transform: translateY(-1px);
+}
+.option-btn.selected {
+  border-color: color-mix(in srgb, var(--primary) 70%, white 8%);
+  background: color-mix(in srgb, var(--primary) 14%, var(--surface) 86%);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--primary) 16%, transparent);
+}
 .option-btn.correct {
   border-color: color-mix(in srgb, var(--success) 60%, white 10%);
   background: color-mix(in srgb, var(--success) 18%, var(--surface) 82%);
@@ -330,7 +422,9 @@ button { font: inherit; }
 .option-btn:disabled { cursor: default; }
 
 .question-toolbar {
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
 .score {
@@ -348,6 +442,18 @@ button { font: inherit; }
 .cert-card p { margin-bottom: 0; }
 .info-pill.warn { color: var(--warning); }
 .empty-card { color: var(--muted); }
+
+.question-card h2 {
+  line-height: 1.3;
+}
+
+.exam-setup-card .mode-actions {
+  margin-top: 1rem;
+}
+
+.exam-setup-card .inline-secondary-actions {
+  margin-top: 0.25rem;
+}
 .badge-success { color: var(--success); border-color: color-mix(in srgb, var(--success) 45%, var(--border)); }
 
 .pbq-grid {
@@ -491,7 +597,8 @@ button { font: inherit; }
 @media (max-width: 960px) {
   .dashboard-hero,
   .priority-grid,
-  .secondary-grid {
+  .secondary-grid,
+  .hero-stat-list {
     grid-template-columns: 1fr;
   }
 }
@@ -501,7 +608,8 @@ button { font: inherit; }
   .quiz-header,
   .section-head,
   .stack-item,
-  .card-topline {
+  .card-topline,
+  .question-toolbar {
     flex-direction: column;
     align-items: start;
   }
