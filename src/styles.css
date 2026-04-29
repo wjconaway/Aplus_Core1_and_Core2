@@ -317,14 +317,6 @@ button { font: inherit; }
 .ghost-btn { padding: 0.6rem 0.8rem; }
 .preset-chip { padding: 0.6rem 0.85rem; }
 
-.cert-card.disabled {
-  opacity: 0.72;
-}
-
-.coming-soon-note {
-  color: var(--muted);
-  font-weight: 600;
-}
 
 .stack-list {
   display: grid;

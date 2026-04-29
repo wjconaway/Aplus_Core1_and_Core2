@@ -319,30 +319,26 @@ function Dashboard({ appState, startSession }) {
       <section className="priority-grid">
         <div className="panel panel-large">
           <div className="section-head">
-            <h2>Certifications</h2>
-            <p>A+ is ready now. The rest stay visible, but clearly marked as coming soon.</p>
+            <h2>Certification</h2>
+            <p>This app is focused on A+ only. Network+ and Security+ can link out later as separate apps.</p>
           </div>
           <div className="cert-grid">
             {certificationCatalog.map((certification) => (
-              <article key={certification.id} className={`cert-card ${certification.status !== 'live' ? 'disabled' : ''}`}>
+              <article key={certification.id} className="cert-card">
                 <div className="card-topline">
-                  <span className="badge">{certification.status === 'live' ? 'Live' : 'Coming soon'}</span>
+                  <span className="badge">Live</span>
                   <h3>{certification.label}</h3>
                 </div>
                 <p>{certification.tagline}</p>
-                {certification.status === 'live' ? (
-                  <div className="card-actions">
-                    <Link to={`/certification/${certification.id}`} className="primary-btn button-link">Start studying</Link>
-                    <button type="button" className="secondary-btn" onClick={() => {
-                      startSession({ examId: 'core1', mode: 'study', count: 25 });
-                      navigate('/session');
-                    }}>
-                      Quick start
-                    </button>
-                  </div>
-                ) : (
-                  <div className="coming-soon-note">Visible now, clearly marked as coming soon.</div>
-                )}
+                <div className="card-actions">
+                  <Link to={`/certification/${certification.id}`} className="primary-btn button-link">Start studying</Link>
+                  <button type="button" className="secondary-btn" onClick={() => {
+                    startSession({ examId: 'core1', mode: 'study', count: 25 });
+                    navigate('/session');
+                  }}>
+                    Quick start
+                  </button>
+                </div>
               </article>
             ))}
           </div>

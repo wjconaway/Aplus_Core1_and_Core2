@@ -66,20 +66,6 @@ export const certificationCatalog = [
       { id: 'core2', label: 'Core 2', code: '220-1202', badge: 'Software & Security' },
     ],
   },
-  {
-    id: 'network-plus',
-    label: 'Network+',
-    status: 'coming-soon',
-    tagline: 'Next in line once A+ feels sharp.',
-    exams: [],
-  },
-  {
-    id: 'security-plus',
-    label: 'Security+',
-    status: 'coming-soon',
-    tagline: 'Coming soon after Network+ foundations are in place.',
-    exams: [],
-  },
 ];
 
 export const auditNotes = excluded;
