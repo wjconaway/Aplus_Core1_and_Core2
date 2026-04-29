@@ -275,7 +275,7 @@ export const commonPortsPbq = {
 export const commandLinePbq = {
   id: 'command-line-tools',
   title: 'Command Line Tools PBQ',
-  subtitle: 'Sort commands by platform, then choose the best Windows, Linux, or macOS Terminal command for each scenario.',
+  subtitle: 'Sort commands by platform, then choose the best Windows, Linux, or macOS Terminal command for real troubleshooting and admin scenarios.',
   certification: 'A+',
   exam: 'Core 2 (220-1202)',
   domain: 'Operating Systems',
@@ -288,16 +288,28 @@ export const commandLinePbq = {
       explanation: 'ipconfig /all is a Windows command used to show detailed TCP/IP configuration.'
     },
     {
-      id: 'sfc',
-      prompt: 'sfc /scannow',
+      id: 'bootrec',
+      prompt: 'bootrec /rebuildbcd',
       answer: 'windows',
-      explanation: 'sfc /scannow is a Windows System File Checker command.'
+      explanation: 'bootrec /rebuildbcd is a Windows recovery command used to rebuild boot configuration data.'
+    },
+    {
+      id: 'netuser',
+      prompt: 'net user trainee TempPass123 /add',
+      answer: 'windows',
+      explanation: 'net user is a Windows command for creating and managing local user accounts.'
     },
     {
       id: 'grep',
       prompt: 'grep "error" /var/log/auth.log',
       answer: 'linux',
       explanation: 'grep is a standard Linux command for searching text inside files.'
+    },
+    {
+      id: 'chmod',
+      prompt: 'chmod 755 deploy.sh',
+      answer: 'linux',
+      explanation: 'chmod is a Linux command used to change file permissions.'
     },
     {
       id: 'apt',
@@ -316,6 +328,12 @@ export const commandLinePbq = {
       prompt: 'open /Applications',
       answer: 'macos',
       explanation: 'open is a macOS Terminal command that opens files, folders, or apps from the shell.'
+    },
+    {
+      id: 'pwd',
+      prompt: 'pwd',
+      answer: 'linux',
+      explanation: 'pwd is a Unix/Linux shell command that prints the current working directory.'
     }
   ],
   platformOptions: [
@@ -337,6 +355,42 @@ export const commandLinePbq = {
       explanation: 'ipconfig /all is the Windows command for detailed TCP/IP configuration output.'
     },
     {
+      id: 'win-boot-repair',
+      prompt: 'A Windows PC fails to boot after a power outage, and the technician needs to rebuild the Boot Configuration Data store from recovery tools. Which command is the best fit?',
+      options: [
+        'A. bootrec /rebuildbcd',
+        'B. gpupdate /force',
+        'C. netstat -ano',
+        'D. chown admin report.txt'
+      ],
+      answer: 'A',
+      explanation: 'bootrec /rebuildbcd is used from the Windows recovery environment to rebuild the BCD when boot entries are damaged or missing.'
+    },
+    {
+      id: 'win-dns',
+      prompt: 'A technician wants to verify whether a Windows machine can resolve a hostname through DNS instead of just pinging an IP address. Which command is the best choice?',
+      options: [
+        'A. tasklist',
+        'B. nslookup',
+        'C. robocopy',
+        'D. open /Applications'
+      ],
+      answer: 'B',
+      explanation: 'nslookup is the classic Windows command for checking DNS name resolution and querying DNS records.'
+    },
+    {
+      id: 'win-user-admin',
+      prompt: 'A help desk tech needs to add a new local Windows user account from the command line. Which command family should they use?',
+      options: [
+        'A. net user',
+        'B. chmod',
+        'C. softwareupdate',
+        'D. tracert'
+      ],
+      answer: 'A',
+      explanation: 'net user is used in Windows to create, modify, and manage local user accounts.'
+    },
+    {
       id: 'linux-log-search',
       prompt: 'A Linux admin wants to search a log file for every line containing the word failed. Which command is the best fit?',
       options: [
@@ -349,28 +403,16 @@ export const commandLinePbq = {
       explanation: 'grep is used on Linux to search for matching text patterns inside a file.'
     },
     {
-      id: 'mac-updates',
-      prompt: 'A Mac user wants to list available macOS software updates from Terminal before installing anything. Which command should they use?',
+      id: 'linux-permissions',
+      prompt: 'A Linux technician needs to change a script so it has new file permissions before it can be executed properly. Which command should they use?',
       options: [
-        'A. ipconfig /all',
-        'B. sfc /scannow',
-        'C. softwareupdate -l',
-        'D. tail -f /var/log/system.log'
-      ],
-      answer: 'C',
-      explanation: 'softwareupdate -l lists available updates in macOS from the Terminal.'
-    },
-    {
-      id: 'win-system-files',
-      prompt: 'A Windows system is acting unstable, and a technician wants to scan protected system files for corruption. Which command should they run?',
-      options: [
-        'A. sfc /scannow',
-        'B. rm oldfile.log',
-        'C. softwareupdate -l',
-        'D. grep "error" /var/log/messages'
+        'A. chmod',
+        'B. tracert',
+        'C. xcopy',
+        'D. net use'
       ],
       answer: 'A',
-      explanation: 'sfc /scannow checks protected Windows system files and repairs them when possible.'
+      explanation: 'chmod changes permissions on Linux files and directories, which is exactly what you use when a script needs execute or other permission changes.'
     },
     {
       id: 'linux-package-index',
@@ -385,6 +427,30 @@ export const commandLinePbq = {
       explanation: 'sudo apt-get update refreshes the package index on Debian-based Linux systems such as Ubuntu.'
     },
     {
+      id: 'linux-current-path',
+      prompt: 'A Linux user is several folders deep in the shell and wants to confirm the exact directory they are currently in before deleting anything. Which command should they run?',
+      options: [
+        'A. pwd',
+        'B. taskkill',
+        'C. net localgroup',
+        'D. softwareupdate -l'
+      ],
+      answer: 'A',
+      explanation: 'pwd prints the current working directory, which is exactly what a user should confirm before making destructive file changes.'
+    },
+    {
+      id: 'mac-updates',
+      prompt: 'A Mac user wants to list available macOS software updates from Terminal before installing anything. Which command should they use?',
+      options: [
+        'A. ipconfig /all',
+        'B. sfc /scannow',
+        'C. softwareupdate -l',
+        'D. tail -f /var/log/system.log'
+      ],
+      answer: 'C',
+      explanation: 'softwareupdate -l lists available updates in macOS from the Terminal.'
+    },
+    {
       id: 'mac-open-folder',
       prompt: 'A macOS technician wants to open the Applications folder directly from Terminal. Which command is the best fit?',
       options: [
@@ -395,6 +461,30 @@ export const commandLinePbq = {
       ],
       answer: 'C',
       explanation: 'The open command is used in macOS Terminal to open folders, files, and applications from the shell.'
+    },
+    {
+      id: 'win-system-files',
+      prompt: 'A Windows system is acting unstable, and a technician wants to scan protected system files for corruption. Which command should they run?',
+      options: [
+        'A. sfc /scannow',
+        'B. rm oldfile.log',
+        'C. softwareupdate -l',
+        'D. grep "error" /var/log/messages'
+      ],
+      answer: 'A',
+      explanation: 'sfc /scannow checks protected Windows system files and repairs them when possible.'
+    },
+    {
+      id: 'win-suspicious-connection',
+      prompt: 'A security technician wants to review active Windows connections and associated process IDs while investigating suspicious outbound traffic. Which command is the best fit?',
+      options: [
+        'A. netstat -ano',
+        'B. mkdir temp',
+        'C. softwareupdate -l',
+        'D. pwd'
+      ],
+      answer: 'A',
+      explanation: 'netstat -ano shows active connections and listening ports plus process IDs, which makes it useful during malware and suspicious-traffic investigations.'
     }
   ]
 };
